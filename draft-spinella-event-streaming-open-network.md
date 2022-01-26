@@ -51,12 +51,8 @@ In this context, we can now introduce how this landscape could change with the i
 
 {::boilerplate bcp14-tagged}
 
-## 
-
 ## 1. An Open Network for Event Streaming over the Internet
 In this section, we will argue how Internet standards are developed and why this could be the case for an Event Streaming Open Network.
-
-
 
 An interesting example of this phenomenon is the case of ISDN (Integrated Services Digital Network), a set of communications standards for the transmission of voice, video, and data over the PSTN (Public Switched Telephone Network) developed by the ITU-T (Telecommunication Standardization Sector) in 1988. ISDN pretended to use the existing public telephone network to transmit digital data in a time when the Internet connectivity access was not as broadly available as it is today. The main competitor of this standard was the incipient Internet itself, which could be used to transmit the same data.
 
@@ -211,8 +207,9 @@ We can then conclude that while there is no current protocol candidate that impl
 In this section, we will describe the overall architectural proposal for an Event Streaming Open Network. This description will include the different actors in play, the software components required, as well as the network protocols that should be specificized.
 
 ### 3.1. Architecture overview
-In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
+In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
   
+<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/1.svg">
 #####FIGURE######
   
 We can identify different Network Participant (NP) in Figure 7 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
