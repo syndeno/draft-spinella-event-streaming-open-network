@@ -213,8 +213,7 @@ In Figure 1 we illustrate a high-level overview of an architecture proposal for 
 <figure>
   <name>Figure 1</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg">
+    <artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg">
  </artset>
 </figure>
     
@@ -233,8 +232,7 @@ Additionally, the NP must be able to expand the capacity to support any number o
 <figure>
   <name>Figure 2</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg">
+    <artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg">
  </artset>
 </figure>	
 
@@ -262,8 +260,7 @@ Apache Kafka is the ecosystem leader in the Event Streaming space, considering m
 <figure>
   <name>Figure 3</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
+    <artwork type="svg" alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
  </artset>
 </figure>
 
@@ -337,8 +334,7 @@ In Figure 4, we can see how a Flow FQDN can be resolved by means of the Flow Nam
 <figure>
   <name>Figure 4</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
+    <artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
  </artset>
 </figure>	
   
@@ -400,8 +396,7 @@ In the diagram of Figure 5 we can see the different methods that the FNAA must s
 <figure>
   <name>Figure 5</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the interactions among FNAA servers." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure4.svg">
+    <artwork alt="High-level overview of the interactions among FNAA servers." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure4.svg">
  </artset>
 </figure>	
 	
@@ -416,8 +411,7 @@ In the diagram of Figure 6, we can see the initial interface methods that should
 <figure>
   <name>Figure 6</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure6.svg">
+    <artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure6.svg">
  </artset>
 </figure>		
 	
@@ -428,8 +422,7 @@ There can be different types of Processors, which we can see in Figure 7.
 <figure>
   <name>Figure 7</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure7.svg">
+    <artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure7.svg">
  </artset>
 </figure>		
 
@@ -453,8 +446,7 @@ In the Diagram of Figure 8 we can see the actions that the user can request to t
 <figure>
   <name>Figure 8</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="High-level overview of the interactions between a user and the Flow Namespace User Agent component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure8.svg">
+    <artwork alt="High-level overview of the interactions between a user and the Flow Namespace User Agent component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure8.svg">
  </artset>
 </figure>	
 	
@@ -469,8 +461,7 @@ In the diagram of Figure 9, we can see an integration between two NP. In this ca
 <figure>
   <name>Figure 9</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Example of a unidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure9.svg">
+    <artwork alt="Example of a unidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure9.svg">
  </artset>
 </figure>	
 
@@ -493,8 +484,7 @@ In Figure 10 we can see an example of all the components needed to set up a flow
 <figure>
   <name>Figure 10</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Example of a bidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
+    <artwork alt="Example of a bidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
  </artset>
 </figure>	
 
@@ -515,8 +505,7 @@ It is now necessary to specify the protocol needed for the Flow Namespace Access
 <figure>
   <name>Figure 11</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="FNAA client and server communicate using FNAP." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
+    <artwork alt="FNAA client and server communicate using FNAP." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
  </artset>
 </figure>
 	
@@ -525,8 +514,7 @@ In order to define a finite state machine for the protocol and the different sti
 <figure>
   <name>Figure 12</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Merged Sequence Diagram for SMTP proposed by Wild, 2013." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure12.svg">
+    <artwork alt="Merged Sequence Diagram for SMTP proposed by Wild, 2013." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure12.svg">
  </artset>
 </figure>
 	
@@ -540,8 +528,7 @@ Using the model proposed by Wild described previously, we define the finite-stat
 <figure>
   <name>Figure 13</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Finite-state machine for the Flow Namespace Accessing Protocol." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure13.svg">
+    <artwork alt="Finite-state machine for the Flow Namespace Accessing Protocol." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure13.svg">
  </artset>
 </figure>
 
@@ -565,8 +552,7 @@ In Figure 14, we have a diagram of the overall implementation proposal. The comp
 <figure>
   <name>Figure 14</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Implementation overview using Kubernetes, Apache Kafka, DNS Bind9 and the Flow CLI tool." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure14.svg">
+    <artwork alt="Implementation overview using Kubernetes, Apache Kafka, DNS Bind9 and the Flow CLI tool." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure14.svg">
  </artset>
 </figure>
 
@@ -621,8 +607,7 @@ Regarding the implementation of the CLI tool, it is recommended to employ Golang
 <figure>
   <name>Figure 15</name>
   <artset>
-    <artwork type="svg"
-	<artwork alt="Flow CLI parameters diagram." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure15.svg">
+    <artwork alt="Flow CLI parameters diagram." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure15.svg">
  </artset>
 </figure>
 	
