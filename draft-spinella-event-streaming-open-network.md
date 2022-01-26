@@ -33,8 +33,7 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+This document describes an architecture and network protocol for an Event Streaming Open Network.
 
 --- middle
 
