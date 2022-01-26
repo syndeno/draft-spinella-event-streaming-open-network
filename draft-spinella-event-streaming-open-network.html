@@ -1195,28 +1195,21 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           </h4>
 <p id="section-2.1.1-1">A public registry of an organization's available event streams does not exist. We will argue in this section why this is the core component that an Event Streaming Open Network can provide.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-2">Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:<a href="#section-2.1.1-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-2.1.1-3">
-<li id="section-2.1.1-3.1">Develop and deploy a producer application that writes events to a queue.<a href="#section-2.1.1-3.1" class="pilcrow">¶</a>
-</li>
-            <li id="section-2.1.1-3.2">Create all necessary networking permissions for external public access to the queue.<a href="#section-2.1.1-3.2" class="pilcrow">¶</a>
-</li>
-            <li id="section-2.1.1-3.3">Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).<a href="#section-2.1.1-3.3" class="pilcrow">¶</a>
-</li>
-            <li id="section-2.1.1-3.4">Create credentials for consumer authentication and authorization access to the queue.<a href="#section-2.1.1-3.4" class="pilcrow">¶</a>
-</li>
-            <li id="section-2.1.1-3.5">Develop and deploy a consumer application that reads the queue.<a href="#section-2.1.1-3.5" class="pilcrow">¶</a>
-</li>
-          </ol>
+<p id="section-2.1.1-3">1.Develop and deploy a producer application that writes events to a queue.
+2.Create all necessary networking permissions for external public access to the queue.
+3.Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
+4.Create credentials for consumer authentication and authorization access to the queue.
+5.Develop and deploy a consumer application that reads the queue.<a href="#section-2.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-4">Now, we can compare this process to a simple email interaction:
-1.      Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
-2.      The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
-3.      When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.<a href="#section-2.1.1-4" class="pilcrow">¶</a></p>
+1.Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
+2.The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
+3.When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.<a href="#section-2.1.1-4" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-5">In these two scenarios, we can see that the information needed to be exchanged offline by the actors is completely different in size and content.<a href="#section-2.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-6">First, in the case of email, there is a shared naming space given by the Domain Name Service (DNS). The email format has been standardized by the IETF in RFC 5321, section 2.3.11. Thus, there is a common naming space that is used for referencing mailboxes in the format user@domain. Thus, the offline details communicated by the peers is only the recipient email address. There is no analogous standard nor an open alternative for Event Streaming.<a href="#section-2.1.1-6" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-7">Therefore, in the case of Event Streaming, users need to perform plenty of offline communication to agree not only on the technology to use but also on the queue to use. For instance, two organizations may be currently using Apache Kafka and need to share an event stream among themselves. The organization having the source of the stream should provide the following details to the consumer organization:
-o       Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
-o       Topic or Queue name: name of the topic resource in the Apache Kafka Cluster
-o       Authentication information: User and password, TLS Certificate, etc.<a href="#section-2.1.1-7" class="pilcrow">¶</a></p>
+* Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
+* Topic or Queue name: name of the topic resource in the Apache Kafka Cluster
+* Authentication information: User and password, TLS Certificate, etc.<a href="#section-2.1.1-7" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-8">In the case these organizations were not both using Apache Kafka, the use case cannot be simply solved without incurring in development or complex configurations as well as adopting proprietary components.<a href="#section-2.1.1-8" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-9">We can conclude that an Event Streaming Open Network should provide a global accessible URI for streams in a similar fashion than email, to reduce offline developers' interactions. This means being able to name event streams in a common naming space like DNS, as well as providing a mechanism for users to discover the location and connections requirements.<a href="#section-2.1.1-9" class="pilcrow">¶</a></p>
 </section>
@@ -1273,29 +1266,39 @@ o       Authentication information: User and password, TLS Certificate, etc.<a h
           <h4 id="name-41-architecture-overview">
 <a href="#section-2.2.1" class="section-number selfRef">2.2.1. </a><a href="#name-41-architecture-overview" class="section-name selfRef">4.1. Architecture overview</a>
           </h4>
-<div class="alignLeft art-text artwork" id="section-2.2.1-1">
-<pre>
-    In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
-</pre><a href="#section-2.2.1-1" class="pilcrow">¶</a>
+<p id="section-2.2.1-1">In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
+<div id="figure">
+<section id="section-2.2.1.1">
+            <h5 id="name-figure">
+<a href="#section-2.2.1.1" class="section-number selfRef">2.2.1.1. </a><a href="#name-figure" class="section-name selfRef">FIGURE</a>
+            </h5>
+<p id="section-2.2.1.1-1">We can identify different Network Participant (NP) in Figure 7 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.<a href="#section-2.2.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-2">In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.<a href="#section-2.2.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-3">It is possible to observe how the high-level architecture allows sharing the streaming of events across different network participants and their users. Also, there is also the need for security, in order to allow or deny the access to write to and read from flows.<a href="#section-2.2.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-4">#####FIGURE######<a href="#section-2.2.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-5">Regarding security, the architecture considers the integration with an Identity &amp; Access Management service, which could implement popular protocols such as OAuth, SAML or SASL. However, the network should also enable anonymous access in the same way FTP does. This means that a given NP could publicly publish flow and allow any party to subscribe to it.<a href="#section-2.2.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-6">For example, nowadays the Network Time Protocol (NTP) is used to synchronize the day and time on servers. There are many NTP servers available that allow anonymous access, meaning that the service is openly available. The same must be considered for the Event Streaming Open Network.<a href="#section-2.2.1.1-6" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-7">Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.<a href="#section-2.2.1.1-7" class="pilcrow">¶</a></p>
+<p id="section-2.2.1.1-8"> 
+Now, we provide a brief description of all the components that appear in the diagram of Figure 8. In the next sections further details of the components are provided.<a href="#section-2.2.1.1-8" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.2.1.1-9.1">Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.<a href="#section-2.2.1.1-9.1" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-2.2.1.1-9.2">Flow Name Service (FNS): a DNS-based registry that acts as an authoritative server for a set of domain names, which are used to represent flow addresses in a flow namespace. These domains contain all the necessary information to resolve flow names into flow network locations. This component refers to what in 3.1.1 we named Event Streaming Registry.<a href="#section-2.2.1.1-9.2" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-2.2.1.1-9.3">Flow Namespace User Agent (FNUA): an application similar to User Mail Agents like Microsoft Outlook or Gmail. This application provides access to flow namespaces to users of the network. 
+The definition of this component implies the specification of a dedicated protocol. We will refer to this protocol as FNAP (Flow Namespace Accessing Protocol).<a href="#section-2.2.1.1-9.3" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-2.2.1.1-9.4">Flow Namespace Accessing Agent (FNAA): the server-side of the Flow Namespace User Agent. This component is the one that must provide convenient integration methods for GUI. This component refers to what in 3.1.2 we named Event User Space Service.
+This component must implement the same protocol selected for the Flow Namespace User Agent: FNAP (Flow Namespace Accessing Protocol).<a href="#section-2.2.1.1-9.4" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-2.2.1.1-9.5">Flow Processor (FP): a flow processing instance used to set up subscriptions that connect local or remote flows on demand. This component implements the processing part of what in 3.1.3 we called Event Subscription Service. This component will be created and managed by a FNAA instance, and the communication is held through an Inter-process Communications (IPC) interface. Also, this service must implement an Event Payload Format, for which we will mainly consider CNCF's CloudEvents and Protobuf.<a href="#section-2.2.1.1-9.5" class="pilcrow">¶</a>
+</li>
+              <li class="normal" id="section-2.2.1.1-9.6">Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.<a href="#section-2.2.1.1-9.6" class="pilcrow">¶</a>
+</li>
+            </ul>
+</section>
 </div>
-<p id="section-2.2.1-2">#####FIGURE######<a href="#section-2.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-3">We can identify different Network Participant (NP) in Figure 7 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.<a href="#section-2.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-4">In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.<a href="#section-2.2.1-4" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-5">It is possible to observe how the high-level architecture allows sharing the streaming of events across different network participants and their users. Also, there is also the need for security, in order to allow or deny the access to write to and read from flows.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-6">#####FIGURE######<a href="#section-2.2.1-6" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-7">Regarding security, the architecture considers the integration with an Identity &amp; Access Management service, which could implement popular protocols such as OAuth, SAML or SASL. However, the network should also enable anonymous access in the same way FTP does. This means that a given NP could publicly publish flow and allow any party to subscribe to it.<a href="#section-2.2.1-7" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-8">For example, nowadays the Network Time Protocol (NTP) is used to synchronize the day and time on servers. There are many NTP servers available that allow anonymous access, meaning that the service is openly available. The same must be considered for the Event Streaming Open Network.<a href="#section-2.2.1-8" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-9">Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.<a href="#section-2.2.1-9" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-10"> 
-Now, we provide a brief description of all the components that appear in the diagram of Figure 8. In the next sections further details of the components are provided.<a href="#section-2.2.1-10" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-11">*Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.<a href="#section-2.2.1-11" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-12">*Flow Name Service (FNS): a DNS-based registry that acts as an authoritative server for a set of domain names, which are used to represent flow addresses in a flow namespace. These domains contain all the necessary information to resolve flow names into flow network locations. This component refers to what in 3.1.1 we named Event Streaming Registry.<a href="#section-2.2.1-12" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-13">*Flow Namespace User Agent (FNUA): an application similar to User Mail Agents like Microsoft Outlook or Gmail. This application provides access to flow namespaces to users of the network. 
-The definition of this component implies the specification of a dedicated protocol. We will refer to this protocol as FNAP (Flow Namespace Accessing Protocol).<a href="#section-2.2.1-13" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-14">*Flow Namespace Accessing Agent (FNAA): the server-side of the Flow Namespace User Agent. This component is the one that must provide convenient integration methods for GUI. This component refers to what in 3.1.2 we named Event User Space Service.
-This component must implement the same protocol selected for the Flow Namespace User Agent: FNAP (Flow Namespace Accessing Protocol).<a href="#section-2.2.1-14" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-15">*Flow Processor (FP): a flow processing instance used to set up subscriptions that connect local or remote flows on demand. This component implements the processing part of what in 3.1.3 we called Event Subscription Service. This component will be created and managed by a FNAA instance, and the communication is held through an Inter-process Communications (IPC) interface. Also, this service must implement an Event Payload Format, for which we will mainly consider CNCF's CloudEvents and Protobuf.<a href="#section-2.2.1-15" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-16">*Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.<a href="#section-2.2.1-16" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
