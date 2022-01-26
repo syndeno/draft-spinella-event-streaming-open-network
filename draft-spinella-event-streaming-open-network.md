@@ -208,12 +208,9 @@ In this section, we will describe the overall architectural proposal for an Even
 ## 4.1. Architecture overview
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
 
-<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="images/Figure1.svg"/>
 <figure>
   <name>Figure 1</name>
-  <artset>
-    <artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg"/>
- </artset>
+  <artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg"/>
 </figure>
     
 We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
