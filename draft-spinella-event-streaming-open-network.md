@@ -53,10 +53,10 @@ Overall, this set of standards would drastically reduce the cost of real-time in
 
 {::boilerplate bcp14-tagged}
 
-## Necessities for broad Event Streaming adoption
+## 1. Necessities for broad Event Streaming adoption
 In this section, we will describe the main needs for the broad adoption of Event Streaming. The focus will be made on detecting and describing the missing capabilities that could not only enable but also accelerate the event data integration among different organizations. The different necessities detailed in this section will serve as input for an architecture design.
 
-### Necessity 1: Availability of an Events Public Registry
+### 1.1. Necessity 1: Availability of an Events Public Registry
 A public registry of an organization’s available event streams does not exist. We will argue in this section why this is the core component that an Event Streaming Open Network can provide.
 
 Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:
@@ -85,7 +85,7 @@ In the case these organizations were not both using Apache Kafka, the use case c
 
 We can conclude that an Event Streaming Open Network should provide a global accessible URI for streams in a similar fashion than email, to reduce offline developers’ interactions. This means being able to name event streams in a common naming space like DNS, as well as providing a mechanism for users to discover the location and connections requirements.
 
-### Necessity 2: Establishment of a User Space for Events
+### 1.2. Necessity 2: Establishment of a User Space for Events
 Another need for broad adoption is due to the inexistence of a common and agreed user convention. In the general literature, we cannot find reference to the types of users that would consume or produce events to and from an event stream. 
 
 In this sense, it is also appropriate to consider the email use case. Basically, an email user only needs to know the email address, the password, the URL of a web mail client or the details of IMAP/POP3 server connection. Once the user has this information, it’s possible to access an email space or mailbox where the user can navigate the emails in it. Also, IMAP provides the possibility for the user to create folders and optionally share them with other users.
@@ -95,7 +95,7 @@ There is no analogous service currently available for Event Streaming analogous 
 As a conclusion for this section, we can mention that it is necessary to embrace a user space resource for Event Streaming. This resource should not only solve the users’ motivations and requirements but also reduce the offline verbal communications and custom development dependencies. In the next sections, we will refer to this component as the Event User Space Service.
 
 
-### Necessity 3: An Agnostic Subscription Protocol
+### 1.3. Necessity 3: An Agnostic Subscription Protocol
 A third need for wide adoption is an agnostic protocol to manage subscriptions to event streams. For this need to be solved, it would be necessary first to count with an Event User Space Service. Then, in case a user has created a stream and wants to enable public subscriptions by other users, there is no general protocol to inform other parties of this subscription intention nor its confirmation. 
 
 The result is the inability for the users to seamlessly subscribe to an event stream. They either must employ protocols like MQTT or, in the need of employing other application protocols like Apache Kafka, hardcode the subscription details in the different software implementations. This means that there is no general subscription protocol for Event Streaming that is agnostic of the application protocol employed. This protocol implements both the Metadata Payload Format and Payload Format.
@@ -112,7 +112,7 @@ Currently, the Metadata Payload Format as well as the Payload Format are both pr
 
 We can conclude that there is an actual need for an open specification of an Event Subscription Service for event streams, which implements what Urquhart calls Metadata Payload Format. This specification could be materialized in a network protocol that introduces an abstraction for the event queue or log technologies implemented by different organizations. 
 
-### Necessity 4: An Open Cross-sector Payload Format
+### 1.4. Necessity 4: An Open Cross-sector Payload Format
 Currently, the different implementations of Event Streaming combine both the Payload Format with the Metadata Format. This means that the same protocol utilized for payload transport is used for subscription management.
 
 When a producer intends to publish events to a queue or, using Apache Kafka terminology, when a producer intends to write records to a topic, first it needs to initiate a connection to at least one of the Apache Kafka Brokers. In that initial exchange of TCP packages, the producer is authenticated, authorized, and informed with topic details. This set of transactions would belong to a protocol that implements a Metadata Payload Format. Afterwards, when the Producer starts writing the events to the topic, it encapsulates the event payload in a Kafka Protocol message. This latter behavior makes use of a Payload Format. Thus, we can observe how both theoretical formats are coupled in a single protocol. Similar behavior of a coupled Metadata and Payload Format in one single protocol happens also in AMQP, MQTT and RabbitMQ.
@@ -125,10 +125,10 @@ The general structure of the CloudEvents Payload Format includes a standardized 
 
 We can then conclude that while there is no current protocol candidate that implements the Metadata Format, CloudEvents is a good candidate for the Payload Format needed in an Event Streaming Open Network. In this way, the different CloudEvents libraries made available in several programming could be leveraged.
 
-## 4.	Event Streaming Open Network Architecture
+## 2.	Event Streaming Open Network Architecture
 In this section, we will describe the overall architectural proposal for an Event Streaming Open Network. This description will include the different actors in play, the software components required, as well as the network protocols that should be specificized.
 
-### 4.1. Architecture overview
+### 2.1. Architecture overview
 In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
   
 #####FIGURE######
@@ -164,7 +164,128 @@ This component must implement the same protocol selected for the Flow Namespace 
 
 * Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.
 
+#### 2.1.1. Flow Events Broker (FEB)
+The FEB implementation that we will mostly consider is Apache Kafka. This open-source project is quickly becoming a commodity platform, and major cloud providers are building utilities for it. However, as a design decision, it should be possible to use the same protocols to support other applications, such as RabbitMQ, Apache Pulsar or the cloud-based options like AWS SQS or Azure Events Hub.
 
+Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 9.
+
+######FIGURE#########
+
+The selection of the Events Broker will impact on the implementation of the Flow Namespace Accessing Agent. This last component will be responsible for knowing how to set up and manage flows on top of different Events Brokers.
+
+#### 2.1.2. Flow Name Service (FNS)
+FNS is a core component for the overall proposed architecture. This component provides all needed functionalities for obtaining Flow connection details based on a Flow URI (Uniform Resource Identifier). Thus, it is required to define a URI format for Flow resources and to specify mechanisms for resource location resolution.
+
+In this section, we will focus on describing both the URI for Flow as well as the DNS mechanism for obtaining Flow network location details.
+
+##### 2.1.2.1. Leveraging DNS infrastructure
+As mentioned previously, this component must maximize its leverage on the existing Internet DNS infrastructure. The reason for this requirement is to avoid defining new protocols and services that prevent broad adoption. Currently, DNS is the de facto name resolution protocol for the Internet, and there exist libraries for its usage on every programming language. 
+
+Whereas DNS is mainly used to resolve FQDN (Fully Qualified Domain Names) into IP addresses, there are many other functionalities provided by the global DNS infrastructure. Theoretically, DNS is an open network of a distributed database. Individuals and organizations that want to participate in the network need to register a domain name and set up Authoritative DNS servers for domains.
+
+It is not in the scope of this work to detail the different available usages of DNS functionalities, but we can mention that it provides special Resource Records (i.e., types of information for a FQDN) that are solely used by special protocols. For instance, the MX Resource Records are used by SMTP servers to exchange email messages.
+
+For the Flow Open Network, it will be required to define a URI format for flows as well as the mechanism to resolve an URI into all the needed information to connect to a flow. In the case of email, a URI is the email address while the connection details will be the SMTP server responsible for receiving emails for that account. For instance, an email URI could be user@domain.com while its connection details could be smtp://mail.domain.com. The way in which the connection details are obtained is by resolving the MX DNS Resource Records of domain.com, which in this example is mail.domain.com.
+
+##### 2.1.2.2. Flow URI
+As we mentioned previously, the first needed element is a URI definition for flow resources. These resources identification must capture the following details:
+* Domain, a registered domain in which create flow resources references. For example, airport.com.
+* Flow Namespace, a subdomain which is solely used by users to host flow names. This subdomain must be delegated to the Flow Name Server component and desirable should not be used for any other purpose other than flow.
+* Flow Name, a name for each flow that must be unique within its domain. The combination of flow name and flow domain results in an FQDN. For instance, we could have a flow named arrivals of the domain flow.airport.com. Thus, the FQDN of the flow would be arrivals.flow.airport.com. Also, the name can contain dots so that the following FQDN could be also used: airline.arrivals.flow.airport.com.
+
+Thus, the general syntax of a flow URI would be:
+	
+flow://<flow_name>.<flow_namespace>.<domain>
+
+This URI has the advantage that is similar to “mailto” URI and could be implemented in HTML to refer to flow resources. Some examples: 
+
+*	flow://entrances.building.company.com
+*	flow://exits.building.company.com
+*	flow://temperature.house.mydomain.com
+*	flow://pressure.room1.office.mydomain.com
+
+The flow URI must unequivocally identify a flow resource and provide, by means of DNS resolution mechanisms, all the information required to use the flow. Among these parameters, at least the following should be resolvable:
+
+*	Event Queue Broker protocol utilized by the flow. For instance, if Apache Kafka is used, the protocol would be “kafka”; In case RabbitMQ is used by the flow, “amqp”. Also, it must be informed if the protocol is protected by TLS.
+*	Event Queue Broker FQDN or list of FQDNs that resolve to the IP address of one or a set of the Event Queue Brokers. For instance, kafka-1.mycompany.com, kafka-2.mycompany.com.
+*	Event Queue Broker Port used by the Event Queue Brokers. For instance, in the case of Kafka: 9092, 9093.
+*	Event Queue Broker Transport Security Layer can be implemented. Thus, it is needed to know if the connection uses TLS before establishing it.
+*	Queue Name hosted in the Event Queue Broker, which must be equal to that of the corresponding flow name.
+
+  The general syntax of the Flow URI would be as follows:
+  
+  flow://flowName.flowCategory.myNameSpace.domain.tld
+  
+* Flow Namespace FQDN: myNameSpace.domain.tld
+*	Flow Name: flowName.flowCategory
+*	Flow FQDN: flowName.flowCategory.myNameSpace.domain.tld
+
+The following are examples of this URI Syntax:
+
+flow://notifications.calendar.people.syndeno.com
+
+*	Flow Namespace FQDN: people.syndeno.com
+*	Flow Name: notifications.calendar
+*	Flow FQDN: notifications.calendar.people.syndeno.com
+
+flow://created.invoice.finance.syndeno.com:
+*	Flow Namespace FQDN: finance.syndeno.com
+*	Flow Name: created.invoice
+*	Flow FQDN: created.invoice.finance.syndeno.com
+
+  ##### 2.1.2.2. Flow name resolution
+	In Figure 10, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
+
+  #####FIGURE####
+  
+  In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
+
+  flow://notifications.calendar.people.syndeno.com
+
+  First, the FNAA will perform a query to the DNS resolvers. These will perform a recursive DNS query to obtain the authoritative name servers for the Flow Namespace: people.syndeno.com. Thus, the authoritative name servers for syndeno.com will reply with one or more NS Resource Record containing the FQDN for the authoritative name servers of people.syndeno.com.
+
+  Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763). 
+
+  In this case, the query for PTR records would be as follows:
+
+;; QUESTION SECTION:
+;notifications.calendar.people.syndeno.com.		IN	PTR
+
+The response would be in the following form:
+
+;; ANSWER SECTION:
+notifications.calendar.people.syndeno.com. 21600 IN	PTR _flow._tcp.notifications.calendar.people.syndeno.com.
+
+Using the FQDN returned by this query, an additional query asking for SRV records is made:
+
+;; QUESTION SECTION:
+;_flow._tcp.notifications.calendar.people.syndeno.com.		IN	SRV
+
+;; ANSWER SECTION:
+_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 65432 fnaa.syndeno.com.
+_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “tls”
+
+_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 9092 kafka.syndeno.com.
+_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “broker-type=kafka tls”
+
+
+First, the response informs the network location of the FNAA server, in this case a connection should be opened to TCP port 65432 of the IP resulting of resolving fnaa.syndeno.com:
+
+;; QUESTION SECTION:
+;fnaa.syndeno.com.		IN	A
+
+;; ANSWER SECTION:
+fnaa.syndeno.com.	21600	IN	A	208.68.163.200
+
+Secondly, this response offers other relevant information, like the TCP port where the queue service is located (9092). It also includes a TXT Resource Record that establishes the protocol of the Event Queue Broker, defined in the variable “broker-type=kafka”. 
+
+Now, using the returned FQDN for the queue, kafka.syndeno.com, the resolver can perform an additional query:
+
+;; QUESTION SECTION:
+;kafka.syndeno.com.		IN	A
+
+;; ANSWER SECTION:
+kafka.syndeno.com.	21600	IN	A	208.68.163.218
 
 # Security Considerations
 
