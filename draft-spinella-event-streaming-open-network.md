@@ -1,19 +1,19 @@
 ---
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Event Streaming Open Network"
+abbrev: "ESON"
 category: info
 
 docname: draft-spinella-event-streaming-open-network-latest
 ipr: trust200902
-area: AREA
-workgroup: WG Working Group
+area: TBD
+workgroup: TBD
 keyword: Internet-Draft
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
+  group: TBD
+  type: TBD
+  mail: TBD
+  arch: TBD
+  github: syndeno/draft-spinella-event-streaming-open-network
   latest: https://example.com/LATEST
 
 stand_alone: yes
@@ -23,7 +23,7 @@ pi: [toc, sortrefs, symrefs]
 author:
  -
     name: "Emiliano Spinella"
-    organization: Your Organization Here
+    organization: Syndeno
     email: "emilianofs@gmail.com"
 
 normative:
