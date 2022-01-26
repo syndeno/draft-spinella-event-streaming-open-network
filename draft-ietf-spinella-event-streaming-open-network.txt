@@ -695,7 +695,9 @@ Table of Contents
    In Figure 1 we illustrate a high-level overview of an architecture
    proposal for the Open Network.
 
-   (Artwork only available as svg: images/Figure1.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 1: Figure 1
 
