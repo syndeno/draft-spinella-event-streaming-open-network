@@ -13,7 +13,8 @@ Expires: 30 July 2022
 
 Abstract
 
-   TODO Abstract
+   This document describes an architecture and network protocol for an
+   Event Streaming Open Network.
 
 About This Document
 
