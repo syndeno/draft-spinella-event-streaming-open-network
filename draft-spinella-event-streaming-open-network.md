@@ -208,21 +208,22 @@ In this section, we will describe the overall architectural proposal for an Even
 
 ### 3.1. Architecture overview
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
+
+<figure>
+  <name>Figure 1</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg">
+ </artset>
+</figure>
   
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg">
-	
 #####FIGURE######
   
-We can identify different Network Participant (NP) in Figure 2 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
+We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
 
 In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
 
 It is possible to observe how the high-level architecture allows sharing the streaming of events across different network participants and their users. Also, there is also the need for security, in order to allow or deny the access to write to and read from flows.
-
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg">
-	
-	
-  #####FIGURE######
 
 Regarding security, the architecture considers the integration with an Identity & Access Management service, which could implement popular protocols such as OAuth, SAML or SASL. However, the network should also enable anonymous access in the same way FTP does. This means that a given NP could publicly publish flow and allow any party to subscribe to it.
 
@@ -230,9 +231,15 @@ For example, nowadays the Network Time Protocol (NTP) is used to synchronize the
 
 Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
+<figure>
+  <name>Figure 2</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg">
+ </artset>
+</figure>	
 
-Now, we provide a brief description of all the components that appear in the diagram of Figure 3. In the next sections further details of the components are provided.
+Now, we provide a brief description of all the components that appear in the diagram of Figure 2. In the next sections further details of the components are provided.
 
 * Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.
 
@@ -251,11 +258,15 @@ This component must implement the same protocol selected for the Flow Namespace 
 #### 2.1.1. Flow Events Broker (FEB)
 The FEB implementation that we will mostly consider is Apache Kafka. This open-source project is quickly becoming a commodity platform, and major cloud providers are building utilities for it. However, as a design decision, it should be possible to use the same protocols to support other applications, such as RabbitMQ, Apache Pulsar or the cloud-based options like AWS SQS or Azure Events Hub.
 
-Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 4.
+Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 3.
 	
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure4.svg">
-
-######FIGURE#########
+<figure>
+  <name>Figure 3</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
+ </artset>
+</figure>
 
 The selection of the Events Broker will impact on the implementation of the Flow Namespace Accessing Agent. This last component will be responsible for knowing how to set up and manage flows on top of different Events Brokers.
 
@@ -322,11 +333,15 @@ flow://created.invoice.finance.syndeno.com:
 
 ##### 3.1.2.2. Flow name resolution
 
-In Figure 5, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
+In Figure 4, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure5.svg">
-	
-  #####FIGURE####
+<figure>
+  <name>Figure 4</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg">
+ </artset>
+</figure>	
   
 In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
 
@@ -381,12 +396,15 @@ Now, using the returned FQDN for the queue, kafka.syndeno.com, the resolver can 
 
 The Flow Namespace Accessing Agent is the core component of a Network Participant. This server application implements the Flow Namespace Accessing Protocol that allows client connections.
 
-In the diagram of Figure 6 we can see the different methods that the FNAA must support. 
+In the diagram of Figure 5 we can see the different methods that the FNAA must support. 
 	
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure6.svg">
-	
-
-####FIGURE####
+<figure>
+  <name>Figure 5</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the interactions among FNAA servers." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure4.svg">
+ </artset>
+</figure>	
 	
 The clients connecting to a FNAA server can be remote FNAA servers as well as FNUA. The rationale is that users of a NP connect to the FNAA by means of a FNUA. On the other hand, when a user triggers a new subscription creation, the FNAA of his NP must connect as client to a remote FNAA server.
 	
@@ -394,21 +412,29 @@ The clients connecting to a FNAA server can be remote FNAA servers as well as FN
 
 Whenever a new subscription creation is triggered and all remote flow connection details are obtained, the FNAA needs to set up a Processor for it. The communications of the FNAA to and from the FP is by means of an IPC interface. This means that there can be different implementations of Processors, one of which will be the Subscription Processor. 
 
-In the diagram of Figure 7, we can see the initial interface methods that should be implemented in a Flow Processor. 
+In the diagram of Figure 6, we can see the initial interface methods that should be implemented in a Flow Processor. 
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure7.svg">
-	
-#####FIGURE#####
+<figure>
+  <name>Figure 6</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure6.svg">
+ </artset>
+</figure>		
 	
 Depending on the use of the processor, different data structures should be added to the different methods. In the case of a Subscription Processor, the minimum information will be the remote and local Flow connection details. Moreover, the interface also should include methods to update the Processor configuration and to destroy it, once a subscription is revoked. Finally, due to the nature of the stream communication, there could also be methods available to pause and to resume a Processor.
 	
-There can be different types of Processors, which we can see in Figure 8.
+There can be different types of Processors, which we can see in Figure 7.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure8.svg">
-	
-	####FIGURE####
+<figure>
+  <name>Figure 7</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the IPC interface for the FNAA server and Flow Processors communications." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure7.svg">
+ </artset>
+</figure>		
 
-In Figure 8, we can see that there are different types of Flow Processors:
+In Figure 7, we can see that there are different types of Flow Processors:
 * Bridge Processor: Consumes events from a Flow located in an Event Broker (i.e., Apache Kafka) and transcribes them to a single Flow (local or remote).
 * Collector Processor: Consumes events from N Flows located in an Event Broker and transcribes the aggregate to a single Flow (local or remote).
 * Distributor Processor: Consumes events from a single Flow and transcribes or broadcast to N Flows (local or remote).
@@ -423,11 +449,15 @@ The FNUA is an application analogous to email clients such as Microsoft Office o
 
 The FNUA is an application that acts as a client for the FNAA server. Only users that possess accounts in a Network Participant should be able to login to FNAA to manage Flow Namespaces. The FNUA could be any kind of user application: web application, desktop application, mobile application or even a cli tool.
 
-In the Diagram of Figure 9 we can see the actions that the user can request to the FNUA.
+In the Diagram of Figure 8 we can see the actions that the user can request to the FNUA.
 	
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure9.svg">
-	
-####FIGURE####
+<figure>
+  <name>Figure 8</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="High-level overview of the interactions between a user and the Flow Namespace User Agent component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure8.svg">
+ </artset>
+</figure>	
 	
 The main goal of the FNUA is to provide the user with access to Flow Namespaces and the flows hosted in them. A user may have many Flow Namespace and many Flows in each of them. By means of the FNUA, the user can manage the Flow Namespaces and the Flows in them. Also, the FNUA will provide the capabilities required to subscribe to external Flows, whether local to the FNAA, local to the NP or remote (in a different NP FNAA server).
 
