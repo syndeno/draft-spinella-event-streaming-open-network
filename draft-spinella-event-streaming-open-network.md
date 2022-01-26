@@ -61,16 +61,16 @@ A public registry of an organization’s available event streams does not exist.
 
 Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:
 
-1.Develop and deploy a producer application that writes events to a queue.
-2.Create all necessary networking permissions for external public access to the queue.
-3.Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
-4.Create credentials for consumer authentication and authorization access to the queue.
+1. Develop and deploy a producer application that writes events to a queue.
+2. Create all necessary networking permissions for external public access to the queue.
+3. Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
+4. Create credentials for consumer authentication and authorization access to the queue.
 5.Develop and deploy a consumer application that reads the queue.
 
 Now, we can compare this process to a simple email interaction:
-1.Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
-2.The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
-3.When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.
+1. Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
+2. The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
+3. When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.
 
 In these two scenarios, we can see that the information needed to be exchanged offline by the actors is completely different in size and content. 
 
@@ -147,7 +147,6 @@ For example, nowadays the Network Time Protocol (NTP) is used to synchronize the
 
 Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.
 
- 
 Now, we provide a brief description of all the components that appear in the diagram of Figure 8. In the next sections further details of the components are provided.
 
 * Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.
@@ -199,59 +198,61 @@ flow://<flow_name>.<flow_namespace>.<domain>
 
 This URI has the advantage that is similar to “mailto” URI and could be implemented in HTML to refer to flow resources. Some examples: 
 
-*	flow://entrances.building.company.com
-*	flow://exits.building.company.com
-*	flow://temperature.house.mydomain.com
-*	flow://pressure.room1.office.mydomain.com
+* flow://entrances.building.company.com
+* flow://exits.building.company.com
+* flow://temperature.house.mydomain.com
+* flow://pressure.room1.office.mydomain.com
 
 The flow URI must unequivocally identify a flow resource and provide, by means of DNS resolution mechanisms, all the information required to use the flow. Among these parameters, at least the following should be resolvable:
 
-*	Event Queue Broker protocol utilized by the flow. For instance, if Apache Kafka is used, the protocol would be “kafka”; In case RabbitMQ is used by the flow, “amqp”. Also, it must be informed if the protocol is protected by TLS.
-*	Event Queue Broker FQDN or list of FQDNs that resolve to the IP address of one or a set of the Event Queue Brokers. For instance, kafka-1.mycompany.com, kafka-2.mycompany.com.
-*	Event Queue Broker Port used by the Event Queue Brokers. For instance, in the case of Kafka: 9092, 9093.
-*	Event Queue Broker Transport Security Layer can be implemented. Thus, it is needed to know if the connection uses TLS before establishing it.
-*	Queue Name hosted in the Event Queue Broker, which must be equal to that of the corresponding flow name.
+* Event Queue Broker protocol utilized by the flow. For instance, if Apache Kafka is used, the protocol would be “kafka”; In case RabbitMQ is used by the flow, “amqp”. Also, it must be informed if the protocol is protected by TLS.
+* Event Queue Broker FQDN or list of FQDNs that resolve to the IP address of one or a set of the Event Queue Brokers. For instance, kafka-1.mycompany.com, kafka-2.mycompany.com.
+* Event Queue Broker Port used by the Event Queue Brokers. For instance, in the case of Kafka: 9092, 9093.
+* Event Queue Broker Transport Security Layer can be implemented. Thus, it is needed to know if the connection uses TLS before establishing it.
+* Queue Name hosted in the Event Queue Broker, which must be equal to that of the corresponding flow name.
 
-  The general syntax of the Flow URI would be as follows:
+The general syntax of the Flow URI would be as follows:
   
-  flow://flowName.flowCategory.myNameSpace.domain.tld
+flow://flowName.flowCategory.myNameSpace.domain.tld
   
 * Flow Namespace FQDN: myNameSpace.domain.tld
-*	Flow Name: flowName.flowCategory
-*	Flow FQDN: flowName.flowCategory.myNameSpace.domain.tld
+* Flow Name: flowName.flowCategory
+* Flow FQDN: flowName.flowCategory.myNameSpace.domain.tld
 
 The following are examples of this URI Syntax:
 
 flow://notifications.calendar.people.syndeno.com
 
-*	Flow Namespace FQDN: people.syndeno.com
-*	Flow Name: notifications.calendar
-*	Flow FQDN: notifications.calendar.people.syndeno.com
+* Flow Namespace FQDN: people.syndeno.com
+* Flow Name: notifications.calendar
+* Flow FQDN: notifications.calendar.people.syndeno.com
 
 flow://created.invoice.finance.syndeno.com:
-*	Flow Namespace FQDN: finance.syndeno.com
-*	Flow Name: created.invoice
-*	Flow FQDN: created.invoice.finance.syndeno.com
+	
+* Flow Namespace FQDN: finance.syndeno.com
+* Flow Name: created.invoice
+* Flow FQDN: created.invoice.finance.syndeno.com
 
-  ##### 2.1.2.2. Flow name resolution
-	In Figure 10, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
+##### 2.1.2.2. Flow name resolution
+
+In Figure 10, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
 
   #####FIGURE####
   
-  In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
+In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
 
-  flow://notifications.calendar.people.syndeno.com
+flow://notifications.calendar.people.syndeno.com
 
-  First, the FNAA will perform a query to the DNS resolvers. These will perform a recursive DNS query to obtain the authoritative name servers for the Flow Namespace: people.syndeno.com. Thus, the authoritative name servers for syndeno.com will reply with one or more NS Resource Record containing the FQDN for the authoritative name servers of people.syndeno.com.
+First, the FNAA will perform a query to the DNS resolvers. These will perform a recursive DNS query to obtain the authoritative name servers for the Flow Namespace: people.syndeno.com. Thus, the authoritative name servers for syndeno.com will reply with one or more NS Resource Record containing the FQDN for the authoritative name servers of people.syndeno.com.
 
-  Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763). 
+Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763). 
 
-  In this case, the query for PTR records would be as follows:
+In this case, the query for PTR records would be as follows:
 
 	;; QUESTION SECTION:
 	;notifications.calendar.people.syndeno.com.		IN	PTR
 
-	The response would be in the following form:
+The response would be in the following form:
 
 	;; ANSWER SECTION:
 	notifications.calendar.people.syndeno.com. 21600 IN	PTR _flow._tcp.notifications.calendar.people.syndeno.com.
@@ -288,28 +289,30 @@ Now, using the returned FQDN for the queue, kafka.syndeno.com, the resolver can 
 
 	
 #### 2.1.3. Flow Namespace Accessing Agent (FNAA)
+
 The Flow Namespace Accessing Agent is the core component of a Network Participant. This server application implements the Flow Namespace Accessing Protocol that allows client connections.
 
 In the diagram of Figure 11 we can see the different methods that the FNAA must support. 
 
-	####FIGURE####
+####FIGURE####
 	
 The clients connecting to a FNAA server can be remote FNAA servers as well as FNUA. The rationale is that users of a NP connect to the FNAA by means of a FNUA. On the other hand, when a user triggers a new subscription creation, the FNAA of his NP must connect as client to a remote FNAA server.
 	
 #### 2.1.4. Flow Processor (FP)
 
-	Whenever a new subscription creation is triggered and all remote flow connection details are obtained, the FNAA needs to set up a Processor for it. The communications of the FNAA to and from the FP is by means of an IPC interface. This means that there can be different implementations of Processors, one of which will be the Subscription Processor. 
+Whenever a new subscription creation is triggered and all remote flow connection details are obtained, the FNAA needs to set up a Processor for it. The communications of the FNAA to and from the FP is by means of an IPC interface. This means that there can be different implementations of Processors, one of which will be the Subscription Processor. 
 
-	In the diagram of Figure 12, we can see the initial interface methods that should be implemented in a Flow Processor. 
+In the diagram of Figure 12, we can see the initial interface methods that should be implemented in a Flow Processor. 
+
 #####FIGURE#####
 	
-	Depending on the use of the processor, different data structures should be added to the different methods. In the case of a Subscription Processor, the minimum information will be the remote and local Flow connection details. Moreover, the interface also should include methods to update the Processor configuration and to destroy it, once a subscription is revoked. Finally, due to the nature of the stream communication, there could also be methods available to pause and to resume a Processor.
+Depending on the use of the processor, different data structures should be added to the different methods. In the case of a Subscription Processor, the minimum information will be the remote and local Flow connection details. Moreover, the interface also should include methods to update the Processor configuration and to destroy it, once a subscription is revoked. Finally, due to the nature of the stream communication, there could also be methods available to pause and to resume a Processor.
 	
-	There can be different types of Processors, which we can see in Figure 13.
+There can be different types of Processors, which we can see in Figure 13.
 	
 	####FIGURE####
 
-	In Figure 13, we can see that there are different types of Flow Processors:
+In Figure 13, we can see that there are different types of Flow Processors:
 * Bridge Processor: Consumes events from a Flow located in an Event Broker (i.e., Apache Kafka) and transcribes them to a single Flow (local or remote).
 * Collector Processor: Consumes events from N Flows located in an Event Broker and transcribes the aggregate to a single Flow (local or remote).
 * Distributor Processor: Consumes events from a single Flow and transcribes or broadcast to N Flows (local or remote).
@@ -320,24 +323,24 @@ To implement the previously described Subscription Processor, we can utilize som
 In summary, the IPC interface should support all the possible processors that the network may need although we are initially considering the subscription use case.
 
 #### 2.1.5. Flow Namespace User Agent (FNUA)
-	The FNUA is an application analogous to email clients such as Microsoft Office or Gmail. These applications implement either different network protocols to access mailboxes by means of IMAP and/or POP3. In the case of FNUA, the protocol implemented is the FNAP (Flow Namespace Accessing Protocol).
+The FNUA is an application analogous to email clients such as Microsoft Office or Gmail. These applications implement either different network protocols to access mailboxes by means of IMAP and/or POP3. In the case of FNUA, the protocol implemented is the FNAP (Flow Namespace Accessing Protocol).
 
-	The FNUA is an application that acts as a client for the FNAA server. Only users that possess accounts in a Network Participant should be able to login to FNAA to manage Flow Namespaces. The FNUA could be any kind of user application: web application, desktop application, mobile application or even a cli tool.
+The FNUA is an application that acts as a client for the FNAA server. Only users that possess accounts in a Network Participant should be able to login to FNAA to manage Flow Namespaces. The FNUA could be any kind of user application: web application, desktop application, mobile application or even a cli tool.
 
-	In the Diagram of Figure 14 we can see the actions that the user can request to the FNUA.
+In the Diagram of Figure 14 we can see the actions that the user can request to the FNUA.
 	
-	####FIGURE####
+####FIGURE####
 	
-	The main goal of the FNUA is to provide the user with access to Flow Namespaces and the flows hosted in them. A user may have many Flow Namespace and many Flows in each of them. By means of the FNUA, the user can manage the Flow Namespaces and the Flows in them. Also, the FNUA will provide the capabilities required to subscribe to external Flows, whether local to the FNAA, local to the NP or remote (in a different NP FNAA server).
+The main goal of the FNUA is to provide the user with access to Flow Namespaces and the flows hosted in them. A user may have many Flow Namespace and many Flows in each of them. By means of the FNUA, the user can manage the Flow Namespaces and the Flows in them. Also, the FNUA will provide the capabilities required to subscribe to external Flows, whether local to the FNAA, local to the NP or remote (in a different NP FNAA server).
 
 ### 2.2. Communications Examples
-	In this section, two usage examples of Network Participants communications are provided. The first one, we call unidirectional, since one NP subscribes to a remote Flow of a different NP. The second one, we call it bidirectional, since now these NP have mutual subscriptions.
+In this section, two usage examples of Network Participants communications are provided. The first one, we call unidirectional, since one NP subscribes to a remote Flow of a different NP. The second one, we call it bidirectional, since now these NP have mutual subscriptions.
 
 ### 2.2.1. Unidirectional Subscription
 		
-	####FIGURE####
+####FIGURE####
 	
-	In the diagram of Figure 15, we can see an integration between two NP. In this case, there is a FlowA hosted in the Orange NP to which the FlowB in the Blue NP is subscribed. Both FlowA and FlowB count with a queue hosted in the Flow Events Broker, which could be an Apache Kafka instance for example. However, it must be possible to employ any Flow Events Broker of the NP’s choice.
+In the diagram of Figure 15, we can see an integration between two NP. In this case, there is a FlowA hosted in the Orange NP to which the FlowB in the Blue NP is subscribed. Both FlowA and FlowB count with a queue hosted in the Flow Events Broker, which could be an Apache Kafka instance for example. However, it must be possible to employ any Flow Events Broker of the NP’s choice.
 
 The steps followed to set up a subscription to a remote flow are:
 1. A user of the Blue NP creates a new subscription to remote FlowA by means of the Flow Namespace User Agent (FNUA).
@@ -351,7 +354,7 @@ In case the user owner of FlowA in the Orange NP wishes to revoke the access, it
 
 ### 2.2.2. Bidirectional Subscription
 	
-	####FIGURE####
+####FIGURE####
 	
 In Figure 16 we can see an example of all the components needed to set up a flow integration between two different NP. In this case, there are two flows being connected:
 * FlowA of the Orange NP with FlowB of the Blue NP
@@ -366,16 +369,16 @@ After the flow connection details are obtained, the different Flow Processors ar
 Once the two processors are initialized, all the events produced to FlowA in the Orange NP will be forwarded to FlowB in the Blue NP; and all the events produced to FlowC in the Blue NP will be forwarder to FlowD in the Orange NP.
 
 ## 3. Event Streaming Open Network Protocol 
-	The protocol to be used in an Event Streaming Open Network is a key component of the overall architecture and design. This chapter is dedicated to thoroughly describe this protocol.
+The protocol to be used in an Event Streaming Open Network is a key component of the overall architecture and design. This chapter is dedicated to thoroughly describe this protocol.
 
 ## 3.1. Protocol definition methodology
 It is now necessary to specify the protocol needed for the Flow Namespace Accessing Agent or FNAA, which we have named the Flow Namespace Accessing Protocol or FNAP. In the diagram of Figure 17 we can see how an FNAA client connects with a FNAA server by means of the FNAP.
 	
-	####FIGURE####
+####FIGURE####
 	
 In order to define a finite state machine for the protocol and the different stimuli that cause a change of state, the model presented by M.Wild (Wild, 2013) in her paper “Guided Merging of Sequence Diagrams” will be employed. This model is beneficial since it provides an integrated method both for client and server maintaining the stimuli relationship that trigger a change of state in each component.
 
-	####FIGURE####
+####FIGURE####
 	
 In Figure 18 we have the method proposed by Wild for SMTP, in which there are boxes representing states and arrows representing transitions. Each transition has a label composed of the originating stimulus that triggers the transition and a subsequent stimulus effect triggered by the transition itself. For instance, when a client connects to an SMTP Server, the client goes from “idle” state to “conPend” state. The label of this transition includes “uCon” as the stimulus triggering the transition, which triggers the effect “sCon”. Then, on the diagram for the server we can see that the “sCon” triggers the transition from “waiting” state to “accepting” state in the server. 
 
@@ -383,7 +386,8 @@ This method will be used to define the states and transitions for the Flow Names
 
 ## 3.2. Flow Namespace Accessing Protocol (FNAP)
 Using the model proposed by Wild described previously, we define the finite-state machine for the FNAA Server, which we can see in Figure 19.
-	####FIGURE####
+
+####FIGURE####
 
 The model in right side of Figure 19 shows that the FNAA server starts in a “waiting” state, which basically means that the server has successfully set up the networking requirements to accept client connections. Then, when a client connects, a transition is made to “accepting” state, in which internally the authentication procedure is made. If the authentication is successful, a transition is made to “ready” state, meaning that the client can now execute commands on the FNAA server. 
 
@@ -391,7 +395,7 @@ The commands that the client can execute are specified in Figure 11. For each co
 
 On the left side of Figure 19, we also have the client state machine with its corresponding transitions. The client triggers a connection to the server and once established, an authentication is needed. Once the authentication is correctly done, the client can start requesting commands to the server. For each command executed by the client, a transition is made to “cmdPend” state, until a response is returned by the server.
 
- Eventually, a “Quit” command will be executed by the client and the connection will be closed. 
+Eventually, a “Quit” command will be executed by the client and the connection will be closed. 
 
 ## 4. Implementation
 In this section, we provide an approach for the overall implementation of the proposed Event Streaming Open Network. Considering the components defined previously for the architecture, we will define which existing tools can be leveraged and those that require development.
@@ -402,7 +406,7 @@ The objective of this implementation is to provide specifications for an initial
 #### 4.2. Implementation overview
 In Figure 20, we have a diagram of the overall implementation proposal. The components that have the Kubernetes Deployment icon are the ones to be managed by the FNAA server instance. Then, we have a Kafka Cluster that provides a Topic instance for each flow. Finally, the DNS Infrastructure is leveraged.
 	
-	####FIGURE####
+####FIGURE####
 
 #### 4.3. Existing components	
 In this section, we describe the existing software components that can be leveraged for implementation. 
@@ -416,18 +420,6 @@ In summary, this component does not need to be developed from scratch. However, 
 This component can be completely implemented by leveraging on the ISC Bind9 software component, which is the de facto leader for DNS servers. A given NP will need to deploy a Bind9 Nameserver and enable both DNSSEC and DNS Dynamic Update.
 
 The impact of adopting Bind9 for the implementation means that the FNAA component needs to be able to use a remote DNS Server to manage the Flow URI registration, deregistration and execute recursive DNS resolution.
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 #### 4.4. Components to be developed
 In this section, we describe a set of tools that require development. These components, especially the FNAA, are the core components of every Network Participant. Moreover, these are the components that implement the network protocol FNAP.
@@ -454,7 +446,6 @@ Regarding security for the FNAA servers, TLS must be supported. This means that 
 In conclusion, the implementation of the FNAA over Kubernetes provides the needed flexibility and set of capabilities required for this component. It is recommended to implement the FNAA in Golang and enable the implementation of Flow Processors in any programming language as long as the Protobuf interface is correctly implemented. Finally, the FNAA must implement the protocol FNAP in a connection-based and text-based manner.
 
 ##### 4.4.2. Flow Namespace User Agent (FNUA)
-
 The Flow Namespace User Agent (FNUA) can have different implementations as long as they comply with the protocol FNAP. 
 
 We propose the initial availability of a CLI tool that acts as a Flow Namespace User Agent. This CLI tool must provide a client implementation of all the functionalities available in the FNAA server. Among the functionalities to be implemented as a must, we can mention:
@@ -465,7 +456,7 @@ Additionally, the FNUA should be able to discover the Authoritative FNAA server 
 
 Regarding the implementation of the CLI tool, it is recommended to employ Golang together with Cobra, a library specialized to create CLI tools. In Figure 21, we have a diagram that shows the different functionalities that the CLI tool should implement.
 	
-	####FIGURE####
+####FIGURE####
 	
 	
 	
