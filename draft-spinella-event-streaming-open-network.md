@@ -24,7 +24,7 @@ author:
  -
     name: "Emiliano Spinella"
     organization: Syndeno
-    email: "emilianofs@gmail.com"
+    email: "emiliano.spinella@syndeno.com"
 
 normative:
 
