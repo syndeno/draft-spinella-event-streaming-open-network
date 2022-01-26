@@ -41,11 +41,11 @@ This document describes the vision, architecture and network protocol for an Eve
 
 Society is rapidly digitalizing and automating the exchanges of value that constitute the economy. Also, considerable time and energy is spent to assure that key transactions can be executed with reduced human involvement with better, faster, and more accurate results. In this context, Event Streaming can play a key role in how the economic system evolves.
 
-However, most of the application layer integrations executed today across organizational boundaries are not in real time. Also, they currently require employing mostly proprietary formats and protocols. Some industries have adopted data formats for exchanging information between organizations, such as Electronic Data Interchange (EDI). However, those integrations are limited to specific use cases and represent a small fraction of all demanded organizational integrations. 
+However, most of the application layer integrations executed today across organizational boundaries are not in real time. Also, they currently require employing a variety of formats and protocols. Some industries have adopted data formats for exchanging information between organizations, such as Electronic Data Interchange (EDI). However, those integrations are limited to specific use cases and represent a small fraction of all demanded organizational integrations. 
 
-Even when application programming interfaces exist for event streaming, these are largely proprietary. For instance, Twitter offers an API for consuming social media streams, but it is not implemented by other parties. Thus, there is no consistent and common consensus on a mechanism for the exchange of events across organizations. This results in a completely custom landscape for each real-time cross-organization integration. In this scenario, development teams must invest plenty of time into understanding and defining a common interface for events exchange.
+Thus, there is no consistent and common consensus on a mechanism for the exchange of events across organizations. This results in a completely custom landscape for each real-time cross-organization integration. In this scenario, development teams must invest plenty of time into understanding and defining a common interface for events exchange.
 
-In this context, we can now introduce how this landscape could change with the introductiopn of an Event Streaming Open Network over the Internet. When needing to connect real-time event flows across organizations, developers would have a common basis for finding, publishing, and subscribing to event streams. Also, given a set of standard formats to encode and transmit events, developers could use the programming language of their choice. Overall, this set of standards would drastically reduce the cost of real-time integration, which would also enable experimentation by users. This experimentation can create an innovation space for new uses of event streaming. 
+In this context, we can now introduce how this landscape could change with the introductiopn of an Event Streaming Open Network over the Internet. When needing to connect real-time event flows across organizations, developers would have a common basis for finding, publishing, and subscribing to event streams. Also, given a set of standard formats to encode and transmit events, developers could use the programming language of their choice. Overall, this set of standards would drastically reduce the cost of real-time integration, which would also enable experimentation by users. 
 
 # Conventions and Definitions
 
@@ -54,27 +54,17 @@ In this context, we can now introduce how this landscape could change with the i
 ## 
 
 ## 1. An Open Network for Event Streaming over the Internet
-In this section, we will argue how Internet standards are developed and why this is the case for an Event Streaming Open Network.
+In this section, we will argue how Internet standards are developed and why this could be the case for an Event Streaming Open Network.
 
-There are two main ways in which standards can be developed adopted:
 
-1. First, there are organizations that produce standards for different sectors. For instance, there is the ISO (International Standards Organization) that develops and publishes worldwide technical, industrial, and commercial standards; the W3C (World Wide Web Consortium) which defines standards such as HTML or CSS; and the IETF (Internet Engineering Task Force), which produces documents called RFC (Request For Comments) that contain specifications for important Internet protocols such as DNS, FTP, SMTP, IMAP, POP3, IMAP, SIP, RTP, etc.
-
-2. Secondly, we have the private sector that continuously innovates to efficiently and rapidly solve new problems. The goal of the private sector is not necessarily to provide open standards but to solve problems in more convenient way than their competitors. This does not eliminate the possibility that standards can be achieved, which can happen because of a broad adoption and the Network Effect.
-
-Therefore, standards are produced both by standards organizations and by the market competition. While it is evident that most of the market products do not become standard, also not all standards defined by standards organizations become widely adopted.
 
 An interesting example of this phenomenon is the case of ISDN (Integrated Services Digital Network), a set of communications standards for the transmission of voice, video, and data over the PSTN (Public Switched Telephone Network) developed by the ITU-T (Telecommunication Standardization Sector) in 1988. ISDN pretended to use the existing public telephone network to transmit digital data in a time when the Internet connectivity access was not as broadly available as it is today. The main competitor of this standard was the incipient Internet itself, which could be used to transmit the same data.
 
 The Internet alternative needed a protocol to support the same services offered by ISDN, which was initially developed by the conjoint effort of the academic and private sector. Consequently, in 1992 the Mbone (Multicast Bone) was created. This project was an experimental network backbone built over the Internet for carrying multicast IP traffic, which could be used for multimedia content. After some important milestones of this project, the SIP (Session Initiation Protocol) was defined in 1996 and was published as a standard protocol in IETF’s RFC-3261. The reality today is that SIP has completely won the standards battle for multimedia transmission over the Internet, and ISDN usage has been on continuous decline.
 
-This lesson teaches us that it is not enough to define standards if these are not implemented and broadly adopted. Also, it shows the need for open standards instead of proprietary specifications. However, having open standards is not enough to guarantee adoption and this will greatly depend on market factors. If a given problem can be quickly solved using existing open specifications and implementations, it may have chances of becoming broadly adopted, and thus a standard. Then, it does not really matter if initially there is no standards organization behind the specification as long as it is openly accessible. Afterwards, it could be officially standardized with the support of a standards organization.
+As for Event Streaming, we see a similar scenario set-up today. There are currently several open specifications and implementations for Event Streaming, like AMQP (Advanced Messaging Queueing Protocol), supported by RabbitMQ. However, while AMQP can be used for several purposes, Kafka Protocol specializes on Event Streaming Processing and its specialized features make it more convenient than RabbitMQ (i.e. ordering). 
 
-As for Event Streaming, we see a similar scenario set-up in today. There are currently several open specifications and implementations for Event Streaming, like AMQP (Advanced Messaging Queueing Protocol), supported by RabbitMQ. However, while AMQP can be used for several purposes, Kafka Protocol specializes on Event Streaming Processing and its specialized features make it more convenient than RabbitMQ. 
-
-However, there is a relevant difference between an Event Streaming Network with other Open Networks, like guifi.net. The reason is that guifi.net possesses governance over the network and there is a community behind for management and operation. In the case of Event Streaming, if we guide ourselves by the history of the most widely adopted protocols on the Internet, the governance should be similar to that of the World Wide Web or Email. 
-
-Both the World Wide Web and Email have open specifications as well as open-source implementations. We can mention the Apache Web Server as an open-source implementation of the HTTP protocol; Postfix for SMTP; and Bind for DNS. Nevertheless, the governance for these protocols’ specifications relies on the IETF.
+In the case of an Event Streaming Open Network over the Internet, if we guide ourselves by the history of the most widely adopted protocols on the Internet, the governance should be similar to that of the WWW or Email. Both the WWW and Email have open specifications as well as open-source implementations. We can mention the Apache Web Server as an open-source implementation of the HTTP protocol; Postfix for SMTP; and Bind for DNS. Nevertheless, the governance for these protocols’ specifications relies on the IETF.
 
 ------------------In order to define the characteristics of an Event Streaming Open Network, we will first focus on the definition of shared and openly accessible infrastructure. First, we will show how DNS complies with the criteria to be considered an infrastructure resource. Then, we will demonstrate how this is also true for Event Streaming. Finally, we will review the principles of Free, Open & Neutral Networks and why they should be followed for an Event Streaming Open Network.
 
@@ -102,11 +92,6 @@ Regarding active participation on an Event Streaming Open Network, we can highli
 
 We can conclude that the same kind of openness of DNS, WWW and Email is necessary for an Event Streaming Open Network. Anybody should be able to obtain the specifications to build an implementation of the service. Also, since it should leverage the DNS infrastructure, anybody would be able to register Flow address spaces. Lastly, the specification could be governed by an institution such as the IETF, due the dependency of Flow with other Internet Services governed by this institution.
 
-
-
-
-
-
 ### 1.2. Open Access Infrastructure Resources
 
 The literature about Commons Infrastructure (Frischmann, 2007) defines a set of criteria to evaluate if a resource can be considered an infrastructure resource. This analysis is relevant since it can provide some arguments to prove the need of an infrastructure of commons for Event Streaming, which could then be materialized in an Open Network for Event Streaming. The demand-side criteria for evaluating if a given resource can be considered as an infrastructure resource are:
@@ -131,7 +116,7 @@ Now, we will provide as an example how DNS complies with these criteria and why 
 
 We can conclude that DNS complies with Frischmann criteria for being considered as an infrastructure resource. The resource is represented both by the domain name that can be and by the querying capacity of DNS servers.
 
-#### 1.2.2. Flow: Open Event Streaming Resource 
+#### 1.2.2. Flow: Event Streaming Internet Resource 
 ----------------------Now, we can evaluate how an Event Streaming Open Network over the Internet can comply with the infrastructure resource criteria together with the FONN principles.
 
 To begin with, we need to define what elements could be considered as infrastructure resources in an Event Streaming Open Network. First, the resource must be capable of delivering streams of events to consumers. Secondly, it must also permit producers to write events to the stream. Thirdly, each stream must be identifiable (i.e., URI) and able to be located (i.e., URL). From now on, we will use “Flow” to refer to the infrastructure resource of an Event Streaming Open Network.
@@ -153,7 +138,7 @@ We can conclude this section mentioning that an Event Streaming Open Network wou
 ## 2. Necessities for an Event Streaming Open Network over the Internet
 In this section, we will describe the main needs for the broad adoption of Event Streaming. The focus will be made on detecting and describing the missing capabilities that could not only enable but also accelerate the event data integration among different organizations. The different necessities detailed in this section will serve as input for an architecture design.
 
-### 2.1. Necessity 1: Availability of an Events Public Registry
+### 2.1. Necessity 1: Event Streaming Internet Resource Public Registry 
 A public registry of an organization’s available event streams does not exist. We will argue in this section why this is the core component that an Event Streaming Open Network can provide.
 
 Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:
