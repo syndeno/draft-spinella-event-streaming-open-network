@@ -222,12 +222,7 @@ For example, nowadays the Network Time Protocol (NTP) is used to synchronize the
 
 Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.
 
-<figure>
-  <name>Figure 2</name>
-  <artset>
-    <artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg"/>
- </artset>
-</figure>	
+<figure><name>Figure 2</name><artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure2.svg"/></figure>	
 
 Now, we provide a brief description of all the components that appear in the diagram of Figure 2. In the next sections further details of the components are provided.
 
@@ -250,12 +245,7 @@ The FEB implementation that we will mostly consider is Apache Kafka. This open-s
 
 Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 3.
 	
-<figure>
-  <name>Figure 3</name>
-  <artset>
-    <artwork type="svg" alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg"/>
- </artset>
-</figure>
+<figure><name>Figure 3</name><artwork type="svg" alt="Event Streaming Open Network Architecture components" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg"/></figure>
 
 The selection of the Events Broker will impact on the implementation of the Flow Namespace Accessing Agent. This last component will be responsible for knowing how to set up and manage flows on top of different Events Brokers.
 
@@ -324,12 +314,7 @@ flow://created.invoice.finance.syndeno.com:
 
 In Figure 4, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
 
-<figure>
-  <name>Figure 4</name>
-  <artset>
-    <artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg"/>
- </artset>
-</figure>	
+<figure><name>Figure 4</name><artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure3.svg"/></figure>	
   
 In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
 
