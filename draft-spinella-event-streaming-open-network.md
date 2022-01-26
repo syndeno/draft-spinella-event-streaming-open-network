@@ -208,7 +208,7 @@ In this section, we will describe the overall architectural proposal for an Even
 ## 4.1. Architecture overview
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
 
-<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="images/Figure1.svg">
+<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="images/Figure1.svg"/>
 <figure>
   <name>Figure 1</name>
   <artset>
