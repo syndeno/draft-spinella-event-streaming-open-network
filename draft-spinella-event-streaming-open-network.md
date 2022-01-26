@@ -465,10 +465,15 @@ The main goal of the FNUA is to provide the user with access to Flow Namespaces 
 In this section, two usage examples of Network Participants communications are provided. The first one, we call unidirectional, since one NP subscribes to a remote Flow of a different NP. The second one, we call it bidirectional, since now these NP have mutual subscriptions.
 
 ### 3.2.1. Unidirectional Subscription
-In the diagram of Figure 10, we can see an integration between two NP. In this case, there is a FlowA hosted in the Orange NP to which the FlowB in the Blue NP is subscribed. Both FlowA and FlowB count with a queue hosted in the Flow Events Broker, which could be an Apache Kafka instance for example. However, it must be possible to employ any Flow Events Broker of the NP’s choice.
+In the diagram of Figure 9, we can see an integration between two NP. In this case, there is a FlowA hosted in the Orange NP to which the FlowB in the Blue NP is subscribed. Both FlowA and FlowB count with a queue hosted in the Flow Events Broker, which could be an Apache Kafka instance for example. However, it must be possible to employ any Flow Events Broker of the NP’s choice.
 	
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
-####FIGURE####
+<figure>
+  <name>Figure 9</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Example of a unidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure9.svg">
+ </artset>
+</figure>	
 
 The steps followed to set up a subscription to a remote flow are:
 1. A user of the Blue NP creates a new subscription to remote FlowA by means of the Flow Namespace User Agent (FNUA).
@@ -482,12 +487,17 @@ In case the user owner of FlowA in the Orange NP wishes to revoke the access, it
 
 ### 3.2.2. Bidirectional Subscription
 	
-In Figure 11 we can see an example of all the components needed to set up a flow integration between two different NP. In this case, there are two flows being connected:
+In Figure 10 we can see an example of all the components needed to set up a flow integration between two different NP. In this case, there are two flows being connected:
 * FlowA of the Orange NP with FlowB of the Blue NP
 * FlowC of the Blue NP with FlowD of the Orange NP
-
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure11.svg">
-####FIGURE####	
+	
+<figure>
+  <name>Figure 10</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Example of a bidirectional subscription among two Network Participants." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
+ </artset>
+</figure>	
 
 Each Flow has its corresponding Queue hosted in the NP Flow Events Broker. Also, there is one Flow Processor for each connection, meaning that these components are in charge of reading new events on source flows to write them to the destination flows as soon as received.
 
@@ -501,33 +511,46 @@ Once the two processors are initialized, all the events produced to FlowA in the
 The protocol to be used in an Event Streaming Open Network is a key component of the overall architecture and design. This chapter is dedicated to thoroughly describe this protocol.
 
 ## 4.1. Protocol definition methodology
-It is now necessary to specify the protocol needed for the Flow Namespace Accessing Agent or FNAA, which we have named the Flow Namespace Accessing Protocol or FNAP. In the diagram of Figure 12 we can see how an FNAA client connects with a FNAA server by means of the FNAP.
+It is now necessary to specify the protocol needed for the Flow Namespace Accessing Agent or FNAA, which we have named the Flow Namespace Accessing Protocol or FNAP. In the diagram of Figure 11 we can see how an FNAA client connects with a FNAA server by means of the FNAP.
 	
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure12.svg">
-####FIGURE####	
-	
-####FIGURE####
+<figure>
+  <name>Figure 11</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="FNAA client and server communicate using FNAP." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure10.svg">
+ </artset>
+</figure>
 	
 In order to define a finite state machine for the protocol and the different stimuli that cause a change of state, the model presented by M.Wild (Wild, 2013) in her paper “Guided Merging of Sequence Diagrams” will be employed. This model is beneficial since it provides an integrated method both for client and server maintaining the stimuli relationship that trigger a change of state in each component.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure13.svg">
-####FIGURE####	
+<figure>
+  <name>Figure 12</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Merged Sequence Diagram for SMTP proposed by Wild, 2013." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure12.svg">
+ </artset>
+</figure>
 	
-In Figure 13 we have the method proposed by Wild for SMTP, in which there are boxes representing states and arrows representing transitions. Each transition has a label composed of the originating stimulus that triggers the transition and a subsequent stimulus effect triggered by the transition itself. For instance, when a client connects to an SMTP Server, the client goes from “idle” state to “conPend” state. The label of this transition includes “uCon” as the stimulus triggering the transition, which triggers the effect “sCon”. Then, on the diagram for the server we can see that the “sCon” triggers the transition from “waiting” state to “accepting” state in the server. 
+In Figure 12 we have the method proposed by Wild for SMTP, in which there are boxes representing states and arrows representing transitions. Each transition has a label composed of the originating stimulus that triggers the transition and a subsequent stimulus effect triggered by the transition itself. For instance, when a client connects to an SMTP Server, the client goes from “idle” state to “conPend” state. The label of this transition includes “uCon” as the stimulus triggering the transition, which triggers the effect “sCon”. Then, on the diagram for the server we can see that the “sCon” triggers the transition from “waiting” state to “accepting” state in the server. 
 
 This method will be used to define the states and transitions for the Flow Namespace Accessing Protocol both for client and server.	
 
 ## 4.2. Flow Namespace Accessing Protocol (FNAP)
-Using the model proposed by Wild described previously, we define the finite-state machine for the FNAA Server, which we can see in Figure 14.
+Using the model proposed by Wild described previously, we define the finite-state machine for the FNAA Server, which we can see in Figure 13.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure14.svg">
-####FIGURE####
+<figure>
+  <name>Figure 13</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Finite-state machine for the Flow Namespace Accessing Protocol." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure13.svg">
+ </artset>
+</figure>
 
-The model in right side of Figure 14 shows that the FNAA server starts in a “waiting” state, which basically means that the server has successfully set up the networking requirements to accept client connections. Then, when a client connects, a transition is made to “accepting” state, in which internally the authentication procedure is made. If the authentication is successful, a transition is made to “ready” state, meaning that the client can now execute commands on the FNAA server. 
+The model in right side of Figure 13 shows that the FNAA server starts in a “waiting” state, which basically means that the server has successfully set up the networking requirements to accept client connections. Then, when a client connects, a transition is made to “accepting” state, in which internally the authentication procedure is made. If the authentication is successful, a transition is made to “ready” state, meaning that the client can now execute commands on the FNAA server. 
 
 For each command that the client executes, a transition is made to “cmdRecvd” state. Then, a response is returned to the client, transitioning again to “waiting” state. When the client executes the “Quit” command, a transition is made to the “waiting” state and the server must free all used networking resources for the now closed connection.
 
-On the left side of Figure 14, we also have the client state machine with its corresponding transitions. The client triggers a connection to the server and once established, an authentication is needed. Once the authentication is correctly done, the client can start requesting commands to the server. For each command executed by the client, a transition is made to “cmdPend” state, until a response is returned by the server.
+On the left side of Figure 13, we also have the client state machine with its corresponding transitions. The client triggers a connection to the server and once established, an authentication is needed. Once the authentication is correctly done, the client can start requesting commands to the server. For each command executed by the client, a transition is made to “cmdPend” state, until a response is returned by the server.
 
 Eventually, a “Quit” command will be executed by the client and the connection will be closed. 
 
@@ -538,10 +561,15 @@ In this section, we provide an approach for the overall implementation of the pr
 The objective of this implementation is to provide specifications for an initial implementation of the overall architecture for the Event Streaming Open Network. Whenever it is possible, existing tools should be leveraged. For those components that need development, a thorough specification is to be provided.
 	
 #### 5.2. Implementation overview
-In Figure 15, we have a diagram of the overall implementation proposal. The components that have the Kubernetes Deployment icon are the ones to be managed by the FNAA server instance. Then, we have a Kafka Cluster that provides a Topic instance for each flow. Finally, the DNS Infrastructure is leveraged.
+In Figure 14, we have a diagram of the overall implementation proposal. The components that have the Kubernetes Deployment icon are the ones to be managed by the FNAA server instance. Then, we have a Kafka Cluster that provides a Topic instance for each flow. Finally, the DNS Infrastructure is leveraged.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure15.svg">	
-####FIGURE####
+<figure>
+  <name>Figure 14</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Implementation overview using Kubernetes, Apache Kafka, DNS Bind9 and the Flow CLI tool." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure14.svg">
+ </artset>
+</figure>
 
 #### 5.3. Existing components	
 In this section, we describe the existing software components that can be leveraged for implementation. 
@@ -585,16 +613,19 @@ The Flow Namespace User Agent (FNUA) can have different implementations as long 
 
 We propose the initial availability of a CLI tool that acts as a Flow Namespace User Agent. This CLI tool must provide a client implementation of all the functionalities available in the FNAA server. Among the functionalities to be implemented as a must, we can mention:
 * Discover the FNAA server for a given Flow URI.
-* Connect to the FNAA server to manage Flow Namespaces and Flows, as exemplified in Figure 16:
-
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure16.svg">	
+* Connect to the FNAA server to manage Flow Namespaces and Flows, as exemplified in Figure 8.
 
 Additionally, the FNUA should be able to discover the Authoritative FNAA server for a given Flow Namespace. This discovery shall be performed by leveraging on the DNS-SD specification. Refer to Annex D to review the discovery process.
 
-Regarding the implementation of the CLI tool, it is recommended to employ Golang together with Cobra, a library specialized to create CLI tools. In Figure 17we have a diagram that shows the different functionalities that the CLI tool should implement.
+Regarding the implementation of the CLI tool, it is recommended to employ Golang together with Cobra, a library specialized to create CLI tools. In Figure 15 we have a diagram that shows the different functionalities that the CLI tool should implement.
 
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure17.svg">	
-####FIGURE####
+<figure>
+  <name>Figure 15</name>
+  <artset>
+    <artwork type="svg"
+	<artwork alt="Flow CLI parameters diagram." type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure15.svg">
+ </artset>
+</figure>
 	
 ## 6. Proof of Concept
 In this section, we will focus on providing a minimum implementation of the main Event Streaming Open Network component: the Flow Namespace Accessing Agent. This implementation should serve as a Proof of Concept of the overall Event Streaming Open Network proposal.
@@ -649,9 +680,7 @@ On the other hand, the server application starts providing debug information for
 
 ## 6.3. FNUA - Client application
 In order to test the FNAA server application, a CLI-based FNUA application has been developed. The chosen language for this CLI tool is also GoLang. The reason for choosing GoLang for the FNUA is because of its functionalities for building CLI tools, leveraging on the Cobra library.
-Thus, the FNUA for the PoC is an executable file that complies with the diagram in Figure 18.
-
-<artwork type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure18.svg">
+Thus, the FNUA for the PoC is an executable file that complies with the diagram in Figure 14.
 	
 One of the requirements for the flow CLI tool is a configuration file that defines the different FNAA servers together with the credentials to use. An example of this configuration file follows:
 
