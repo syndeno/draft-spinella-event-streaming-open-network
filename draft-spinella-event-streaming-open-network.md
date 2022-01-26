@@ -62,7 +62,7 @@ As for Event Streaming, we see a similar scenario set-up today. There are curren
 
 In the case of an Event Streaming Open Network over the Internet, if we guide ourselves by the history of the most widely adopted protocols on the Internet, the governance should be similar to that of the WWW or Email. Both the WWW and Email have open specifications as well as open-source implementations. We can mention the Apache Web Server as an open-source implementation of the HTTP protocol; Postfix for SMTP; and Bind for DNS. Nevertheless, the governance for these protocols’ specifications relies on the IETF.
 
-------------------In order to define the characteristics of an Event Streaming Open Network, we will first focus on the definition of shared and openly accessible infrastructure. First, we will show how DNS complies with the criteria to be considered an infrastructure resource. Then, we will demonstrate how this is also true for Event Streaming. Finally, we will review the principles of Free, Open & Neutral Networks and why they should be followed for an Event Streaming Open Network.
+In order to define the characteristics of an Event Streaming Open Network, we will focus on the definition of shared and openly accessible infrastructure. First, we will review the principles of Free, Open & Neutral Networks and why they should be followed for an Event Streaming Open Network. Then, we will show how DNS complies with the criteria to be considered an infrastructure resource. Finally, we will demonstrate how this is also true for Event Streaming. 
 
 #### 1.1. Free, Open & Neutral Networks (FONN)
 The main principles of a Free, Open & Neutral Network are:
@@ -113,7 +113,8 @@ Now, we will provide as an example how DNS complies with these criteria and why 
 We can conclude that DNS complies with Frischmann criteria for being considered as an infrastructure resource. The resource is represented both by the domain name that can be and by the querying capacity of DNS servers.
 
 #### 1.2.2. Flow: Event Streaming Internet Resource 
-----------------------Now, we can evaluate how an Event Streaming Open Network over the Internet can comply with the infrastructure resource criteria together with the FONN principles.
+
+In this section, we will describe an Event Streaming Internet Resources. For this, we will consider the previously described guidelines for FONN as well as the characteristics of DNS as a resource. This Event Streaming Internet Resource shall be refered to as "flow" from now onwards.
 
 To begin with, we need to define what elements could be considered as infrastructure resources in an Event Streaming Open Network. First, the resource must be capable of delivering streams of events to consumers. Secondly, it must also permit producers to write events to the stream. Thirdly, each stream must be identifiable (i.e., URI) and able to be located (i.e., URL). From now on, we will use “Flow” to refer to the infrastructure resource of an Event Streaming Open Network.
 The first Frischmann criterion requires the resource to be consumed nonrivalrously. Complete nonrivalrously for any Internet Service cannot be achieved due to the possibility of congestion and potential unavailability of different elements of the network. The same would be true for a Flow resource. Moreover, the public naming addressing space for Flows would be limited to the same level as that of domain names. 
@@ -216,9 +217,7 @@ In Figure 1 we illustrate a high-level overview of an architecture proposal for 
 	<artwork alt="High-level overview of the Event Streaming Open Network" type="svg" src="https://github.com/syndeno/draft-spinella-event-streaming-open-network/blob/main/images/Figure1.svg">
  </artset>
 </figure>
-  
-#####FIGURE######
-  
+    
 We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
 
 In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
