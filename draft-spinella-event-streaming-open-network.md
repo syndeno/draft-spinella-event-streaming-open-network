@@ -33,7 +33,7 @@ informative:
 
 --- abstract
 
-This document describes the vision, architecture and network protocol for an Event Streaming Open Network.
+This document describes the vision, architecture and network protocol for an Event Streaming Open Network over the Internet.
 
 --- middle
 
