@@ -41,7 +41,7 @@ This document describes the vision, architecture and network protocol for an Eve
 
 Society is rapidly digitalizing and automating the exchanges of value that constitute the economy. Also, considerable time and energy is spent to assure that key transactions can be executed with reduced human involvement with better, faster, and more accurate results. In this context, Event Streaming can play a key role in how the economic system evolves.
 
-However, most of the application layer integrations executed today across organizational boundaries are not in real time and they currently require employing mostly proprietary formats and protocols. Some industries have adopted data formats for exchanging information between organizations, such as Electronic Data Interchange (EDI). However, those integrations are limited to specific use cases and represent a small fraction of all demanded organizational integrations. 
+However, most of the application layer integrations executed today across organizational boundaries are not in real time. Also, they currently require employing mostly proprietary formats and protocols. Some industries have adopted data formats for exchanging information between organizations, such as Electronic Data Interchange (EDI). However, those integrations are limited to specific use cases and represent a small fraction of all demanded organizational integrations. 
 
 Even when application programming interfaces exist for event streaming, these are largely proprietary. For instance, Twitter offers an API for consuming social media streams, but it is not implemented by other parties. Thus, there is no consistent and common consensus on a mechanism for the exchange of events across organizations. This results in a completely custom landscape for each real-time cross-organization integration. In this scenario, development teams must invest plenty of time into understanding and defining a common interface for events exchange.
 
@@ -54,7 +54,7 @@ In this context, we can now introduce how this landscape could change with the i
 ## 
 
 ## 1. An Open Network for Event Streaming over the Internet
-In the previous sections, we described the main different necessities currently inhibiting the broad adoption of Event Streaming. In this section we will argue how Internet standards are developed and why this is the case for an Event Streaming Open Network.
+In this section, we will argue how Internet standards are developed and why this is the case for an Event Streaming Open Network.
 
 There are two main ways in which standards can be developed adopted:
 
@@ -68,20 +68,46 @@ An interesting example of this phenomenon is the case of ISDN (Integrated Servic
 
 The Internet alternative needed a protocol to support the same services offered by ISDN, which was initially developed by the conjoint effort of the academic and private sector. Consequently, in 1992 the Mbone (Multicast Bone) was created. This project was an experimental network backbone built over the Internet for carrying multicast IP traffic, which could be used for multimedia content. After some important milestones of this project, the SIP (Session Initiation Protocol) was defined in 1996 and was published as a standard protocol in IETF’s RFC-3261. The reality today is that SIP has completely won the standards battle for multimedia transmission over the Internet, and ISDN usage has been on continuous decline.
 
-This lesson teaches us that it is not enough to define standards if these are not implemented and broadly adopted. Also, it shows the need for open standards instead of proprietary specifications. However, having open standards is not enough to guarantee adoption and this will greatly depend on market factors. If a given problem can be quickly solved using existing open specifications and implementations, it may have chances of becoming a standard. Then, it does not really matter if initially there is no standards organization behind the specification as long as it is openly accessible. Afterwards, it could be officially standardized with the support of a standards organization.
+This lesson teaches us that it is not enough to define standards if these are not implemented and broadly adopted. Also, it shows the need for open standards instead of proprietary specifications. However, having open standards is not enough to guarantee adoption and this will greatly depend on market factors. If a given problem can be quickly solved using existing open specifications and implementations, it may have chances of becoming broadly adopted, and thus a standard. Then, it does not really matter if initially there is no standards organization behind the specification as long as it is openly accessible. Afterwards, it could be officially standardized with the support of a standards organization.
 
-As for Event Streaming, we see a similar scenario set-up in the market today. There are currently several open specifications and implementations for Event Streaming, like AMQP (Advanced Messaging Queueing Protocol), supported by RabbitMQ. However, while AMQP can be used for several purposes, Kafka Protocol specializes on Event Streaming Processing and its specialized features make it more convenient than RabbitMQ. 
+As for Event Streaming, we see a similar scenario set-up in today. There are currently several open specifications and implementations for Event Streaming, like AMQP (Advanced Messaging Queueing Protocol), supported by RabbitMQ. However, while AMQP can be used for several purposes, Kafka Protocol specializes on Event Streaming Processing and its specialized features make it more convenient than RabbitMQ. 
 
-An Event Streaming Open Network would imply at least the definition of an open specification and an open-source implementation that solves the currently necessary components mentioned previously in this chapter. 
-
-However, there is a relevant difference between an Event Streaming Network with other open networks, like guifi.net. The reason is that guifi.net possesses governance over the network and there is a community behind for management and operation. In the case of Event Streaming, if we guide ourselves by the history of the most widely adopted protocols on the Internet, the governance should be similar to that of the World Wide Web or Email. 
+However, there is a relevant difference between an Event Streaming Network with other Open Networks, like guifi.net. The reason is that guifi.net possesses governance over the network and there is a community behind for management and operation. In the case of Event Streaming, if we guide ourselves by the history of the most widely adopted protocols on the Internet, the governance should be similar to that of the World Wide Web or Email. 
 
 Both the World Wide Web and Email have open specifications as well as open-source implementations. We can mention the Apache Web Server as an open-source implementation of the HTTP protocol; Postfix for SMTP; and Bind for DNS. Nevertheless, the governance for these protocols’ specifications relies on the IETF.
 
-In order to define the characteristics of an Event Streaming Open Network, we will first focus on the definition of shared and openly accessible infrastructure. First, we will show how DNS complies with the criteria to be considered an infrastructure resource. Then, we will demonstrate how this is also true for Event Streaming. Finally, we will review the principles of Free, Open & Neutral Networks and why they should be followed for an Event Streaming Open Network.
+------------------In order to define the characteristics of an Event Streaming Open Network, we will first focus on the definition of shared and openly accessible infrastructure. First, we will show how DNS complies with the criteria to be considered an infrastructure resource. Then, we will demonstrate how this is also true for Event Streaming. Finally, we will review the principles of Free, Open & Neutral Networks and why they should be followed for an Event Streaming Open Network.
+
+#### 1.1. Free, Open & Neutral Networks (FONN)
+The main principles of a Free, Open & Neutral Network are:
+
+* It is open because it is universally open to the participation of everybody without any kind of exclusion nor discrimination, and because it is always described how it works and its components, enabling everyone to improve it.
+* It is free because everybody can use it for whatever purpose and enjoy it independently of his network participation degree.
+* it is neutral because the network is independent of the contents, it does not influence them and they can freely circulate; the users can access and produce contents independently to their financial capacity or their social condition. The new contents produced are orientated to stimulate new ones, or for the network administration itself, or simply in exercise of the freedom of adding new contents, but not to replace or to to block other ones.
+* It is also neutral with regard to the technology, the network can be built with whatever technology chosen by the participants with the only limitations resulting of the technology itself.
+
+#### 1.1.1. Non-discriminatory and open access
+Services such as DNS, the World Wide Web and Email do not discriminate and are open-accessible. Basically, people and organizations can access these networks as long as they can register an Internet Domain and host the required server components. Nowadays, there are alternatives to avoid having to register a domain name to have a web page or an email, such as Cloud WordPress Hosting or Gmail. However, we will focus on the network participants that provide services to end-users.
+
+In the case of Guifi.net, we can highlight how this principle has been adopted in the fact that everybody can take part in the project without discrimination. Moreover, an emphasis is made in easing the participation of the disadvantaged collectives, with less resources or less opportunities to access information technologies, telecommunications, and the Internet.
+
+An Event Streaming Open Network should provide resources in a similar way than the most widely adopted Internet Services. Thus, individuals and organizations must be able to register Flow address spaces for which the existing DNS infrastructure could be leveraged. Moreover, the specification of the protocols that implement the Metadata and Payload formats must also be openly accessible.
+
+#### 1.1.2. Open participation
+Internet Services like DNS, WWW and Email provide individuals and organizations with different ways of participation. First, anybody can obtain the protocols’ specification and build a custom implementation, which would result in a new product compatible with the protocols. Secondly, anybody can register a domain name and set up servers using compatible products. Thirdly, anybody can join and participate in the IETF, the institution that governs the specifications for these protocols.
+
+As for Guifi.net, not only anybody can extend the network with new nodes but also can also participate in existing projects of network extension. Also, the participants can add services on top of the network such as VoIP, FTP servers, broadcast radios, etc.
+
+Regarding active participation on an Event Streaming Open Network, we can highlight the possibility for individuals and organizations to expand the services provided by the open network. This extensibility could be made possible by different uses of the event payloads and will vary significantly depending on the sector. Since we have already proved how Flow is an infrastructure resource, innovation would play its part and its results would be materialized in services expansion.
+
+We can conclude that the same kind of openness of DNS, WWW and Email is necessary for an Event Streaming Open Network. Anybody should be able to obtain the specifications to build an implementation of the service. Also, since it should leverage the DNS infrastructure, anybody would be able to register Flow address spaces. Lastly, the specification could be governed by an institution such as the IETF, due the dependency of Flow with other Internet Services governed by this institution.
 
 
-### 1.1. Open Access Infrastructure Resources
+
+
+
+
+### 1.2. Open Access Infrastructure Resources
 
 The literature about Commons Infrastructure (Frischmann, 2007) defines a set of criteria to evaluate if a resource can be considered an infrastructure resource. This analysis is relevant since it can provide some arguments to prove the need of an infrastructure of commons for Event Streaming, which could then be materialized in an Open Network for Event Streaming. The demand-side criteria for evaluating if a given resource can be considered as an infrastructure resource are:
 
@@ -97,7 +123,7 @@ Regarding willingness to pay, it is relevant to analyze this factor more exhaust
 
 In the third place, infrastructure resources are used as input for a wide range of outputs. This criterion emphasizes both the variance of the downstream outputs and their nature. Thus, the infrastructure resources possess a high level of genericness which enable productive activities that produce different goods with high variance. If we consider how an airport complies with this criterion, we can mention that not only airports serve individuals that need to travel by air but are also used to transport many kinds of physical goods. These goods then enable other activities throughout the downstream value chain. Then, the output variance of the activities that take airport infrastructure as input is significantly high.
 
-#### 1.1.1. Open Access DNS Resource Example
+#### 1.2.1. Open Access DNS Resource Example
 Now, we will provide as an example how DNS complies with these criteria and why it can be considered an infrastructure resource.
 1. DNS infrastructure is a partially rival resource because individuals and organizations can register domains in the Domain Name addressing space. It is partially rival because not every actor can acquire the same domain name. However, the access to registering domain names is open and non-discriminatory. Moreover, DNS is also prone to congestion, which emphasizes its partially rival nature.
 2. DNS infrastructure demand is driven principally by downstream products and services. An average Internet user is not paying directly for this infrastructure, but all the Internet services the user consumes pay for DNS infrastructure. This is true for all the Internet services due to the ubiquitous nature of DNS infrastructure.
@@ -105,8 +131,8 @@ Now, we will provide as an example how DNS complies with these criteria and why 
 
 We can conclude that DNS complies with Frischmann criteria for being considered as an infrastructure resource. The resource is represented both by the domain name that can be and by the querying capacity of DNS servers.
 
-#### 1.1.2. Flow: Open Event Streaming Resource 
-Now, we can evaluate how an Event Streaming Open Network can comply with the infrastructure resource criteria together with the FONN principles..
+#### 1.2.2. Flow: Open Event Streaming Resource 
+----------------------Now, we can evaluate how an Event Streaming Open Network over the Internet can comply with the infrastructure resource criteria together with the FONN principles.
 
 To begin with, we need to define what elements could be considered as infrastructure resources in an Event Streaming Open Network. First, the resource must be capable of delivering streams of events to consumers. Secondly, it must also permit producers to write events to the stream. Thirdly, each stream must be identifiable (i.e., URI) and able to be located (i.e., URL). From now on, we will use “Flow” to refer to the infrastructure resource of an Event Streaming Open Network.
 The first Frischmann criterion requires the resource to be consumed nonrivalrously. Complete nonrivalrously for any Internet Service cannot be achieved due to the possibility of congestion and potential unavailability of different elements of the network. The same would be true for a Flow resource. Moreover, the public naming addressing space for Flows would be limited to the same level as that of domain names. 
@@ -123,29 +149,6 @@ Lastly, the adoption of an Event Streaming Open Network implies taking Flow reso
 
 We can conclude this section mentioning that an Event Streaming Open Network would enable one infrastructure resource called Flow. The access to this resource can be managed in an openly manner: maintaining open access, not discriminating users or different uses of the resource, and eliminating the need to obtain approval or a license to use the resource.
 
-#### 1.2. Free, Open & Neutral Networks (FONN)
-The main principles of a Free, Open & Neutral Network are:
-
-* It is open because it is universally open to the participation of everybody without any kind of exclusion nor discrimination, and because it is always described how it works and its components, enabling everyone to improve it.
-* It is free because everybody can use it for whatever purpose and enjoy it independently of his network participation degree.
-* it is neutral because the network is independent of the contents, it does not influence them and they can freely circulate; the users can access and produce contents independently to their financial capacity or their social condition. The new contents produced are orientated to stimulate new ones, or for the network administration itself, or simply in exercise of the freedom of adding new contents, but not to replace or to to block other ones.
-* It is also neutral with regard to the technology, the network can be built with whatever technology chosen by the participants with the only limitations resulting of the technology itself.
-
-#### 1.2.1. Non-discriminatory and open access
-Services such as DNS, the World Wide Web and Email do not discriminate and are open-accessible. Basically, people and organizations can access these networks as long as they can register an Internet Domain and host the required server components. Nowadays, there are alternatives to avoid having to register a domain name to have a web page or an email, such as Cloud WordPress Hosting or Gmail. However, we will focus on the network participants that provide services to end-users.
-
-In the case of Guifi.net, we can highlight how this principle has been adopted in the fact that everybody can take part in the project without discrimination. Moreover, an emphasis is made in easing the participation of the disadvantaged collectives, with less resources or less opportunities to access information technologies, telecommunications, and the Internet.
-
-An Event Streaming Open Network should provide resources in a similar way than the most widely adopted Internet Services. Thus, individuals and organizations must be able to register Flow address spaces for which the existing DNS infrastructure could be leveraged. Moreover, the specification of the protocols that implement the Metadata and Payload formats must also be openly accessible.
-
-#### 1.2.2. Open participation
-Internet Services like DNS, WWW and Email provide individuals and organizations with different ways of participation. First, anybody can obtain the protocols’ specification and build a custom implementation, which would result in a new product compatible with the protocols. Secondly, anybody can register a domain name and set up servers using compatible products. Thirdly, anybody can join and participate in the IETF, the institution that governs the specifications for these protocols.
-
-As for Guifi.net, not only anybody can extend the network with new nodes but also can also participate in existing projects of network extension. Also, the participants can add services on top of the network such as VoIP, FTP servers, broadcast radios, etc.
-
-Regarding active participation on an Event Streaming Open Network, we can highlight the possibility for individuals and organizations to expand the services provided by the open network. This extensibility could be made possible by different uses of the event payloads and will vary significantly depending on the sector. Since we have already proved how Flow is an infrastructure resource, innovation would play its part and its results would be materialized in services expansion.
-
-We can conclude that the same kind of openness of DNS, WWW and Email is necessary for an Event Streaming Open Network. Anybody should be able to obtain the specifications to build an implementation of the service. Also, since it should leverage the DNS infrastructure, anybody would be able to register Flow address spaces. Lastly, the specification could be governed by an institution such as the IETF, due the dependency of Flow with other Internet Services governed by this institution.
 
 ## 2. Necessities for an Event Streaming Open Network over the Internet
 In this section, we will describe the main needs for the broad adoption of Event Streaming. The focus will be made on detecting and describing the missing capabilities that could not only enable but also accelerate the event data integration among different organizations. The different necessities detailed in this section will serve as input for an architecture design.
