@@ -3,7 +3,7 @@ title: "Event Streaming Open Network"
 abbrev: "ESON"
 category: info
 
-docname: draft-spinella-event-streaming-open-network-latest
+docname: draft-ietf-spinella-event-streaming-open-network-latest
 ipr: trust200902
 area: TBD
 workgroup: TBD
