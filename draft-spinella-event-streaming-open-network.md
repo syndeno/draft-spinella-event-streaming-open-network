@@ -53,7 +53,118 @@ Overall, this set of standards would drastically reduce the cost of real-time in
 
 {::boilerplate bcp14-tagged}
 
-## Section
+## Necessities for broad Event Streaming adoption
+In this section, we will describe the main needs for the broad adoption of Event Streaming. The focus will be made on detecting and describing the missing capabilities that could not only enable but also accelerate the event data integration among different organizations. The different necessities detailed in this section will serve as input for an architecture design.
+
+### Necessity 1: Availability of an Events Public Registry
+A public registry of an organization’s available event streams does not exist. We will argue in this section why this is the core component that an Event Streaming Open Network can provide.
+
+Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:
+
+1.	Develop and deploy a producer application that writes events to a queue.
+2.	Create all necessary networking permissions for external public access to the queue.
+3.	Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
+4.	Create credentials for consumer authentication and authorization access to the queue.
+5.	Develop and deploy a consumer application that reads the queue.
+
+Now, we can compare this process to a simple email interaction:
+1.	Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
+2.	The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
+3.	When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.
+
+In these two scenarios, we can see that the information needed to be exchanged offline by the actors is completely different in size and content. 
+
+First, in the case of email, there is a shared naming space given by the Domain Name Service (DNS). The email format has been standardized by the IETF in RFC 5321, section 2.3.11. Thus, there is a common naming space that is used for referencing mailboxes in the format user@domain. Thus, the offline details communicated by the peers is only the recipient email address. There is no analogous standard nor an open alternative for Event Streaming.
+
+Therefore, in the case of Event Streaming, users need to perform plenty of offline communication to agree not only on the technology to use but also on the queue to use. For instance, two organizations may be currently using Apache Kafka and need to share an event stream among themselves. The organization having the source of the stream should provide the following details to the consumer organization:
+•	Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
+•	Topic or Queue name: name of the topic resource in the Apache Kafka Cluster
+•	Authentication information: User and password, TLS Certificate, etc.
+
+In the case these organizations were not both using Apache Kafka, the use case cannot be simply solved without incurring in development or complex configurations as well as adopting proprietary components.
+
+We can conclude that an Event Streaming Open Network should provide a global accessible URI for streams in a similar fashion than email, to reduce offline developers’ interactions. This means being able to name event streams in a common naming space like DNS, as well as providing a mechanism for users to discover the location and connections requirements.
+
+### Necessity 2: Establishment of a User Space for Events
+Another need for broad adoption is due to the inexistence of a common and agreed user convention. In the general literature, we cannot find reference to the types of users that would consume or produce events to and from an event stream. 
+
+In this sense, it is also appropriate to consider the email use case. Basically, an email user only needs to know the email address, the password, the URL of a web mail client or the details of IMAP/POP3 server connection. Once the user has this information, it’s possible to access an email space or mailbox where the user can navigate the emails in it. Also, IMAP provides the possibility for the user to create folders and optionally share them with other users.
+
+There is no analogous service currently available for Event Streaming analogous to the email case. This means that the user concept in Event Streaming is limited to authentication and authorization. Thus, the user does not have access to a “streambox”. The result is the impossibility for a person or an application to possess a home directory containing all the streams owned by the user.
+
+As a conclusion for this section, we can mention that it is necessary to embrace a user space resource for Event Streaming. This resource should not only solve the users’ motivations and requirements but also reduce the offline verbal communications and custom development dependencies. In the next sections, we will refer to this component as the Event User Space Service.
+
+
+### Necessity 3: An Agnostic Subscription Protocol
+A third need for wide adoption is an agnostic protocol to manage subscriptions to event streams. For this need to be solved, it would be necessary first to count with an Event User Space Service. Then, in case a user has created a stream and wants to enable public subscriptions by other users, there is no general protocol to inform other parties of this subscription intention nor its confirmation. 
+
+The result is the inability for the users to seamlessly subscribe to an event stream. They either must employ protocols like MQTT or, in the need of employing other application protocols like Apache Kafka, hardcode the subscription details in the different software implementations. This means that there is no general subscription protocol for Event Streaming that is agnostic of the application protocol employed. This protocol implements both the Metadata Payload Format and Payload Format.
+
+A good example to illustrate the difference between a control protocol that implements a Metadata Payload Format from a payload protocol that implements a Payload Format is how SIP (Session Initiation Protocol) works with RTP (Real Time Protocol) to provide VoIP capabilities. The former is a control protocol that initiates and maintains a session or call while the latter is the one responsible for carrying the payloads, which in the case of VoIP it would be coded audio.
+
+Consequently, a similar definition of protocols could potentially mitigate this limitation for Event Streaming. If a protocol can be used to establish and maintain the subscriptions relationships while another different protocol is used for the events payload, all the current application protocols implementations could be supported. 
+
+Additionally, by counting also with an Event Streaming Public Registry, it would be possible to provide URI for streams in a similar way as email works with the “mailto” URI. For instance, in web pages one can find that email addresses are linked to mailto URIs which, when clicked, open the default email user application (i.e., Microsoft Outlook) to send an email to the referenced email address.
+
+If a user counts with a user space or streambox, then a user application like an email client could provide access to it. Then, if the user clicks on a link of a stream URI (i.e. “stream:myeventflow”), the streambox application would open and subscribe to the given stream.
+
+Currently, the Metadata Payload Format as well as the Payload Format are both provided by the queue or log application protocol. In the case of Apache Kafka, both formats are implemented within the Apache Kafka Protocol. This introduces a barrier for interoperability among different technologies, meaning that flows of event data cannot be seamlessly connected, without relying on custom development or proprietary software licensing.
+
+We can conclude that there is an actual need for an open specification of an Event Subscription Service for event streams, which implements what Urquhart calls Metadata Payload Format. This specification could be materialized in a network protocol that introduces an abstraction for the event queue or log technologies implemented by different organizations. 
+
+### Necessity 4: An Open Cross-sector Payload Format
+Currently, the different implementations of Event Streaming combine both the Payload Format with the Metadata Format. This means that the same protocol utilized for payload transport is used for subscription management.
+
+When a producer intends to publish events to a queue or, using Apache Kafka terminology, when a producer intends to write records to a topic, first it needs to initiate a connection to at least one of the Apache Kafka Brokers. In that initial exchange of TCP packages, the producer is authenticated, authorized, and informed with topic details. This set of transactions would belong to a protocol that implements a Metadata Payload Format. Afterwards, when the Producer starts writing the events to the topic, it encapsulates the event payload in a Kafka Protocol message. This latter behavior makes use of a Payload Format. Thus, we can observe how both theoretical formats are coupled in a single protocol. Similar behavior of a coupled Metadata and Payload Format in one single protocol happens also in AMQP, MQTT and RabbitMQ.
+
+As for the consumer, the behavior is the same with the difference that the initial intention is to subscribe to a queue or, in Apache Kafka terminology, to consume records of a topic. Then, a set of TCP packages encapsulating the Apache Kafka protocol authenticates, authorizes, and informs the Consumer with topic details for consumption. Afterwards, the consumer can start polling for new records in the different partitions of the topic. It is worth mentioning that the consumer needs to implement more queue management logic than the Producer, especially when multiple replicas of a consumer type are deployed.
+
+If we focus on the Payload Format, there is the need for an implementation-agnostic payload format suitable for Event Streaming. In this sense, CloudEvents project of the CNCF proposes a specification and a set of libraries for this purpose. The goal is to use CloudEvents specification as a Payload Format regardless of the Payload Protocol being used. For instance, we could transmit events in the CloudEvents format using the Kafka or AMQP Protocol. 
+
+The general structure of the CloudEvents Payload Format includes a standardized methodology to include event data in an event message. For instance, instead of defining a customized JSON structure for sending the events of temperature changes measured by a device, a CloudEvent object could be used. Temperature could be included as an attribute in the CloudEvent object. 
+
+We can then conclude that while there is no current protocol candidate that implements the Metadata Format, CloudEvents is a good candidate for the Payload Format needed in an Event Streaming Open Network. In this way, the different CloudEvents libraries made available in several programming could be leveraged.
+
+## 4.	Event Streaming Open Network Architecture
+In this section, we will describe the overall architectural proposal for an Event Streaming Open Network. This description will include the different actors in play, the software components required, as well as the network protocols that should be specificized.
+
+### 4.1. Architecture overview
+	In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
+  
+  #####FIGURE######
+  
+We can identify different Network Participant (NP) in Figure 7 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
+
+In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
+
+It is possible to observe how the high-level architecture allows sharing the streaming of events across different network participants and their users. Also, there is also the need for security, in order to allow or deny the access to write to and read from flows.
+
+  #####FIGURE######
+
+Regarding security, the architecture considers the integration with an Identity & Access Management service, which could implement popular protocols such as OAuth, SAML or SASL. However, the network should also enable anonymous access in the same way FTP does. This means that a given NP could publicly publish flow and allow any party to subscribe to it.
+
+For example, nowadays the Network Time Protocol (NTP) is used to synchronize the day and time on servers. There are many NTP servers available that allow anonymous access, meaning that the service is openly available. The same must be considered for the Event Streaming Open Network.
+
+Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.
+
+ 
+Now, we provide a brief description of all the components that appear in the diagram of Figure 8. In the next sections further details of the components are provided.
+
+•	Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.
+
+•	Flow Name Service (FNS): a DNS-based registry that acts as an authoritative server for a set of domain names, which are used to represent flow addresses in a flow namespace. These domains contain all the necessary information to resolve flow names into flow network locations. This component refers to what in 3.1.1 we named Event Streaming Registry.
+
+•	Flow Namespace User Agent (FNUA): an application similar to User Mail Agents like Microsoft Outlook or Gmail. This application provides access to flow namespaces to users of the network. 
+The definition of this component implies the specification of a dedicated protocol. We will refer to this protocol as FNAP (Flow Namespace Accessing Protocol).
+
+•	Flow Namespace Accessing Agent (FNAA): the server-side of the Flow Namespace User Agent. This component is the one that must provide convenient integration methods for GUI. This component refers to what in 3.1.2 we named Event User Space Service.
+This component must implement the same protocol selected for the Flow Namespace User Agent: FNAP (Flow Namespace Accessing Protocol).
+
+•	Flow Processor (FP): a flow processing instance used to set up subscriptions that connect local or remote flows on demand. This component implements the processing part of what in 3.1.3 we called Event Subscription Service. This component will be created and managed by a FNAA instance, and the communication is held through an Inter-process Communications (IPC) interface. Also, this service must implement an Event Payload Format, for which we will mainly consider CNCF’s CloudEvents and Protobuf.
+
+•	Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.
+
+
 
 # Security Considerations
 
