@@ -61,25 +61,25 @@ A public registry of an organization’s available event streams does not exist.
 
 Nowadays, when an organization needs to publish an event stream or event flow, they usually follow some form of the following steps:
 
-1.	Develop and deploy a producer application that writes events to a queue.
-2.	Create all necessary networking permissions for external public access to the queue.
-3.	Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
-4.	Create credentials for consumer authentication and authorization access to the queue.
-5.	Develop and deploy a consumer application that reads the queue.
+1.Develop and deploy a producer application that writes events to a queue.
+2.Create all necessary networking permissions for external public access to the queue.
+3.Inform the remote user the access information (i.e., Hostname/IP, protocol, and port) together with the required client details and technology for accessing the stream (i.e., Apache Kafka Protocol, RabbitMQ API, etc.).
+4.Create credentials for consumer authentication and authorization access to the queue.
+5.Develop and deploy a consumer application that reads the queue.
 
 Now, we can compare this process to a simple email interaction:
-1.	Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
-2.	The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
-3.	When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.
+1.Sender opens a graphical Mail User Agent application and sends an email to an email address formatted as user@domain.
+2.The message is sent to an SMTP server that routes it to the destination SMTP servers for the given domain. Once received, the message is put into the user mailbox.
+3.When the recipient checks its mailbox by IMAP or POP3, the new email is transferred to the Mail User Agent.
 
 In these two scenarios, we can see that the information needed to be exchanged offline by the actors is completely different in size and content. 
 
 First, in the case of email, there is a shared naming space given by the Domain Name Service (DNS). The email format has been standardized by the IETF in RFC 5321, section 2.3.11. Thus, there is a common naming space that is used for referencing mailboxes in the format user@domain. Thus, the offline details communicated by the peers is only the recipient email address. There is no analogous standard nor an open alternative for Event Streaming.
 
 Therefore, in the case of Event Streaming, users need to perform plenty of offline communication to agree not only on the technology to use but also on the queue to use. For instance, two organizations may be currently using Apache Kafka and need to share an event stream among themselves. The organization having the source of the stream should provide the following details to the consumer organization:
-•	Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
-•	Topic or Queue name: name of the topic resource in the Apache Kafka Cluster
-•	Authentication information: User and password, TLS Certificate, etc.
+* Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
+* Topic or Queue name: name of the topic resource in the Apache Kafka Cluster
+* Authentication information: User and password, TLS Certificate, etc.
 
 In the case these organizations were not both using Apache Kafka, the use case cannot be simply solved without incurring in development or complex configurations as well as adopting proprietary components.
 
@@ -129,9 +129,9 @@ We can then conclude that while there is no current protocol candidate that impl
 In this section, we will describe the overall architectural proposal for an Event Streaming Open Network. This description will include the different actors in play, the software components required, as well as the network protocols that should be specificized.
 
 ### 4.1. Architecture overview
-	In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
+In Figure 7 we illustrate a high-level overview of an architecture proposal for the Open Network.
   
-  #####FIGURE######
+#####FIGURE######
   
 We can identify different Network Participant (NP) in Figure 7 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
 
@@ -150,19 +150,19 @@ Additionally, the NP must be able to expand the capacity to support any number o
  
 Now, we provide a brief description of all the components that appear in the diagram of Figure 8. In the next sections further details of the components are provided.
 
-*Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.
+* Flow Events Broker (FEB): a high-available and fault-tolerant service that provide queues to be consumed by network services, by users, and their applications. An example of an Event Queue Broker can be Apache Kafka, AWS SQS or Google Cloud PubSub. The payload format implemented by these tools are what in 3.1.4 we called Event Streaming Payload Format.
 
-*Flow Name Service (FNS): a DNS-based registry that acts as an authoritative server for a set of domain names, which are used to represent flow addresses in a flow namespace. These domains contain all the necessary information to resolve flow names into flow network locations. This component refers to what in 3.1.1 we named Event Streaming Registry.
+* Flow Name Service (FNS): a DNS-based registry that acts as an authoritative server for a set of domain names, which are used to represent flow addresses in a flow namespace. These domains contain all the necessary information to resolve flow names into flow network locations. This component refers to what in 3.1.1 we named Event Streaming Registry.
 
-*Flow Namespace User Agent (FNUA): an application similar to User Mail Agents like Microsoft Outlook or Gmail. This application provides access to flow namespaces to users of the network. 
+* Flow Namespace User Agent (FNUA): an application similar to User Mail Agents like Microsoft Outlook or Gmail. This application provides access to flow namespaces to users of the network. 
 The definition of this component implies the specification of a dedicated protocol. We will refer to this protocol as FNAP (Flow Namespace Accessing Protocol).
 
-*Flow Namespace Accessing Agent (FNAA): the server-side of the Flow Namespace User Agent. This component is the one that must provide convenient integration methods for GUI. This component refers to what in 3.1.2 we named Event User Space Service.
+* Flow Namespace Accessing Agent (FNAA): the server-side of the Flow Namespace User Agent. This component is the one that must provide convenient integration methods for GUI. This component refers to what in 3.1.2 we named Event User Space Service.
 This component must implement the same protocol selected for the Flow Namespace User Agent: FNAP (Flow Namespace Accessing Protocol).
 
-*Flow Processor (FP): a flow processing instance used to set up subscriptions that connect local or remote flows on demand. This component implements the processing part of what in 3.1.3 we called Event Subscription Service. This component will be created and managed by a FNAA instance, and the communication is held through an Inter-process Communications (IPC) interface. Also, this service must implement an Event Payload Format, for which we will mainly consider CNCF’s CloudEvents and Protobuf.
+* Flow Processor (FP): a flow processing instance used to set up subscriptions that connect local or remote flows on demand. This component implements the processing part of what in 3.1.3 we called Event Subscription Service. This component will be created and managed by a FNAA instance, and the communication is held through an Inter-process Communications (IPC) interface. Also, this service must implement an Event Payload Format, for which we will mainly consider CNCF’s CloudEvents and Protobuf.
 
-*Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.
+* Flow Namespace Accessing Protocol (FNAP): the protocol implemented in the Flow Namespace Accessing Agent as well as in the Flow Namespace User Agent. The former will act both as a server and a client while the latter only as a client. This protocol is described in the next chapter.
 
 
 
