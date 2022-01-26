@@ -668,28 +668,27 @@ Thus, the FNUA for the PoC is an executable file that complies with the diagram 
 
 One of the requirements for the flow CLI tool is a configuration file that defines the different FNAA servers together with the credentials to use. An example of this configuration file follows:
 
-ignatius ~/ 0$cat .flow.yml 
 agents:
-  -
-    name: fnaa-unix
-    fqdn: fnaa.unix.ar
-    username: test
-    password: test
-    prefix: unix.ar-
-  -
-    name: fnaa-emiliano
-    fqdn: fnaa.emiliano.ar
-    username: test
-    password: test
-    prefix: emiliano.ar-
+-
+name: fnaa-unix
+fqdn: fnaa.unix.ar
+username: test
+password: test
+prefix: unix.ar-
+-
+name: fnaa-emiliano
+fqdn: fnaa.emiliano.ar
+username: test
+password: test
+prefix: emiliano.ar-
 
 namespaces:
-  -
-    name: flows.unix.ar
-    agent: fnaa-unix
-  -
-    name: flows.emiliano.ar
-    agent: fnaa-emiliano
+-
+name: flows.unix.ar
+agent: fnaa-unix
+-
+name: flows.emiliano.ar
+agent: fnaa-emiliano
 
 In this file, we can see that there are two FNAA instances described with FQDN fnaa.unix.ar and fnaa.emiliano.ar. Then, there are two namespaces: one called flow.unix.ar hosted on fnaa-unix and second namespace flows.emiliano.ar hosted on fnaa-emiliano. This configuration enables the FNUA to interact with two different FNAA, each of which is hosting different Flow Namespaces.
 
