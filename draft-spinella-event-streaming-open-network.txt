@@ -63,59 +63,59 @@ Copyright Notice
 
 Table of Contents
 
-   1.  1.  Introduction
-   2.  2.  An Open Network for Event Streaming over the Internet
-     2.1.  2.1.  Free, Open & Neutral Networks (FONN)
-     2.2.  2.1.1.  Non-discriminatory and open access
-     2.3.  2.1.2.  Open participation
-     2.4.  2.2.  Open Access Infrastructure Resources
-       2.4.1.  2.2.1.  Open Access DNS Resource Example
-       2.4.2.  2.2.2.  Flow: Event Streaming Internet Resource
-   3.  3.  Necessities for an Event Streaming Open Network over the
+   1.  Introduction
+   2.  An Open Network for Event Streaming over the Internet
+     2.1.  Free, Open & Neutral Networks (FONN)
+     2.2.  Non-discriminatory and open access
+     2.3.  Open participation
+     2.4.  Open Access Infrastructure Resources
+       2.4.1.  Open Access DNS Resource Example
+       2.4.2.  Flow: Event Streaming Internet Resource
+   3.  Necessities for an Event Streaming Open Network over the
            Internet
-     3.1.  3.1.  Necessity 1: Event Streaming Internet Resource Public
+     3.1.  Necessity 1: Event Streaming Internet Resource Public
            Registry
-     3.2.  3.2.  Necessity 2: Establishment of a User Space for Events
-     3.3.  3.3.  Necessity 3: An Agnostic Subscription Protocol
-     3.4.  3.4.  Necessity 4: An Open Cross-sector Payload Format
-   4.  4.  Event Streaming Open Network Architecture
-     4.1.  4.1.  Architecture overview
-       4.1.1.  4.1.1.  Flow Events Broker (FEB)
-       4.1.2.  4.1.2.  Flow Name Service (FNS)
-       4.1.3.  4.1.3.  Flow Namespace Accessing Agent (FNAA)
-       4.1.4.  4.1.4.  Flow Processor (FP)
-       4.1.5.  4.1.5.  Flow Namespace User Agent (FNUA)
-     4.2.  4.2.  Communications Examples
-       4.2.1.  4.2.1.  Unidirectional Subscription
-       4.2.2.  4.2.2.  Bidirectional Subscription
-   5.  5.  Event Streaming Open Network Protocol
-     5.1.  5.1.  Protocol definition methodology
-     5.2.  5.2.  Flow Namespace Accessing Protocol (FNAP)
-     5.3.  6.  Implementation
-       5.3.1.  6.1.  Objectives
-     5.4.  6.3.  Existing components
-       5.4.1.  6.3.1.  Flow Events Broker (FEB)
-       5.4.2.  6.3.2.  Flow Name Service (FN)
-       5.4.3.  6.4.  Components to be developed
-   6.  7.  Proof of Concept
-     6.1.  7.1.  Minimum functionalities
-     6.2.  7.2.  FNAA - Server application
-     6.3.  7.3.  FNUA - Client application
+     3.2.  Necessity 2: Establishment of a User Space for Events
+     3.3.  Necessity 3: An Agnostic Subscription Protocol
+     3.4.  Necessity 4: An Open Cross-sector Payload Format
+   4.  Event Streaming Open Network Architecture
+     4.1.  Architecture overview
+       4.1.1.  Flow Events Broker (FEB)
+       4.1.2.  Flow Name Service (FNS)
+       4.1.3.  Flow Namespace Accessing Agent (FNAA)
+       4.1.4.  Flow Processor (FP)
+       4.1.5.  Flow Namespace User Agent (FNUA)
+     4.2.  Communications Examples
+       4.2.1.  Unidirectional Subscription
+       4.2.2.  Bidirectional Subscription
+   5.  Event Streaming Open Network Protocol
+     5.1.  Protocol definition methodology
+     5.2.  Flow Namespace Accessing Protocol (FNAP)
+     5.3.  Implementation
+       5.3.1.  Objectives
+     5.4.  Existing components
+       5.4.1.  Flow Events Broker (FEB)
+       5.4.2.  Flow Name Service (FN)
+       5.4.3.  Components to be developed
+   6.  Proof of Concept
+     6.1.  Minimum functionalities
+     6.2.  FNAA - Server application
+     6.3.  FNUA - Client application
      6.4.  agents:
      6.5.  namespaces:
-     6.6.  7.4.  Use cases
-       6.6.1.  7.4.2.  Use case 2: Creating a flow
-       6.6.2.  7.4.3.  Use case 3: Describing a flow
-       6.6.3.  7.4.4.  Use case 4: Subscribing to a remote flow
-       6.6.4.  7.5.  Results of the PoC
-       6.6.5.  8.  Summary & Conclusions
+     6.6.  Use cases
+       6.6.1.  Use case 2: Creating a flow
+       6.6.2.  Use case 3: Describing a flow
+       6.6.3.  Use case 4: Subscribing to a remote flow
+       6.6.4.  Results of the PoC
+       6.6.5.  Summary & Conclusions
    7.  Security Considerations
    8.  IANA Considerations
    9.  Normative References
    Acknowledgments
    Author's Address
 
-1.  1.  Introduction
+1.  Introduction
 
    Society is rapidly digitalizing and automating the exchanges of value
    that constitute the economy.  Also, considerable time and energy is
@@ -156,7 +156,7 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-2.  2.  An Open Network for Event Streaming over the Internet
+2.  An Open Network for Event Streaming over the Internet
 
    In this section, we will argue how Internet standards are developed
    and why this could be the case for an Event Streaming Open Network.
@@ -210,7 +210,7 @@ Table of Contents
    Finally, we will demonstrate how this is also true for Event
    Streaming.
 
-2.1.  2.1.  Free, Open & Neutral Networks (FONN)
+2.1.  Free, Open & Neutral Networks (FONN)
 
    The main principles of a Free, Open & Neutral Network are:
 
@@ -234,7 +234,7 @@ Table of Contents
       be built with whatever technology chosen by the participants with
       the only limitations resulting of the technology itself.
 
-2.2.  2.1.1.  Non-discriminatory and open access
+2.2.  Non-discriminatory and open access
 
    Services such as DNS, the World Wide Web and Email do not
    discriminate and are open-accessible.  Basically, people and
@@ -259,7 +259,7 @@ Table of Contents
    Moreover, the specification of the protocols that implement the
    Metadata and Payload formats must also be openly accessible.
 
-2.3.  2.1.2.  Open participation
+2.3.  Open participation
 
    Internet Services like DNS, WWW and Email provide individuals and
    organizations with different ways of participation.  First, anybody
@@ -293,7 +293,7 @@ Table of Contents
    due the dependency of Flow with other Internet Services governed by
    this institution.
 
-2.4.  2.2.  Open Access Infrastructure Resources
+2.4.  Open Access Infrastructure Resources
 
    The literature about Commons Infrastructure (Frischmann, 2007)
    defines a set of criteria to evaluate if a resource can be considered
@@ -368,7 +368,7 @@ Table of Contents
    chain.  Then, the output variance of the activities that take airport
    infrastructure as input is significantly high.
 
-2.4.1.  2.2.1.  Open Access DNS Resource Example
+2.4.1.  Open Access DNS Resource Example
 
    Now, we will provide as an example how DNS complies with these
    criteria and why it can be considered an infrastructure resource. 1.
@@ -393,7 +393,7 @@ Table of Contents
    represented both by the domain name that can be and by the querying
    capacity of DNS servers.
 
-2.4.2.  2.2.2.  Flow: Event Streaming Internet Resource
+2.4.2.  Flow: Event Streaming Internet Resource
 
    In this section, we will describe an Event Streaming Internet
    Resources.  For this, we will consider the previously described
@@ -460,8 +460,7 @@ Table of Contents
    of the resource, and eliminating the need to obtain approval or a
    license to use the resource.
 
-3.  3.  Necessities for an Event Streaming Open Network over the
-    Internet
+3.  Necessities for an Event Streaming Open Network over the Internet
 
    In this section, we will describe the main needs for the broad
    adoption of Event Streaming.  The focus will be made on detecting and
@@ -470,8 +469,7 @@ Table of Contents
    organizations.  The different necessities detailed in this section
    will serve as input for an architecture design.
 
-3.1.  3.1.  Necessity 1: Event Streaming Internet Resource Public
-      Registry
+3.1.  Necessity 1: Event Streaming Internet Resource Public Registry
 
    A public registry of an organization's available event streams does
    not exist.  We will argue in this section why this is the core
@@ -540,7 +538,7 @@ Table of Contents
    providing a mechanism for users to discover the location and
    connections requirements.
 
-3.2.  3.2.  Necessity 2: Establishment of a User Space for Events
+3.2.  Necessity 2: Establishment of a User Space for Events
 
    Another need for broad adoption is due to the inexistence of a common
    and agreed user convention.  In the general literature, we cannot
@@ -569,7 +567,7 @@ Table of Contents
    dependencies.  In the next sections, we will refer to this component
    as the Event User Space Service.
 
-3.3.  3.3.  Necessity 3: An Agnostic Subscription Protocol
+3.3.  Necessity 3: An Agnostic Subscription Protocol
 
    A third need for wide adoption is an agnostic protocol to manage
    subscriptions to event streams.  For this need to be solved, it would
@@ -630,7 +628,7 @@ Table of Contents
    introduces an abstraction for the event queue or log technologies
    implemented by different organizations.
 
-3.4.  3.4.  Necessity 4: An Open Cross-sector Payload Format
+3.4.  Necessity 4: An Open Cross-sector Payload Format
 
    Currently, the different implementations of Event Streaming combine
    both the Payload Format with the Metadata Format.  This means that
@@ -683,14 +681,14 @@ Table of Contents
    Network.  In this way, the different CloudEvents libraries made
    available in several programming could be leveraged.
 
-4.  4.  Event Streaming Open Network Architecture
+4.  Event Streaming Open Network Architecture
 
    In this section, we will describe the overall architectural proposal
    for an Event Streaming Open Network.  This description will include
    the different actors in play, the software components required, as
    well as the network protocols that should be specificized.
 
-4.1.  4.1.  Architecture overview
+4.1.  Architecture overview
 
    In Figure 1 we illustrate a high-level overview of an architecture
    proposal for the Open Network.
@@ -790,7 +788,7 @@ Table of Contents
       client while the latter only as a client.  This protocol is
       described in the next chapter.
 
-4.1.1.  4.1.1.  Flow Events Broker (FEB)
+4.1.1.  Flow Events Broker (FEB)
 
    The FEB implementation that we will mostly consider is Apache Kafka.
    This open-source project is quickly becoming a commodity platform,
@@ -816,7 +814,7 @@ Table of Contents
    responsible for knowing how to set up and manage flows on top of
    different Events Brokers.
 
-4.1.2.  4.1.2.  Flow Name Service (FNS)
+4.1.2.  Flow Name Service (FNS)
 
    FNS is a core component for the overall proposed architecture.  This
    component provides all needed functionalities for obtaining Flow
@@ -828,7 +826,7 @@ Table of Contents
    well as the DNS mechanism for obtaining Flow network location
    details.
 
-4.1.2.1.  4.1.2.1.  Leveraging DNS infrastructure
+4.1.2.1.  Leveraging DNS infrastructure
 
    As mentioned previously, this component must maximize its leverage on
    the existing Internet DNS infrastructure.  The reason for this
@@ -861,7 +859,7 @@ Table of Contents
    connection details are obtained is by resolving the MX DNS Resource
    Records of domain.com, which in this example is mail.domain.com.
 
-4.1.2.2.  4.1.2.2.  Flow URI
+4.1.2.2.  Flow URI
 
    As we mentioned previously, the first needed element is a URI
    definition for flow resources.  These resources identification must
@@ -945,7 +943,7 @@ Table of Contents
 
    *  Flow FQDN: created.invoice.finance.syndeno.com
 
-4.1.2.3.  4.1.2.2.  Flow name resolution
+4.1.2.3.  Flow name resolution
 
    In Figure 4, we can see how a Flow FQDN can be resolved by means of
    the Flow Name Service.
@@ -1020,7 +1018,7 @@ Table of Contents
 
    ;; ANSWER SECTION: kafka.syndeno.com.  21600 IN A 208.68.163.218
 
-4.1.3.  4.1.3.  Flow Namespace Accessing Agent (FNAA)
+4.1.3.  Flow Namespace Accessing Agent (FNAA)
 
    The Flow Namespace Accessing Agent is the core component of a Network
    Participant.  This server application implements the Flow Namespace
@@ -1040,7 +1038,7 @@ Table of Contents
    new subscription creation, the FNAA of his NP must connect as client
    to a remote FNAA server.
 
-4.1.4.  4.1.4.  Flow Processor (FP)
+4.1.4.  Flow Processor (FP)
 
    Whenever a new subscription creation is triggered and all remote flow
    connection details are obtained, the FNAA needs to set up a Processor
@@ -1099,7 +1097,7 @@ Table of Contents
    processors that the network may need although we are initially
    considering the subscription use case.
 
-4.1.5.  4.1.5.  Flow Namespace User Agent (FNUA)
+4.1.5.  Flow Namespace User Agent (FNUA)
 
    The FNUA is an application analogous to email clients such as
    Microsoft Office or Gmail.  These applications implement either
@@ -1129,7 +1127,7 @@ Table of Contents
    Flows, whether local to the FNAA, local to the NP or remote (in a
    different NP FNAA server).
 
-4.2.  4.2.  Communications Examples
+4.2.  Communications Examples
 
    In this section, two usage examples of Network Participants
    communications are provided.  The first one, we call unidirectional,
@@ -1137,7 +1135,7 @@ Table of Contents
    second one, we call it bidirectional, since now these NP have mutual
    subscriptions.
 
-4.2.1.  4.2.1.  Unidirectional Subscription
+4.2.1.  Unidirectional Subscription
 
    In the diagram of Figure 9, we can see an integration between two NP.
    In this case, there is a FlowA hosted in the Orange NP to which the
@@ -1172,7 +1170,7 @@ Table of Contents
    access, it must be able to do so by means of security credentials
    revoking against the Identity & Access Manager of the Orange NP.
 
-4.2.2.  4.2.2.  Bidirectional Subscription
+4.2.2.  Bidirectional Subscription
 
    In Figure 10 we can see an example of all the components needed to
    set up a flow integration between two different NP.  In this case,
@@ -1207,13 +1205,13 @@ Table of Contents
    all the events produced to FlowC in the Blue NP will be forwarder to
    FlowD in the Orange NP.
 
-5.  5.  Event Streaming Open Network Protocol
+5.  Event Streaming Open Network Protocol
 
    The protocol to be used in an Event Streaming Open Network is a key
    component of the overall architecture and design.  This chapter is
    dedicated to thoroughly describe this protocol.
 
-5.1.  5.1.  Protocol definition methodology
+5.1.  Protocol definition methodology
 
    It is now necessary to specify the protocol needed for the Flow
    Namespace Accessing Agent or FNAA, which we have named the Flow
@@ -1254,7 +1252,7 @@ Table of Contents
    This method will be used to define the states and transitions for the
    Flow Namespace Accessing Protocol both for client and server.
 
-5.2.  5.2.  Flow Namespace Accessing Protocol (FNAP)
+5.2.  Flow Namespace Accessing Protocol (FNAP)
 
    Using the model proposed by Wild described previously, we define the
    finite-state machine for the FNAA Server, which we can see in
@@ -1292,7 +1290,7 @@ Table of Contents
    Eventually, a "Quit" command will be executed by the client and the
    connection will be closed.
 
-5.3.  6.  Implementation
+5.3.  Implementation
 
    In this section, we provide an approach for the overall
    implementation of the proposed Event Streaming Open Network.
@@ -1300,7 +1298,7 @@ Table of Contents
    we will define which existing tools can be leveraged and those that
    require development.
 
-5.3.1.  6.1.  Objectives
+5.3.1.  Objectives
 
    The objective of this implementation is to provide specifications for
    an initial implementation of the overall architecture for the Event
@@ -1308,7 +1306,7 @@ Table of Contents
    should be leveraged.  For those components that need development, a
    thorough specification is to be provided.
 
-5.3.1.1.  6.2.  Implementation overview
+5.3.1.1.  Implementation overview
 
    In Figure 14, we have a diagram of the overall implementation
    proposal.  The components that have the Kubernetes Deployment icon
@@ -1321,12 +1319,12 @@ Table of Contents
 
                             Figure 14: Figure 14
 
-5.4.  6.3.  Existing components
+5.4.  Existing components
 
    In this section, we describe the existing software components that
    can be leveraged for implementation.
 
-5.4.1.  6.3.1.  Flow Events Broker (FEB)
+5.4.1.  Flow Events Broker (FEB)
 
    Since there are currently many implementations for this component, it
    is necessary to develop the needed integrations of other components
@@ -1339,7 +1337,7 @@ Table of Contents
    the different Flow Events Broker, meaning that it must implement
    their APIs as a client.
 
-5.4.2.  6.3.2.  Flow Name Service (FN)
+5.4.2.  Flow Name Service (FN)
 
    This component can be completely implemented by leveraging on the ISC
    Bind9 software component, which is the de facto leader for DNS
@@ -1351,7 +1349,7 @@ Table of Contents
    the Flow URI registration, deregistration and execute recursive DNS
    resolution.
 
-5.4.3.  6.4.  Components to be developed
+5.4.3.  Components to be developed
 
    In this section, we describe a set of tools that require development.
    These components, especially the FNAA, are the core components of
@@ -1363,7 +1361,7 @@ Table of Contents
    the feasibility of the core network components in the form of a Proof
    of Concept.
 
-5.4.3.1.  6.4.1.  Flow Namespace Accessing Agent (FNAA)
+5.4.3.1.  Flow Namespace Accessing Agent (FNAA)
 
    The Flow Namespace Accessing Agent is a server component that
    triggers the creation of child processes that implement the different
@@ -1437,7 +1435,7 @@ Table of Contents
    Finally, the FNAA must implement the protocol FNAP in a connection-
    based and text-based manner.
 
-5.4.3.2.  6.4.2.  Flow Namespace User Agent (FNUA)
+5.4.3.2.  Flow Namespace User Agent (FNUA)
 
    The Flow Namespace User Agent (FNUA) can have different
    implementations as long as they comply with the protocol FNAP.
@@ -1465,7 +1463,7 @@ Table of Contents
 
                             Figure 15: Figure 15
 
-6.  7.  Proof of Concept
+6.  Proof of Concept
 
    In this section, we will focus on providing a minimum implementation
    of the main Event Streaming Open Network component: the Flow
@@ -1505,7 +1503,7 @@ Table of Contents
    we mentioning if and how the minimum established requirements have
    been met or not.
 
-6.1.  7.1.  Minimum functionalities
+6.1.  Minimum functionalities
 
    Network Participants system administrators must be able to run a
    Server Application that acts as FNAA.
@@ -1515,7 +1513,7 @@ Table of Contents
    flow. 3.  Describe an existing flow. 4.  Subscribe to an external
    flow.
 
-6.2.  7.2.  FNAA - Server application
+6.2.  FNAA - Server application
 
    The FNAA server application must implement FNAP as described in
    Section 6.  Basically, the FNAA will open a TCP port on all the IP
@@ -1554,7 +1552,7 @@ Table of Contents
    server.go:148: Accept a connection request. server.go:154: Handle
    incoming messages. server.go:148: Accept a connection request.
 
-6.3.  7.3.  FNUA - Client application
+6.3.  FNUA - Client application
 
    In order to test the FNAA server application, a CLI-based FNUA
    application has been developed.  The chosen language for this CLI
@@ -1590,9 +1588,9 @@ Table of Contents
    minimum functionalities required for the Open Network using this CLI
    tool.
 
-6.6.  7.4.  Use cases
+6.6.  Use cases
 
-   ### 7.4.1.  Use case 1: Authenticating a user After the connection is
+   ### Use case 1: Authenticating a user After the connection is
    established, the first command that the client must execute is the
    authentication command.  As previously defined in Chapter 5, every
    FNAA client must first authenticate in order to execute commands.
@@ -1633,7 +1631,7 @@ Table of Contents
    authentication step, since every command the user executes will be
    preceded by an authentication in the server.
 
-6.6.1.  7.4.2.  Use case 2: Creating a flow
+6.6.1.  Use case 2: Creating a flow
 
    Once the authentication is successful, the client can now create a
    new Flow.  The way to do this using the CLI tool would be:
@@ -1674,7 +1672,7 @@ Table of Contents
    created a Kafka Topic as well as the necessary DNS entries for name
    resolution.
 
-6.6.2.  7.4.3.  Use case 3: Describing a flow
+6.6.2.  Use case 3: Describing a flow
 
    Once a flow has been created, we can obtain information of if by
    executing the following command using the CLI tool:
@@ -1714,7 +1712,7 @@ Table of Contents
    Now, we can use this information to connect to the Kafka topic and
    start producing or consuming events.
 
-6.6.3.  7.4.4.  Use case 4: Subscribing to a remote flow
+6.6.3.  Use case 4: Subscribing to a remote flow
 
    In this section, we will show how a subscription can be set up.  When
    a user commands the FNAA to create a new subscription to a remote
@@ -1833,7 +1831,7 @@ Table of Contents
    Thus, we were able to set up a new subscription in fnaa-emiliano that
    trigger a background interaction with fnaa-unix.
 
-6.6.4.  7.5.  Results of the PoC
+6.6.4.  Results of the PoC
 
    We can confirm the feasibility of the overall Event Streaming Open
    Network architecture.  The test of the proposed protocol FNAP and its
@@ -1884,7 +1882,7 @@ Table of Contents
    Also, a Kubernetes resource could be developed to use the kubectl CLI
    tool for management, instead of a custom CLI tool.
 
-6.6.5.  8.  Summary & Conclusions
+6.6.5.  Summary & Conclusions
 
    In this chapter we will provide a summary of everything that has been
    described in this document as well as some conclusions about it.
