@@ -170,8 +170,6 @@ In this section, we will describe the overall architectural proposal for an Even
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
 
 ![Figure 1: High-level overview of the Event Streaming Open Network](./images/Figure1.svg)
-<img src="./images/Figure1.svg">
-
    
 We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
 
