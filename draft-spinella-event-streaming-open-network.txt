@@ -178,7 +178,7 @@ Table of Contents
    multicast IP traffic, which could be used for multimedia content.
    After some important milestones of this project, the SIP (Session
    Initiation Protocol) was defined in 1996 and was published as a
-   standard protocol in IETF's RFC-3261.  The reality today is that SIP
+   standard protocol in IETF's [RFC3261].  The reality today is that SIP
    has completely won the standards battle for multimedia transmission
    over the Internet, and ISDN usage has been on continuous decline.
 
@@ -505,10 +505,10 @@ Table of Contents
 
    First, in the case of email, there is a shared naming space given by
    the Domain Name Service (DNS).  The email format has been
-   standardized by the IETF in RFC 5321, section 2.3.11.  Thus, there is
-   a common naming space that is used for referencing mailboxes in the
-   format user@domain.  Thus, the offline details communicated by the
-   peers is only the recipient email address.  There is no analogous
+   standardized by the IETF in [RFC5321], section 2.3.11.  Thus, there
+   is a common naming space that is used for referencing mailboxes in
+   the format user@domain.  Thus, the offline details communicated by
+   the peers is only the recipient email address.  There is no analogous
    standard nor an open alternative for Event Streaming.
 
    Therefore, in the case of Event Streaming, users need to perform
@@ -967,7 +967,7 @@ Table of Contents
    Secondly, once these name servers are obtained, the FNUA will perform
    a PTR query on the Flow FQDN adding a service discovery prefix.  The
    response of the PTR query will return another FQDN compliant with SRV
-   DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763).
+   DNS Resource Records [RFC2782] and DNS Service Discovery [RFC6763].
 
    In this case, the query for PTR records would be as follows: ~~~ ;;
    QUESTION SECTION: ;notifications.calendar.people.syndeno.com.  IN PTR
@@ -2037,11 +2037,34 @@ server.go:139: Received command: quit
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
+   [RFC2782]  Gulbrandsen, A., Vixie, P., and L. Esibov, "A DNS RR for
+              specifying the location of services (DNS SRV)", RFC 2782,
+              DOI 10.17487/RFC2782, February 2000,
+              <https://www.rfc-editor.org/rfc/rfc2782>.
+
+   [RFC3261]  Rosenberg, J., Schulzrinne, H., Camarillo, G., Johnston,
+              A., Peterson, J., Sparks, R., Handley, M., and E.
+              Schooler, "SIP: Session Initiation Protocol", RFC 3261,
+              DOI 10.17487/RFC3261, June 2002,
+              <https://www.rfc-editor.org/rfc/rfc3261>.
+
+   [RFC5321]  Klensin, J., "Simple Mail Transfer Protocol", RFC 5321,
+              DOI 10.17487/RFC5321, October 2008,
+              <https://www.rfc-editor.org/rfc/rfc5321>.
+
+   [RFC6763]  Cheshire, S. and M. Krochmal, "DNS-Based Service
+              Discovery", RFC 6763, DOI 10.17487/RFC6763, February 2013,
+              <https://www.rfc-editor.org/rfc/rfc6763>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 Acknowledgments
+
+   SPINELLA E. (2022) [Online] Event Streaming Open Network Master's
+   Thesis https://drive.google.com/file/d/1R9H-
+   4knAztez_yUPlr7aZSkbUjs8jL3j
 
    URQUHART J. (2021) Flow Architectures
 
