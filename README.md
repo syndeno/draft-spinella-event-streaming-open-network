@@ -212,7 +212,7 @@ The FEB implementation that we will mostly consider is Apache Kafka. This open-s
 
 Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 3.
 
-![Figure 3: High-level overview of the Event Queue Broker component interactions.](./figures/Figure2.png)
+![Figure 3: High-level overview of the Event Queue Broker component interactions.](./figures/Figure3.png)
 
 Figure 3: High-level overview of the Event Queue Broker component interactions..
 
