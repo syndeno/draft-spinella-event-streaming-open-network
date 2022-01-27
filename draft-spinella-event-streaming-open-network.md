@@ -941,7 +941,7 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-SPINELLA E. (2022) [Online] Event Streaming Open Network Master's Thesis https://drive.google.com/file/d/1R9H-4knAztez_yUPlr7aZSkbUjs8jL3j
+SPINELLA E. (2022) [Online] Event Streaming Open Network Master's Thesis <https://drive.google.com/file/d/1R9H-4knAztez_yUPlr7aZSkbUjs8jL3j>
 
 URQUHART J. (2021) Flow Architectures 
 
