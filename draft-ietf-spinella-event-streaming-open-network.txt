@@ -4,8 +4,8 @@
 
 TBD                                                          E. Spinella
 Internet-Draft                                                   Syndeno
-Intended status: Informational                           26 January 2022
-Expires: 30 July 2022
+Intended status: Informational                           27 January 2022
+Expires: 31 July 2022
 
 
                       Event Streaming Open Network
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 July 2022.
+   This Internet-Draft will expire on 31 July 2022.
 
 Copyright Notice
 
@@ -739,7 +739,9 @@ Table of Contents
    services on top of the network by employing the architecture
    primitives.
 
-   (Artwork only available as svg: images/Figure2.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 2: Figure 2
 
@@ -806,7 +808,9 @@ Table of Contents
    developers.  However, the broker should provide a common set of
    functionalities which can be seen in the diagram of Figure 3.
 
-   (Artwork only available as svg: images/Figure3.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 3: Figure 3
 
@@ -949,7 +953,9 @@ Table of Contents
    In Figure 4, we can see how a Flow FQDN can be resolved by means of
    the Flow Name Service.
 
-   (Artwork only available as svg: images/Figure4.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 4: Figure 4
 
@@ -1027,7 +1033,9 @@ Table of Contents
    In the diagram of Figure 5 we can see the different methods that the
    FNAA must support.
 
-   (Artwork only available as svg: images/Figure5.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 5: Figure 5
 
@@ -1049,7 +1057,9 @@ Table of Contents
    In the diagram of Figure 6, we can see the initial interface methods
    that should be implemented in a Flow Processor.
 
-   (Artwork only available as svg: images/Figure6.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 6: Figure 6
 
@@ -1065,7 +1075,9 @@ Table of Contents
    There can be different types of Processors, which we can see in
    Figure 7.
 
-   (Artwork only available as svg: images/Figure7.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 7: Figure 7
 
@@ -1111,7 +1123,9 @@ Table of Contents
    In the Diagram of Figure 8 we can see the actions that the user can
    request to the FNUA.
 
-   (Artwork only available as svg: images/Figure8.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 8: Figure 8
 
@@ -1140,7 +1154,9 @@ Table of Contents
    Kafka instance for example.  However, it must be possible to employ
    any Flow Events Broker of the NP's choice.
 
-   (Artwork only available as svg: images/Figure9.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                              Figure 9: Figure 9
 
@@ -1173,7 +1189,9 @@ Table of Contents
    FlowB of the Blue NP * FlowC of the Blue NP with FlowD of the Orange
    NP
 
-   (Artwork only available as svg: images/Figure10.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 10: Figure 10
 
@@ -1213,7 +1231,9 @@ Table of Contents
    can see how an FNAA client connects with a FNAA server by means of
    the FNAP.
 
-   (Artwork only available as svg: images/Figure10.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 11: Figure 11
 
@@ -1225,7 +1245,9 @@ Table of Contents
    the stimuli relationship that trigger a change of state in each
    component.
 
-   (Artwork only available as svg: images/Figure12.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 12: Figure 12
 
@@ -1250,7 +1272,9 @@ Table of Contents
    finite-state machine for the FNAA Server, which we can see in
    Figure 13.
 
-   (Artwork only available as svg: images/Figure13.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 13: Figure 13
 
@@ -1305,7 +1329,9 @@ Table of Contents
    have a Kafka Cluster that provides a Topic instance for each flow.
    Finally, the DNS Infrastructure is leveraged.
 
-   (Artwork only available as svg: images/Figure14.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 14: Figure 14
 
@@ -1448,7 +1474,9 @@ Table of Contents
    CLI tools.  In Figure 15 we have a diagram that shows the different
    functionalities that the CLI tool should implement.
 
-   (Artwork only available as svg: images/Figure15.svg)
+   (Artwork only available as svg: No external link available, see
+   draft-ietf-spinella-event-streaming-open-network-latest.html for
+   artwork.)
 
                             Figure 15: Figure 15
 
