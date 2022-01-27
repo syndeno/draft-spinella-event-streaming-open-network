@@ -632,8 +632,9 @@ After the connection is established, the first command that the client must exec
 
 It is worth mentioning that the chosen authentication mechanism for this PoC is SASL Plain. This command can be extended furtherly with other mechanisms in later versions. However, this simple authentication mechanism is sufficient to demonstrate the authentication step in the FNAP.
 
-~~~
 The SASL Plain Authentication implies sending the username and the password encoded in Base64. The way to obtain the Base64 if we consider a user test with password test, is as follows:
+
+~~~
 ignatius ~ 0$echo -en "\0test\0test" | base64
 AHRlc3QAdGVzdA==
 ~~~
