@@ -935,9 +935,14 @@ This document has no IANA actions.
 {:numbered="false"}
 
 URQUHART J. (2021) Flow Architectures 
+
 FRISCHMANN B. (2007) [Online] Infrastructure Commons in Economic Perspective < https://firstmonday.org/article/view/1901/1783>
+
 WIDL M. (2013), Guided Merging of Sequence Diagrams
+
 NAVARRO L. (2018) [Online] Network Infrastructures: The commons model for local participation, governance and sustainability <https://www.apc.org/en/pubs/network-infrastructures-commons-model-local-participation-governance-and-sustainability>
+
 BRINO A. (2019) Towards an Event Streaming Service for ATLAS data processing.
+
 GUTTRIDGE, Gartner (2021) “Modern Data Strategies for the Real-time Enterprise” Big Data Quarterly 2021
 
