@@ -1236,27 +1236,21 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-fnua-client-application" class="xref">FNUA - Client application</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
-                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-agents" class="xref">agents:</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
-                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-namespaces" class="xref">namespaces:</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
-                <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-use-cases" class="xref">Use cases</a></p>
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-use-cases" class="xref">Use cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.1">
-                    <p id="section-toc.1-1.6.2.6.2.1.1"><a href="#section-6.6.1" class="xref">6.6.1</a>.  <a href="#name-use-case-2-creating-a-flow" class="xref">Use case 2: Creating a flow</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.1">
+                    <p id="section-toc.1-1.6.2.4.2.1.1"><a href="#section-6.4.1" class="xref">6.4.1</a>.  <a href="#name-use-case-2-creating-a-flow" class="xref">Use case 2: Creating a flow</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.2">
-                    <p id="section-toc.1-1.6.2.6.2.2.1"><a href="#section-6.6.2" class="xref">6.6.2</a>.  <a href="#name-use-case-3-describing-a-flo" class="xref">Use case 3: Describing a flow</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.2">
+                    <p id="section-toc.1-1.6.2.4.2.2.1"><a href="#section-6.4.2" class="xref">6.4.2</a>.  <a href="#name-use-case-3-describing-a-flo" class="xref">Use case 3: Describing a flow</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.3">
-                    <p id="section-toc.1-1.6.2.6.2.3.1"><a href="#section-6.6.3" class="xref">6.6.3</a>.  <a href="#name-use-case-4-subscribing-to-a" class="xref">Use case 4: Subscribing to a remote flow</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.3">
+                    <p id="section-toc.1-1.6.2.4.2.3.1"><a href="#section-6.4.3" class="xref">6.4.3</a>.  <a href="#name-use-case-4-subscribing-to-a" class="xref">Use case 4: Subscribing to a remote flow</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
-                <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="xref">6.7</a>.  <a href="#name-results-of-the-poc" class="xref">Results of the PoC</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-results-of-the-poc" class="xref">Results of the PoC</a></p>
 </li>
             </ul>
 </li>
@@ -33399,22 +33393,32 @@ hDNPHcPOERazsYkjRebV2p9AFMUJzirsVdirsVdirsVdirsVdirsVf/Z</xmpGImg:image>
 <p id="section-6.2-1">The FNAA server application must implement FNAP as described in Section 6. Basically, the FNAA will open a TCP port on all the IP addresses of the host to listen for new FNUA client connections.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.2-2">The chosen language for the development of the FNAA is GoLang. The reason for choosing GoLang is because Kubernetes is written in this language and there is a robust set of libraries available for integration. Although there is no integration built with Kubernetes for this Proof of Concept, the usage of GoLang will enable a seamless evolution of the FNAA application. In future versions of the FNAA codebase, new functionalities leveraging Kubernetes will be easier to implement than if using a different programming language.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <p id="section-6.2-3">When the FNAA server application is initialized, it provides debug log messages describing all client interactions. In order to start the server application, a Network Participant system administrator can download the binary and execute it in a terminal:<a href="#section-6.2-3" class="pilcrow">¶</a></p>
-<p id="section-6.2-4">ignatius ~ 0$./fnaad 
+<div class="alignLeft art-text artwork" id="section-6.2-4">
+<pre>
+ignatius ~ 0$./fnaad
 server.go:146: Listen on [::]:61000
-server.go:148: Accept a connection request.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
-<p id="section-6.2-5">Now that the 61000 TCP port is open, we can test the behaviour by means of a raw TCP using telnet command in a different terminal:<a href="#section-6.2-5" class="pilcrow">¶</a></p>
-<p id="section-6.2-6">ignatius ~ 1$telnet localhost 61000
+server.go:148: Accept a connection request.
+</pre><a href="#section-6.2-4" class="pilcrow">¶</a>
+</div>
+<p id="section-6.2-5">Now that the 61000 TCP port is open, we can test the behaviour by means of a raw TCP using telnet command in a different terminal:
+~~~
+ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
-220 fnaa.unix.ar FNAA<a href="#section-6.2-6" class="pilcrow">¶</a></p>
-<p id="section-6.2-7">We can now see that the server has provided the first message in the connection: a welcome message indicating its FQDN fnaa.unix.ar.<a href="#section-6.2-7" class="pilcrow">¶</a></p>
-<p id="section-6.2-8">On the other hand, the server application starts providing debug information for the new connection established:<a href="#section-6.2-8" class="pilcrow">¶</a></p>
-<p id="section-6.2-9">ignatius ~ 0$./fnaad 
+220 fnaa.unix.ar FNAA
+~~~
+We can now see that the server has provided the first message in the connection: a welcome message indicating its FQDN fnaa.unix.ar.<a href="#section-6.2-5" class="pilcrow">¶</a></p>
+<p id="section-6.2-6">On the other hand, the server application starts providing debug information for the new connection established:<a href="#section-6.2-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.2-7">
+<pre>
+ignatius ~ 0$./fnaad
 server.go:146: Listen on [::]:61000
 server.go:148: Accept a connection request.
 server.go:154: Handle incoming messages.
-server.go:148: Accept a connection request.<a href="#section-6.2-9" class="pilcrow">¶</a></p>
+server.go:148: Accept a connection request.
+</pre><a href="#section-6.2-7" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="fnua-client-application">
@@ -33425,59 +33429,66 @@ server.go:148: Accept a connection request.<a href="#section-6.2-9" class="pilcr
 <p id="section-6.3-1">In order to test the FNAA server application, a CLI-based FNUA application has been developed. The chosen language for this CLI tool is also GoLang. The reason for choosing GoLang for the FNUA is because of its functionalities for building CLI tools, leveraging on the Cobra library.
 Thus, the FNUA for the PoC is an executable file that complies with the diagram in Figure 14.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <p id="section-6.3-2">One of the requirements for the flow CLI tool is a configuration file that defines the different FNAA servers together with the credentials to use. An example of this configuration file follows:<a href="#section-6.3-2" class="pilcrow">¶</a></p>
-</section>
+<div class="alignLeft art-text artwork" id="section-6.3-3">
+<pre>
+ignatius ~/ 0$cat .flow.yml
+agents:
+  -
+    name: fnaa-unix
+    fqdn: fnaa.unix.ar
+    username: test
+    password: test
+    prefix: unix.ar-
+  -
+    name: fnaa-emiliano
+    fqdn: fnaa.emiliano.ar
+    username: test
+    password: test
+    prefix: emiliano.ar-
+
+namespaces:
+  -
+    name: flows.unix.ar
+    agent: fnaa-unix
+  -
+    name: flows.emiliano.ar
+    agent: fnaa-emiliano
+
+</pre><a href="#section-6.3-3" class="pilcrow">¶</a>
 </div>
-<div id="agents">
-<section id="section-6.4">
-        <h3 id="name-agents">
-<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-agents" class="section-name selfRef">agents:</a>
-        </h3>
-<p id="section-6.4-1">name: fnaa-unix
-fqdn: fnaa.unix.ar
-username: test
-password: test
-prefix: unix.ar-
--
-name: fnaa-emiliano
-fqdn: fnaa.emiliano.ar
-username: test
-password: test
-prefix: emiliano.ar-<a href="#section-6.4-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="namespaces">
-<section id="section-6.5">
-        <h3 id="name-namespaces">
-<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-namespaces" class="section-name selfRef">namespaces:</a>
-        </h3>
-<p id="section-6.5-1">name: flows.unix.ar
-agent: fnaa-unix
--
-name: flows.emiliano.ar
-agent: fnaa-emiliano<a href="#section-6.5-1" class="pilcrow">¶</a></p>
-<p id="section-6.5-2">In this file, we can see that there are two FNAA instances described with FQDN fnaa.unix.ar and fnaa.emiliano.ar. Then, there are two namespaces: one called flow.unix.ar hosted on fnaa-unix and second namespace flows.emiliano.ar hosted on fnaa-emiliano. This configuration enables the FNUA to interact with two different FNAA, each of which is hosting different Flow Namespaces.<a href="#section-6.5-2" class="pilcrow">¶</a></p>
-<p id="section-6.5-3">Once the configuration file has been saved, the flow CLI tool can now be used. In the following sections, we will show how to use the minimum functionalities required for the Open Network using this CLI tool.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4">In this file, we can see that there are two FNAA instances described with FQDN fnaa.unix.ar and fnaa.emiliano.ar. Then, there are two namespaces: one called flow.unix.ar hosted on fnaa-unix and second namespace flows.emiliano.ar hosted on fnaa-emiliano. This configuration enables the FNUA to interact with two different FNAA, each of which is hosting different Flow Namespaces.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.3-5">Once the configuration file has been saved, the flow CLI tool can now be used. In the following sections, we will show how to use the minimum functionalities required for the Open Network using this CLI tool.<a href="#section-6.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use-cases">
-<section id="section-6.6">
+<section id="section-6.4">
         <h3 id="name-use-cases">
-<a href="#section-6.6" class="section-number selfRef">6.6. </a><a href="#name-use-cases" class="section-name selfRef">Use cases</a>
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-use-cases" class="section-name selfRef">Use cases</a>
         </h3>
-<p id="section-6.6-1">### Use case 1: Authenticating a user
-After the connection is established, the first command that the client must execute is the authentication command. As previously defined in Chapter 5, every FNAA client must first authenticate in order to execute commands. Thus, the authentication challenge must be supported both by the FNAA as well as the FNUA.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
-<p id="section-6.6-2">It is worth mentioning that the chosen authentication mechanism for this PoC is SASL Plain. This command can be extended furtherly with other mechanisms in later versions. However, this simple authentication mechanism is sufficient to demonstrate the authentication step in the FNAP.<a href="#section-6.6-2" class="pilcrow">¶</a></p>
-<p id="section-6.6-3">The SASL Plain Authentication implies sending the username and the password encoded in Base64. The way to obtain the Base64 if we consider a user test with password test, is as follows:
+<p id="section-6.4-1">### Use case 1: Authenticating a user
+After the connection is established, the first command that the client must execute is the authentication command. As previously defined in Chapter 5, every FNAA client must first authenticate in order to execute commands. Thus, the authentication challenge must be supported both by the FNAA as well as the FNUA.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+<p id="section-6.4-2">It is worth mentioning that the chosen authentication mechanism for this PoC is SASL Plain. This command can be extended furtherly with other mechanisms in later versions. However, this simple authentication mechanism is sufficient to demonstrate the authentication step in the FNAP.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-3">
+<pre>
+The SASL Plain Authentication implies sending the username and the password encoded in Base64. The way to obtain the Base64 if we consider a user test with password test, is as follows:
 ignatius ~ 0$echo -en "\0test\0test" | base64
-AHRlc3QAdGVzdA==<a href="#section-6.6-3" class="pilcrow">¶</a></p>
-<p id="section-6.6-4">Now, we can use this Base64 string to authenticate with the FNAA. First, we need to launch the FNAA server instance:<a href="#section-6.6-4" class="pilcrow">¶</a></p>
-<p id="section-6.6-5">ignatius~/ $./fnaad --config ./fnaad_flow.unix.ar.yaml
+AHRlc3QAdGVzdA==
+</pre><a href="#section-6.4-3" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4-4">Now, we can use this Base64 string to authenticate with the FNAA. First, we need to launch the FNAA server instance:<a href="#section-6.4-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-5">
+<pre>
+ignatius~/ $./fnaad --config ./fnaad_flow.unix.ar.yaml
 main.go:41: Using config file: ./fnaad_flow.unix.ar.yaml
 main.go:57:     Using config file: ./fnaad_flow.unix.ar.yaml
 server.go:103: Listen on [::]:61000
-server.go:105: Accept a connection request.<a href="#section-6.6-5" class="pilcrow">¶</a></p>
-<p id="section-6.6-6">Then, we can connect to the TCP port in which the FNAA is listening:<a href="#section-6.6-6" class="pilcrow">¶</a></p>
-<p id="section-6.6-7">ignatius ~ 1$telnet localhost 61000
+server.go:105: Accept a connection request.
+</pre><a href="#section-6.4-5" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4-6">Then, we can connect to the TCP port in which the FNAA is listening:<a href="#section-6.4-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-7">
+<pre>
+ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
@@ -33485,16 +33496,20 @@ Escape character is '^]'.
 AUTHENTICATE PLAIN
 220 OK
 AHRlc3QAdGVzdA==
-220 Authenticated<a href="#section-6.6-7" class="pilcrow">¶</a></p>
-<p id="section-6.6-8">Once the client is authenticated, it can start executing FNAP commands to manage the Flow Namespace of the authenticated user. For simplicity purposes, in this Proof of Concept, we will be using a single user.<a href="#section-6.6-8" class="pilcrow">¶</a></p>
-<p id="section-6.6-9">In the case of the CLI tool, there is no need to perform an authentication step, since every command the user executes will be preceded by an authentication in the server.<a href="#section-6.6-9" class="pilcrow">¶</a></p>
+220 Authenticated
+</pre><a href="#section-6.4-7" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4-8">Once the client is authenticated, it can start executing FNAP commands to manage the Flow Namespace of the authenticated user. For simplicity purposes, in this Proof of Concept, we will be using a single user.<a href="#section-6.4-8" class="pilcrow">¶</a></p>
+<p id="section-6.4-9">In the case of the CLI tool, there is no need to perform an authentication step, since every command the user executes will be preceded by an authentication in the server.<a href="#section-6.4-9" class="pilcrow">¶</a></p>
 <div id="use-case-2-creating-a-flow">
-<section id="section-6.6.1">
+<section id="section-6.4.1">
           <h4 id="name-use-case-2-creating-a-flow">
-<a href="#section-6.6.1" class="section-number selfRef">6.6.1. </a><a href="#name-use-case-2-creating-a-flow" class="section-name selfRef">Use case 2: Creating a flow</a>
+<a href="#section-6.4.1" class="section-number selfRef">6.4.1. </a><a href="#name-use-case-2-creating-a-flow" class="section-name selfRef">Use case 2: Creating a flow</a>
           </h4>
-<p id="section-6.6.1-1">Once the authentication is successful, the client can now create a new Flow.  The way to do this using the CLI tool would be:<a href="#section-6.6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-2">ignatius ~/ 0$./fnua create flow time.flow.unix.ar
+<p id="section-6.4.1-1">Once the authentication is successful, the client can now create a new Flow.  The way to do this using the CLI tool would be:<a href="#section-6.4.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.1-2">
+<pre>
+ignatius ~/ 0$./fnua create flow time.flow.unix.ar
 Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
 Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
 Executing successful: [fnaa.unix.ar.    604800  IN      SRV     0 0 61000 fnaa.unix.ar.]
@@ -33514,10 +33529,13 @@ C: Sending command CREATE FLOW time.flow.unix.ar
 C: Wrote (31 bytes written)
 C: Server sent OK for command CREATE FLOW time.flow.unix.ar
 C: Sending command QUIT
-C: Wrote (6 bytes written)<a href="#section-6.6.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-3">The client has discovered the FNAA server for Flow Namespace flow.unix.ar by means of SRV DNS records. Thus, it obtained both the FQDN of the FNAA together with the TCP port where it is listening, in this case 61000. Once the resolution process ends, the FNUA connects to the FNAA. First, the FNUA authenticates with the FNAA and then it executes the create flow command.<a href="#section-6.6.1-3" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-4">If we were to simulate the same behavior using a raw TCP connection, the following steps would be executed:<a href="#section-6.6.1-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-5">ignatius ~ 1$telnet localhost 61000
+C: Wrote (6 bytes written)
+</pre><a href="#section-6.4.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1-3">The client has discovered the FNAA server for Flow Namespace flow.unix.ar by means of SRV DNS records. Thus, it obtained both the FQDN of the FNAA together with the TCP port where it is listening, in this case 61000. Once the resolution process ends, the FNUA connects to the FNAA. First, the FNUA authenticates with the FNAA and then it executes the create flow command.<a href="#section-6.4.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.4.1-4">If we were to simulate the same behavior using a raw TCP connection, the following steps would be executed:
+~~~
+ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
@@ -33527,17 +33545,20 @@ AUTHENTICATE PLAIN
 AHRlc3QAdGVzdA==
 220 Authenticated
 CREATE FLOW time.flows.unix.ar
-220 OK time.flows.unix.ar<a href="#section-6.6.1-5" class="pilcrow">¶</a></p>
-<p id="section-6.6.1-6">Now, the client has created a new flow called time.flows.unix.ar located in the flows.unix.ar namespace. The FNAA in background has created a Kafka Topic as well as the necessary DNS entries for name resolution.<a href="#section-6.6.1-6" class="pilcrow">¶</a></p>
+220 OK time.flows.unix.ar
+~~~<a href="#section-6.4.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.4.1-5">Now, the client has created a new flow called time.flows.unix.ar located in the flows.unix.ar namespace. The FNAA in background has created a Kafka Topic as well as the necessary DNS entries for name resolution.<a href="#section-6.4.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use-case-3-describing-a-flow">
-<section id="section-6.6.2">
+<section id="section-6.4.2">
           <h4 id="name-use-case-3-describing-a-flo">
-<a href="#section-6.6.2" class="section-number selfRef">6.6.2. </a><a href="#name-use-case-3-describing-a-flo" class="section-name selfRef">Use case 3: Describing a flow</a>
+<a href="#section-6.4.2" class="section-number selfRef">6.4.2. </a><a href="#name-use-case-3-describing-a-flo" class="section-name selfRef">Use case 3: Describing a flow</a>
           </h4>
-<p id="section-6.6.2-1">Once a flow has been created, we can obtain information of if by executing the following command using the CLI tool:<a href="#section-6.6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-2">ignatius ~/ 1$./fnua describe flow time.flow.unix.ar
+<p id="section-6.4.2-1">Once a flow has been created, we can obtain information of if by executing the following command using the CLI tool:<a href="#section-6.4.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.2-2">
+<pre>
+ignatius ~/ 1$./fnua describe flow time.flow.unix.ar
 Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
 Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
 Executing successful: [fnaa.unix.ar.    604800  IN      SRV     0 0 61000 fnaa.unix.ar.]
@@ -33565,9 +33586,13 @@ server=kf1.unix.ar:9092
 Flow time.flow.unix.ar described successfully
 Quitting
 C: Sending command QUIT
-C: Wrote (6 bytes written)<a href="#section-6.6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-3">In the output of the describe command we can see all the necessary information to connect to the Flow called time.flow.unix.ar: (i) the type of Event Broker is Kafka, (ii) the Kafka topic has the same name of the flow and (iii) the Kafka Bootstrap server with port is provided. If we were to obtain this information using a manual connection, the steps would be:<a href="#section-6.6.2-3" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-4">ignatius ~ 1$telnet localhost 61000
+C: Wrote (6 bytes written)
+</pre><a href="#section-6.4.2-2" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.2-3">In the output of the describe command we can see all the necessary information to connect to the Flow called time.flow.unix.ar: (i) the type of Event Broker is Kafka, (ii) the Kafka topic has the same name of the flow and (iii) the Kafka Bootstrap server with port is provided. If we were to obtain this information using a manual connection, the steps would be:<a href="#section-6.4.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.2-4">
+<pre>
+ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
@@ -33577,23 +33602,26 @@ AUTHENTICATE PLAIN
 AHRlc3QAdGVzdA==
 220 Authenticated
 DESCRIBE FLOW time.flows.unix.ar
-220 DATA 
+220 DATA
 flow=time.flows.unix.ar
 type=kafka
 topic=time.flows.unix.ar
 server=kf1.unix.ar:9092
-220 OK<a href="#section-6.6.2-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.2-5">Now, we can use this information to connect to the Kafka topic and start producing or consuming events.<a href="#section-6.6.2-5" class="pilcrow">¶</a></p>
+220 OK
+</pre><a href="#section-6.4.2-4" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.2-5">Now, we can use this information to connect to the Kafka topic and start producing or consuming events.<a href="#section-6.4.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use-case-4-subscribing-to-a-remote-flow">
-<section id="section-6.6.3">
+<section id="section-6.4.3">
           <h4 id="name-use-case-4-subscribing-to-a">
-<a href="#section-6.6.3" class="section-number selfRef">6.6.3. </a><a href="#name-use-case-4-subscribing-to-a" class="section-name selfRef">Use case 4: Subscribing to a remote flow</a>
+<a href="#section-6.4.3" class="section-number selfRef">6.4.3. </a><a href="#name-use-case-4-subscribing-to-a" class="section-name selfRef">Use case 4: Subscribing to a remote flow</a>
           </h4>
-<p id="section-6.6.3-1">In this section, we will show how a subscription can be set up. When a user commands the FNAA to create a new subscription to a remote Flow, the local FNAA server first needs to discover the remote FNAA server. Once the server is discovered by means of DNS resolution, the local FNAA contacts the remote FNAA, authenticates the user and then executes a subscription command.<a href="#section-6.6.3-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-2">Thus, the initial communication between the FNUA and the FNAA, in which the user indicates to subscribe to a remote flow, would be as follows:<a href="#section-6.6.3-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-3">ignatius ~ 1$telnet localhost 61000
+<p id="section-6.4.3-1">In this section, we will show how a subscription can be set up. When a user commands the FNAA to create a new subscription to a remote Flow, the local FNAA server first needs to discover the remote FNAA server. Once the server is discovered by means of DNS resolution, the local FNAA contacts the remote FNAA, authenticates the user and then executes a subscription command.<a href="#section-6.4.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-2">Thus, the initial communication between the FNUA and the FNAA, in which the user indicates to subscribe to a remote flow, would be as follows:
+~~~
+ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
@@ -33605,12 +33633,15 @@ AHRlc3QAdGVzdA==
 SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
 220 DATA
 ksdj898.time.flows.unix.ar
-220 OK<a href="#section-6.6.3-3" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-4">Once the user is authenticated, a SUBSCRIBE command is executed. This command indicates first the remote flow to subscribe to. Then, it also specifies with LOCAL the flow where the remote events will be written. In this example, the remote flow to subscribe to is time.flows.unix.ar, and the local flow is emiliano.ar-time.flows.unix.ar. Basically, a new flow has been created, emiliano.ar-time.flows.unix.ar, where all the events of flow time.flows.unix.ar will be written.<a href="#section-6.6.3-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-5">The server answers back with a new Flow URI, in this case ksdj898.time.flows.unix.ar. This Flow URI indicates a copy of the original flow time.flows.unix.ar created for this subscription. Thus, the remote FNAA has full control over this subscription, being able to revoke it by simply deleting this flow or applying Quality of Service rules.<a href="#section-6.6.3-5" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-6">The remote FNAA has set up a Bridge Processor to transcribe messages in topic time.flows.unix.ar to the new topic ksdj898.time.flows.unix.ar. Another alternative to a Bridge Processor would be a Distributor Processor, which could be optimized for a Flow with high demand. Moreover, instead of creating a single Bridge Processor per subscription, a Distributor Processor could be used, in order to have a single consumer of the source flow and write the events to several subscription flows.<a href="#section-6.6.3-6" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-7">The user could use the FNUA CLI tool to execute this command in the following manner:<a href="#section-6.6.3-7" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-8">ignatius ~ 0$./fnua --config=./flow.yml subscribe time.flows.unix.ar --nameserver 172.17.0.2 -d --agent fnaa-emiliano
+220 OK
+~~~<a href="#section-6.4.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-3">Once the user is authenticated, a SUBSCRIBE command is executed. This command indicates first the remote flow to subscribe to. Then, it also specifies with LOCAL the flow where the remote events will be written. In this example, the remote flow to subscribe to is time.flows.unix.ar, and the local flow is emiliano.ar-time.flows.unix.ar. Basically, a new flow has been created, emiliano.ar-time.flows.unix.ar, where all the events of flow time.flows.unix.ar will be written.<a href="#section-6.4.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-4">The server answers back with a new Flow URI, in this case ksdj898.time.flows.unix.ar. This Flow URI indicates a copy of the original flow time.flows.unix.ar created for this subscription. Thus, the remote FNAA has full control over this subscription, being able to revoke it by simply deleting this flow or applying Quality of Service rules.<a href="#section-6.4.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-5">The remote FNAA has set up a Bridge Processor to transcribe messages in topic time.flows.unix.ar to the new topic ksdj898.time.flows.unix.ar. Another alternative to a Bridge Processor would be a Distributor Processor, which could be optimized for a Flow with high demand. Moreover, instead of creating a single Bridge Processor per subscription, a Distributor Processor could be used, in order to have a single consumer of the source flow and write the events to several subscription flows.<a href="#section-6.4.3-5" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-6">The user could use the FNUA CLI tool to execute this command in the following manner:<a href="#section-6.4.3-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.3-7">
+<pre>
+ignatius ~ 0$./fnua --config=./flow.yml subscribe time.flows.unix.ar --nameserver 172.17.0.2 -d --agent fnaa-emiliano
 Initializing initConfig
     Using config file: ./flow.yml
 Subscribe to flow
@@ -33642,10 +33673,14 @@ Server responded: emiliano.ar-time.flows.unix.ar SUBSCRIBED TO ksdj898.time.flow
 Quitting
 C: Sending command QUIT
 C: Wrote (6 bytes written)
-Connection closed<a href="#section-6.6.3-8" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-9">This interaction of the FNUA with the FNAA of the Flow Namespace emiliano.ar (fnaa-emiliano) has trigger an interaction with the FNAA of unix.ar Flow Namespace (fnaa-unix). This means that before fnaa-emiliano was able to respond to the FNUA, a new connection was opened to the remote FNAA and the SUBSCRIBE command was executed.<a href="#section-6.6.3-9" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-10">The log of fnaa-emiliano when the SUBCRIBE command was issued looks as follows:<a href="#section-6.6.3-10" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-11">server.go:111: Handle incoming messages.
+Connection closed
+</pre><a href="#section-6.4.3-7" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.3-8">This interaction of the FNUA with the FNAA of the Flow Namespace emiliano.ar (fnaa-emiliano) has trigger an interaction with the FNAA of unix.ar Flow Namespace (fnaa-unix). This means that before fnaa-emiliano was able to respond to the FNUA, a new connection was opened to the remote FNAA and the SUBSCRIBE command was executed.<a href="#section-6.4.3-8" class="pilcrow">¶</a></p>
+<p id="section-6.4.3-9">The log of fnaa-emiliano when the SUBCRIBE command was issued looks as follows:<a href="#section-6.4.3-9" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.3-10">
+<pre>
+server.go:111: Handle incoming messages.
 server.go:105: Accept a connection request.
 server.go:253: User authenticated
 server.go:347: FULL COMMAND: SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
@@ -33668,9 +33703,13 @@ client.go:88: C: Wrote (30 bytes written)
 client.go:112: C: Server sent OK for command SUBSCRIBE time.flows.unix.ar
 server.go:456: Flow time.flows.unix.ar subscribed successfully
 server.go:457: Server responded: ksdj898.time.flows.unix.ar
-server.go:459: Quitting<a href="#section-6.6.3-11" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-12">We can see how fnaa-emiliano had to trigger a client subroutine to contact the remote fnaa-unix. Once the server FQDN, IP and Port is discovered by means of DNS, a new connection is established and the SUBSCRIBE command is issued. Here we can see the log of fnaa-unix:<a href="#section-6.6.3-12" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-13">server.go:111: Handle incoming messages.
+server.go:459: Quitting
+</pre><a href="#section-6.4.3-10" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.3-11">We can see how fnaa-emiliano had to trigger a client subroutine to contact the remote fnaa-unix. Once the server FQDN, IP and Port is discovered by means of DNS, a new connection is established and the SUBSCRIBE command is issued. Here we can see the log of fnaa-unix:<a href="#section-6.4.3-11" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4.3-12">
+<pre>
+server.go:111: Handle incoming messages.
 server.go:105: Accept a connection request.
 server.go:253: User authenticated
 server.go:139: Received command: subscribe
@@ -33680,25 +33719,27 @@ server.go:368: Creating new topic ksdj898.time.flows.unix.ar in Apache Kafka ins
 server.go:369: Creating Flow Processor src=time.flows.unix.ar dst=ksdj898.time.flows.unix.ar
 server.go:370: Adding DNS Records for ksdj898.time.flows.unix.ar
 server.go:372: Flow enabled ksdj898.time.flows.unix.ar
-server.go:139: Received command: quit<a href="#section-6.6.3-13" class="pilcrow">¶</a></p>
-<p id="section-6.6.3-14">Thus, we were able to set up a new subscription in fnaa-emiliano that trigger a background interaction with fnaa-unix.<a href="#section-6.6.3-14" class="pilcrow">¶</a></p>
+server.go:139: Received command: quit
+</pre><a href="#section-6.4.3-12" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.3-13">Thus, we were able to set up a new subscription in fnaa-emiliano that trigger a background interaction with fnaa-unix.<a href="#section-6.4.3-13" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="results-of-the-poc">
-<section id="section-6.7">
+<section id="section-6.5">
         <h3 id="name-results-of-the-poc">
-<a href="#section-6.7" class="section-number selfRef">6.7. </a><a href="#name-results-of-the-poc" class="section-name selfRef">Results of the PoC</a>
+<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-results-of-the-poc" class="section-name selfRef">Results of the PoC</a>
         </h3>
-<p id="section-6.7-1">We can confirm the feasibility of the overall Event Streaming Open Network architecture. The test of the proposed protocol FNAP and its implementation, both in the FNAA and FNUA (CLI application), show that the architecture can be employed for the purpose of distributed subscription management among Network Participants.<a href="#section-6.7-1" class="pilcrow">¶</a></p>
-<p id="section-6.7-2">The minimum functionalities defined both for the Network Participants and the Users were met. Network Participants can run this type of service by means of a server application, the FNAA server. Also, the CLI-tool resulted in a convenient low-level method to interact with a FNAA server.<a href="#section-6.7-2" class="pilcrow">¶</a></p>
-<p id="section-6.7-3">In further implementations, the server application should be optimized as well as secured, for instance with a TLS handshake. Also, the CLI-tool could be enhanced by a web-based application with a friendly user interface.<a href="#section-6.7-3" class="pilcrow">¶</a></p>
-<p id="section-6.7-4">Nevertheless, the challenge for a stable implementation of both components is the possibility of supporting different Event Brokers and their evolution. Not only Apache Kafka should be supported but also the main Public Cloud providers events solutions, such as AWS SQS or Google Cloud Pub/Sub. Since the Event Brokers are continuously evolving, the implementation of the FNAA component should keep up both with the API and new functionalities of these vendors.<a href="#section-6.7-4" class="pilcrow">¶</a></p>
-<p id="section-6.7-5">Regarding the protocol design, it would be needed to enhance the serialization of the exchanged data. In this sense, it could be convenient to define a packet header for the overall interaction between the FNAA both with remote FNAA as well as with FNUA.<a href="#section-6.7-5" class="pilcrow">¶</a></p>
-<p id="section-6.7-6">Regarding the subscription use case, it would be necessary to establish a convenient format for the server response. Currently, the server is returning a key/value structure with the details of the Flow. This structure may not be the most adequate, since it may differ depending on the Event Broker used.<a href="#section-6.7-6" class="pilcrow">¶</a></p>
-<p id="section-6.7-7">Also, the security aspect needs further analysis and design since its fragility could lead to great economical damage for organizations. Thus, it would be recommended to review the different security controls needed for this solution as part of an Information Security Management System.<a href="#section-6.7-7" class="pilcrow">¶</a></p>
-<p id="section-6.7-8">Finally, the implementation should leverage the Cloud Native functionalities provided by the Kubernetes API. For example, the FNAA should trigger the deployment of Flow Processors on demand, in order to provide isolated computing resources for each subscription. Also, a Kubernetes resource could be developed to use the kubectl CLI tool for management, instead of a custom CLI tool.<a href="#section-6.7-8" class="pilcrow">¶</a></p>
+<p id="section-6.5-1">We can confirm the feasibility of the overall Event Streaming Open Network architecture. The test of the proposed protocol FNAP and its implementation, both in the FNAA and FNUA (CLI application), show that the architecture can be employed for the purpose of distributed subscription management among Network Participants.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.5-2">The minimum functionalities defined both for the Network Participants and the Users were met. Network Participants can run this type of service by means of a server application, the FNAA server. Also, the CLI-tool resulted in a convenient low-level method to interact with a FNAA server.<a href="#section-6.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.5-3">In further implementations, the server application should be optimized as well as secured, for instance with a TLS handshake. Also, the CLI-tool could be enhanced by a web-based application with a friendly user interface.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+<p id="section-6.5-4">Nevertheless, the challenge for a stable implementation of both components is the possibility of supporting different Event Brokers and their evolution. Not only Apache Kafka should be supported but also the main Public Cloud providers events solutions, such as AWS SQS or Google Cloud Pub/Sub. Since the Event Brokers are continuously evolving, the implementation of the FNAA component should keep up both with the API and new functionalities of these vendors.<a href="#section-6.5-4" class="pilcrow">¶</a></p>
+<p id="section-6.5-5">Regarding the protocol design, it would be needed to enhance the serialization of the exchanged data. In this sense, it could be convenient to define a packet header for the overall interaction between the FNAA both with remote FNAA as well as with FNUA.<a href="#section-6.5-5" class="pilcrow">¶</a></p>
+<p id="section-6.5-6">Regarding the subscription use case, it would be necessary to establish a convenient format for the server response. Currently, the server is returning a key/value structure with the details of the Flow. This structure may not be the most adequate, since it may differ depending on the Event Broker used.<a href="#section-6.5-6" class="pilcrow">¶</a></p>
+<p id="section-6.5-7">Also, the security aspect needs further analysis and design since its fragility could lead to great economical damage for organizations. Thus, it would be recommended to review the different security controls needed for this solution as part of an Information Security Management System.<a href="#section-6.5-7" class="pilcrow">¶</a></p>
+<p id="section-6.5-8">Finally, the implementation should leverage the Cloud Native functionalities provided by the Kubernetes API. For example, the FNAA should trigger the deployment of Flow Processors on demand, in order to provide isolated computing resources for each subscription. Also, a Kubernetes resource could be developed to use the kubectl CLI tool for management, instead of a custom CLI tool.<a href="#section-6.5-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
