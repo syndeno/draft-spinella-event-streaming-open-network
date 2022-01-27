@@ -278,7 +278,7 @@ flow://created.invoice.finance.syndeno.com:
 
 In Figure 4, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
 
-![Figure 4: High-level overview of the interactions with the Flow Name Service component.](./images/Figure2.svg)
+![Figure 4: High-level overview of the interactions with the Flow Name Service component.](./images/Figure4.svg)
 Figure 4: High-level overview of the interactions with the Flow Name Service component.
   
 In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
