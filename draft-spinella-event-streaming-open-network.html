@@ -1253,30 +1253,30 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.3">
                     <p id="section-toc.1-1.6.2.6.2.3.1"><a href="#section-6.6.3" class="xref">6.6.3</a>.  <a href="#name-use-case-4-subscribing-to-a" class="xref">Use case 4: Subscribing to a remote flow</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.4">
-                    <p id="section-toc.1-1.6.2.6.2.4.1"><a href="#section-6.6.4" class="xref">6.6.4</a>.  <a href="#name-results-of-the-poc" class="xref">Results of the PoC</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.5">
-                    <p id="section-toc.1-1.6.2.6.2.5.1"><a href="#section-6.6.5" class="xref">6.6.5</a>.  <a href="#name-summary-conclusions" class="xref">Summary &amp; Conclusions</a></p>
-</li>
                 </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
+                <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="xref">6.7</a>.  <a href="#name-results-of-the-poc" class="xref">Results of the PoC</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-summary-conclusions" class="xref">Summary &amp; Conclusions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -33684,63 +33684,63 @@ server.go:139: Received command: quit<a href="#section-6.6.3-13" class="pilcrow"
 <p id="section-6.6.3-14">Thus, we were able to set up a new subscription in fnaa-emiliano that trigger a background interaction with fnaa-unix.<a href="#section-6.6.3-14" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
 <div id="results-of-the-poc">
-<section id="section-6.6.4">
-          <h4 id="name-results-of-the-poc">
-<a href="#section-6.6.4" class="section-number selfRef">6.6.4. </a><a href="#name-results-of-the-poc" class="section-name selfRef">Results of the PoC</a>
-          </h4>
-<p id="section-6.6.4-1">We can confirm the feasibility of the overall Event Streaming Open Network architecture. The test of the proposed protocol FNAP and its implementation, both in the FNAA and FNUA (CLI application), show that the architecture can be employed for the purpose of distributed subscription management among Network Participants.<a href="#section-6.6.4-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-2">The minimum functionalities defined both for the Network Participants and the Users were met. Network Participants can run this type of service by means of a server application, the FNAA server. Also, the CLI-tool resulted in a convenient low-level method to interact with a FNAA server.<a href="#section-6.6.4-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-3">In further implementations, the server application should be optimized as well as secured, for instance with a TLS handshake. Also, the CLI-tool could be enhanced by a web-based application with a friendly user interface.<a href="#section-6.6.4-3" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-4">Nevertheless, the challenge for a stable implementation of both components is the possibility of supporting different Event Brokers and their evolution. Not only Apache Kafka should be supported but also the main Public Cloud providers events solutions, such as AWS SQS or Google Cloud Pub/Sub. Since the Event Brokers are continuously evolving, the implementation of the FNAA component should keep up both with the API and new functionalities of these vendors.<a href="#section-6.6.4-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-5">Regarding the protocol design, it would be needed to enhance the serialization of the exchanged data. In this sense, it could be convenient to define a packet header for the overall interaction between the FNAA both with remote FNAA as well as with FNUA.<a href="#section-6.6.4-5" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-6">Regarding the subscription use case, it would be necessary to establish a convenient format for the server response. Currently, the server is returning a key/value structure with the details of the Flow. This structure may not be the most adequate, since it may differ depending on the Event Broker used.<a href="#section-6.6.4-6" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-7">Also, the security aspect needs further analysis and design since its fragility could lead to great economical damage for organizations. Thus, it would be recommended to review the different security controls needed for this solution as part of an Information Security Management System.<a href="#section-6.6.4-7" class="pilcrow">¶</a></p>
-<p id="section-6.6.4-8">Finally, the implementation should leverage the Cloud Native functionalities provided by the Kubernetes API. For example, the FNAA should trigger the deployment of Flow Processors on demand, in order to provide isolated computing resources for each subscription. Also, a Kubernetes resource could be developed to use the kubectl CLI tool for management, instead of a custom CLI tool.<a href="#section-6.6.4-8" class="pilcrow">¶</a></p>
+<section id="section-6.7">
+        <h3 id="name-results-of-the-poc">
+<a href="#section-6.7" class="section-number selfRef">6.7. </a><a href="#name-results-of-the-poc" class="section-name selfRef">Results of the PoC</a>
+        </h3>
+<p id="section-6.7-1">We can confirm the feasibility of the overall Event Streaming Open Network architecture. The test of the proposed protocol FNAP and its implementation, both in the FNAA and FNUA (CLI application), show that the architecture can be employed for the purpose of distributed subscription management among Network Participants.<a href="#section-6.7-1" class="pilcrow">¶</a></p>
+<p id="section-6.7-2">The minimum functionalities defined both for the Network Participants and the Users were met. Network Participants can run this type of service by means of a server application, the FNAA server. Also, the CLI-tool resulted in a convenient low-level method to interact with a FNAA server.<a href="#section-6.7-2" class="pilcrow">¶</a></p>
+<p id="section-6.7-3">In further implementations, the server application should be optimized as well as secured, for instance with a TLS handshake. Also, the CLI-tool could be enhanced by a web-based application with a friendly user interface.<a href="#section-6.7-3" class="pilcrow">¶</a></p>
+<p id="section-6.7-4">Nevertheless, the challenge for a stable implementation of both components is the possibility of supporting different Event Brokers and their evolution. Not only Apache Kafka should be supported but also the main Public Cloud providers events solutions, such as AWS SQS or Google Cloud Pub/Sub. Since the Event Brokers are continuously evolving, the implementation of the FNAA component should keep up both with the API and new functionalities of these vendors.<a href="#section-6.7-4" class="pilcrow">¶</a></p>
+<p id="section-6.7-5">Regarding the protocol design, it would be needed to enhance the serialization of the exchanged data. In this sense, it could be convenient to define a packet header for the overall interaction between the FNAA both with remote FNAA as well as with FNUA.<a href="#section-6.7-5" class="pilcrow">¶</a></p>
+<p id="section-6.7-6">Regarding the subscription use case, it would be necessary to establish a convenient format for the server response. Currently, the server is returning a key/value structure with the details of the Flow. This structure may not be the most adequate, since it may differ depending on the Event Broker used.<a href="#section-6.7-6" class="pilcrow">¶</a></p>
+<p id="section-6.7-7">Also, the security aspect needs further analysis and design since its fragility could lead to great economical damage for organizations. Thus, it would be recommended to review the different security controls needed for this solution as part of an Information Security Management System.<a href="#section-6.7-7" class="pilcrow">¶</a></p>
+<p id="section-6.7-8">Finally, the implementation should leverage the Cloud Native functionalities provided by the Kubernetes API. For example, the FNAA should trigger the deployment of Flow Processors on demand, in order to provide isolated computing resources for each subscription. Also, a Kubernetes resource could be developed to use the kubectl CLI tool for management, instead of a custom CLI tool.<a href="#section-6.7-8" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="summary-conclusions">
-<section id="section-6.6.5">
-          <h4 id="name-summary-conclusions">
-<a href="#section-6.6.5" class="section-number selfRef">6.6.5. </a><a href="#name-summary-conclusions" class="section-name selfRef">Summary &amp; Conclusions</a>
-          </h4>
-<p id="section-6.6.5-1">In this chapter we will provide a summary of everything that has been described in this document as well as some conclusions about it.<a href="#section-6.6.5-1" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-2">We have identified a use case for which there is currently no adequate solution provided by existing tools. This use case is based on the cross-organization integration of real-time event streams. Nowadays, organizations intending to integrate these kind of data streams struggle with offline communication to achieve a common interface for integration. In this context, we proposed an Open Network for Event Streaming as a possible solution for this difficulty.<a href="#section-6.6.5-2" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-3">For this Open Network, we have followed the main necessities from the technical perspective. While there already exist many components that can be leveraged, some components require analysis, design, and implementation. Then, we referred to the Commons Infrastructure literature in order to show how Event Streaming can be considered an Infrastructure Resource that can enable downstream productive activities. Finally, we established the main guidelines that an Open Network should follow, basing these definitions on Free, Open &amp; Neutral Networks.<a href="#section-6.6.5-3" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-4">Using the previous definitions, we have designed an architecture for the Event Streaming Open Network, establishing the components that the different Network Participants should implement in order to participate in the network. After providing a thorough description of all the components, we showed some use cases of integration among different Network Participants.<a href="#section-6.6.5-4" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-5">Once the architecture was defined, we proposed an implementation approach which describes the existing components that can be leveraged as well as those that need to be developed from scratch. The outcome was that a server-side application called FNAA had to be developed. This application implements the protocol FNAP and can be accessed by a client application, which we named FNUA.<a href="#section-6.6.5-5" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-6">Finally, we proved the feasibility of the proposed architecture by providing an implementation of the minimum functionalities required, in the form of a Proof of Concept. The results of this PoC were encouraging since it was possible to implement the initial functionalities for the FNAA and FNUA components.<a href="#section-6.6.5-6" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-7">As conclusion, we can mention that there is great potential for an Open Network for Event Streaming among organizations. In the same way the email infrastructure acts as an open network for electronic communications among people, this kind of network would enable developers to integrate real-time event streams while minimizing offline agreement of interfaces and technologies.<a href="#section-6.6.5-7" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-8">However, there are many difficulties that could be furtherly worked on. First, a robust implementation for the Event Streaming Open Network main components must be provided, mainly for the FNAA and FNUA. In order to achieve an acceptable level of quality and stability, the development of a community around the project is needed.<a href="#section-6.6.5-8" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-9">Secondly, we found that the proposed architecture is a convenient starting point. However, it can suffer modifications based on the learning process during the implementation. For example, while designing the architecture, we avoided the need of a database for the FNAA component, leveraging on the DNS infrastructure. While this can be sufficient for the minimum functionalities described, it will most probably be necessary for the FNAA to persist data in a database of its own. In this sense, we believe that leveraging the Kubernetes resources model could be a convenient alternative.<a href="#section-6.6.5-9" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-10">Thirdly, during the PoC execution, we identified some difficulties implementing the security functionalities of authentication and authorization. Although we were able to implement an authentication mechanism, the reality indicates that integration with well-established protocols is needed (i.e., OAuth, GSSAPI, etc.).<a href="#section-6.6.5-10" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-11">Finally, there is also the need to leverage on the Cloud Native architecture, basically Kubernetes, to provide hyper-scalability and enable Network Participants to agnostically choose the underlaying infrastructure. The selection of Golang for the PoC implementation showed to be convenient, given the vast number of available libraries for integration of third-party components and services.<a href="#section-6.6.5-11" class="pilcrow">¶</a></p>
-<p id="section-6.6.5-12">Notwithstanding the difficulties, we firmly believe that cross-organization real-time event integration can provide great benefits for society. It would enhance the efficiency of business processes throughout organizations. Also, it would provide broad visibility to the final users, enabling experimentation and entrepreneurship. New business models for existing productive activities could be developed, as well as enabling innovation, which in turn would conform the positive externalities of the Event Streaming Open Network.<a href="#section-6.6.5-12" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
+<section id="section-7">
+      <h2 id="name-summary-conclusions">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-summary-conclusions" class="section-name selfRef">Summary &amp; Conclusions</a>
+      </h2>
+<p id="section-7-1">In this chapter we will provide a summary of everything that has been described in this document as well as some conclusions about it.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">We have identified a use case for which there is currently no adequate solution provided by existing tools. This use case is based on the cross-organization integration of real-time event streams. Nowadays, organizations intending to integrate these kind of data streams struggle with offline communication to achieve a common interface for integration. In this context, we proposed an Open Network for Event Streaming as a possible solution for this difficulty.<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-3">For this Open Network, we have followed the main necessities from the technical perspective. While there already exist many components that can be leveraged, some components require analysis, design, and implementation. Then, we referred to the Commons Infrastructure literature in order to show how Event Streaming can be considered an Infrastructure Resource that can enable downstream productive activities. Finally, we established the main guidelines that an Open Network should follow, basing these definitions on Free, Open &amp; Neutral Networks.<a href="#section-7-3" class="pilcrow">¶</a></p>
+<p id="section-7-4">Using the previous definitions, we have designed an architecture for the Event Streaming Open Network, establishing the components that the different Network Participants should implement in order to participate in the network. After providing a thorough description of all the components, we showed some use cases of integration among different Network Participants.<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-5">Once the architecture was defined, we proposed an implementation approach which describes the existing components that can be leveraged as well as those that need to be developed from scratch. The outcome was that a server-side application called FNAA had to be developed. This application implements the protocol FNAP and can be accessed by a client application, which we named FNUA.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">Finally, we proved the feasibility of the proposed architecture by providing an implementation of the minimum functionalities required, in the form of a Proof of Concept. The results of this PoC were encouraging since it was possible to implement the initial functionalities for the FNAA and FNUA components.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-7">As conclusion, we can mention that there is great potential for an Open Network for Event Streaming among organizations. In the same way the email infrastructure acts as an open network for electronic communications among people, this kind of network would enable developers to integrate real-time event streams while minimizing offline agreement of interfaces and technologies.<a href="#section-7-7" class="pilcrow">¶</a></p>
+<p id="section-7-8">However, there are many difficulties that could be furtherly worked on. First, a robust implementation for the Event Streaming Open Network main components must be provided, mainly for the FNAA and FNUA. In order to achieve an acceptable level of quality and stability, the development of a community around the project is needed.<a href="#section-7-8" class="pilcrow">¶</a></p>
+<p id="section-7-9">Secondly, we found that the proposed architecture is a convenient starting point. However, it can suffer modifications based on the learning process during the implementation. For example, while designing the architecture, we avoided the need of a database for the FNAA component, leveraging on the DNS infrastructure. While this can be sufficient for the minimum functionalities described, it will most probably be necessary for the FNAA to persist data in a database of its own. In this sense, we believe that leveraging the Kubernetes resources model could be a convenient alternative.<a href="#section-7-9" class="pilcrow">¶</a></p>
+<p id="section-7-10">Thirdly, during the PoC execution, we identified some difficulties implementing the security functionalities of authentication and authorization. Although we were able to implement an authentication mechanism, the reality indicates that integration with well-established protocols is needed (i.e., OAuth, GSSAPI, etc.).<a href="#section-7-10" class="pilcrow">¶</a></p>
+<p id="section-7-11">Finally, there is also the need to leverage on the Cloud Native architecture, basically Kubernetes, to provide hyper-scalability and enable Network Participants to agnostically choose the underlaying infrastructure. The selection of Golang for the PoC implementation showed to be convenient, given the vast number of available libraries for integration of third-party components and services.<a href="#section-7-11" class="pilcrow">¶</a></p>
+<p id="section-7-12">Notwithstanding the difficulties, we firmly believe that cross-organization real-time event integration can provide great benefits for society. It would enhance the efficiency of business processes throughout organizations. Also, it would provide broad visibility to the final users, enabling experimentation and entrepreneurship. New business models for existing productive activities could be developed, as well as enabling innovation, which in turn would conform the positive externalities of the Event Streaming Open Network.<a href="#section-7-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-security-considerations">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-7-1">TODO Security<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">TODO Security<a href="#section-8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-iana-considerations">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-8-1">This document has no IANA actions.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">This document has no IANA actions.<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-normative-references">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>

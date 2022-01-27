@@ -107,11 +107,11 @@ Table of Contents
        6.6.1.  Use case 2: Creating a flow
        6.6.2.  Use case 3: Describing a flow
        6.6.3.  Use case 4: Subscribing to a remote flow
-       6.6.4.  Results of the PoC
-       6.6.5.  Summary & Conclusions
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  Normative References
+     6.7.  Results of the PoC
+   7.  Summary & Conclusions
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. Normative References
    Acknowledgments
    Author's Address
 
@@ -1831,7 +1831,7 @@ Table of Contents
    Thus, we were able to set up a new subscription in fnaa-emiliano that
    trigger a background interaction with fnaa-unix.
 
-6.6.4.  Results of the PoC
+6.7.  Results of the PoC
 
    We can confirm the feasibility of the overall Event Streaming Open
    Network architecture.  The test of the proposed protocol FNAP and its
@@ -1882,7 +1882,7 @@ Table of Contents
    Also, a Kubernetes resource could be developed to use the kubectl CLI
    tool for management, instead of a custom CLI tool.
 
-6.6.5.  Summary & Conclusions
+7.  Summary & Conclusions
 
    In this chapter we will provide a summary of everything that has been
    described in this document as well as some conclusions about it.
@@ -1973,15 +1973,15 @@ Table of Contents
    conform the positive externalities of the Event Streaming Open
    Network.
 
-7.  Security Considerations
+8.  Security Considerations
 
    TODO Security
 
-8.  IANA Considerations
+9.  IANA Considerations
 
    This document has no IANA actions.
 
-9.  Normative References
+10.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
