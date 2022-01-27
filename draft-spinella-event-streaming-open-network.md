@@ -855,7 +855,7 @@ server.go:139: Received command: quit
 
 Thus, we were able to set up a new subscription in fnaa-emiliano that trigger a background interaction with fnaa-unix.
 
-### Results of the PoC
+## Results of the PoC
 We can confirm the feasibility of the overall Event Streaming Open Network architecture. The test of the proposed protocol FNAP and its implementation, both in the FNAA and FNUA (CLI application), show that the architecture can be employed for the purpose of distributed subscription management among Network Participants.
 
 The minimum functionalities defined both for the Network Participants and the Users were met. Network Participants can run this type of service by means of a server application, the FNAA server. Also, the CLI-tool resulted in a convenient low-level method to interact with a FNAA server.
@@ -872,7 +872,7 @@ Also, the security aspect needs further analysis and design since its fragility 
 
 Finally, the implementation should leverage the Cloud Native functionalities provided by the Kubernetes API. For example, the FNAA should trigger the deployment of Flow Processors on demand, in order to provide isolated computing resources for each subscription. Also, a Kubernetes resource could be developed to use the kubectl CLI tool for management, instead of a custom CLI tool.
 	
-### Summary & Conclusions
+# Summary & Conclusions
 In this chapter we will provide a summary of everything that has been described in this document as well as some conclusions about it.
 
 We have identified a use case for which there is currently no adequate solution provided by existing tools. This use case is based on the cross-organization integration of real-time event streams. Nowadays, organizations intending to integrate these kind of data streams struggle with offline communication to achieve a common interface for integration. In this context, we proposed an Open Network for Event Streaming as a possible solution for this difficulty.
