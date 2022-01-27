@@ -33468,25 +33468,25 @@ namespaces:
 <p id="section-6.4-1">### Use case 1: Authenticating a user
 After the connection is established, the first command that the client must execute is the authentication command. As previously defined in Chapter 5, every FNAA client must first authenticate in order to execute commands. Thus, the authentication challenge must be supported both by the FNAA as well as the FNUA.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">It is worth mentioning that the chosen authentication mechanism for this PoC is SASL Plain. This command can be extended furtherly with other mechanisms in later versions. However, this simple authentication mechanism is sufficient to demonstrate the authentication step in the FNAP.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.4-3">
+<p id="section-6.4-3">The SASL Plain Authentication implies sending the username and the password encoded in Base64. The way to obtain the Base64 if we consider a user test with password test, is as follows:<a href="#section-6.4-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-4">
 <pre>
-The SASL Plain Authentication implies sending the username and the password encoded in Base64. The way to obtain the Base64 if we consider a user test with password test, is as follows:
 ignatius ~ 0$echo -en "\0test\0test" | base64
 AHRlc3QAdGVzdA==
-</pre><a href="#section-6.4-3" class="pilcrow">¶</a>
+</pre><a href="#section-6.4-4" class="pilcrow">¶</a>
 </div>
-<p id="section-6.4-4">Now, we can use this Base64 string to authenticate with the FNAA. First, we need to launch the FNAA server instance:<a href="#section-6.4-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.4-5">
+<p id="section-6.4-5">Now, we can use this Base64 string to authenticate with the FNAA. First, we need to launch the FNAA server instance:<a href="#section-6.4-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-6">
 <pre>
 ignatius~/ $./fnaad --config ./fnaad_flow.unix.ar.yaml
 main.go:41: Using config file: ./fnaad_flow.unix.ar.yaml
 main.go:57:     Using config file: ./fnaad_flow.unix.ar.yaml
 server.go:103: Listen on [::]:61000
 server.go:105: Accept a connection request.
-</pre><a href="#section-6.4-5" class="pilcrow">¶</a>
+</pre><a href="#section-6.4-6" class="pilcrow">¶</a>
 </div>
-<p id="section-6.4-6">Then, we can connect to the TCP port in which the FNAA is listening:<a href="#section-6.4-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.4-7">
+<p id="section-6.4-7">Then, we can connect to the TCP port in which the FNAA is listening:<a href="#section-6.4-7" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.4-8">
 <pre>
 ignatius ~ 1$telnet localhost 61000
 Trying 127.0.0.1...
@@ -33497,10 +33497,10 @@ AUTHENTICATE PLAIN
 220 OK
 AHRlc3QAdGVzdA==
 220 Authenticated
-</pre><a href="#section-6.4-7" class="pilcrow">¶</a>
+</pre><a href="#section-6.4-8" class="pilcrow">¶</a>
 </div>
-<p id="section-6.4-8">Once the client is authenticated, it can start executing FNAP commands to manage the Flow Namespace of the authenticated user. For simplicity purposes, in this Proof of Concept, we will be using a single user.<a href="#section-6.4-8" class="pilcrow">¶</a></p>
-<p id="section-6.4-9">In the case of the CLI tool, there is no need to perform an authentication step, since every command the user executes will be preceded by an authentication in the server.<a href="#section-6.4-9" class="pilcrow">¶</a></p>
+<p id="section-6.4-9">Once the client is authenticated, it can start executing FNAP commands to manage the Flow Namespace of the authenticated user. For simplicity purposes, in this Proof of Concept, we will be using a single user.<a href="#section-6.4-9" class="pilcrow">¶</a></p>
+<p id="section-6.4-10">In the case of the CLI tool, there is no need to perform an authentication step, since every command the user executes will be preceded by an authentication in the server.<a href="#section-6.4-10" class="pilcrow">¶</a></p>
 <div id="use-case-2-creating-a-flow">
 <section id="section-6.4.1">
           <h4 id="name-use-case-2-creating-a-flow">
