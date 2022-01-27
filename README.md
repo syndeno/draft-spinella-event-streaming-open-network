@@ -1,4 +1,4 @@
-draft-spinella-event-streaming-open-network
+# draft-spinella-event-streaming-open-network
 # Introduction
 
 Society is rapidly digitalizing and automating the exchanges of value that constitute the economy. Also, considerable time and energy is spent to assure that key transactions can be executed with reduced human involvement with better, faster, and more accurate results. In this context, Event Streaming can play a key role in how the economic system evolves.
