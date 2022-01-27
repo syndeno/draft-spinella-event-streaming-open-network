@@ -54,7 +54,7 @@ In this section, we will argue how Internet standards are developed and why this
 
 An interesting example of this phenomenon is the case of ISDN (Integrated Services Digital Network), a set of communications standards for the transmission of voice, video, and data over the PSTN (Public Switched Telephone Network) developed by the ITU-T (Telecommunication Standardization Sector) in 1988. ISDN pretended to use the existing public telephone network to transmit digital data in a time when the Internet connectivity access was not as broadly available as it is today. The main competitor of this standard was the incipient Internet itself, which could be used to transmit the same data.
 
-The Internet alternative needed a protocol to support the same services offered by ISDN, which was initially developed by the conjoint effort of the academic and private sector. Consequently, in 1992 the Mbone (Multicast Bone) was created. This project was an experimental network backbone built over the Internet for carrying multicast IP traffic, which could be used for multimedia content. After some important milestones of this project, the SIP (Session Initiation Protocol) was defined in 1996 and was published as a standard protocol in IETF’s RFC-3261. The reality today is that SIP has completely won the standards battle for multimedia transmission over the Internet, and ISDN usage has been on continuous decline.
+The Internet alternative needed a protocol to support the same services offered by ISDN, which was initially developed by the conjoint effort of the academic and private sector. Consequently, in 1992 the Mbone (Multicast Bone) was created. This project was an experimental network backbone built over the Internet for carrying multicast IP traffic, which could be used for multimedia content. After some important milestones of this project, the SIP (Session Initiation Protocol) was defined in 1996 and was published as a standard protocol in IETF’s {{!RFC3261}}. The reality today is that SIP has completely won the standards battle for multimedia transmission over the Internet, and ISDN usage has been on continuous decline.
 
 As for Event Streaming, we see a similar scenario set-up today. There are currently several open specifications and implementations for Event Streaming, like AMQP (Advanced Messaging Queueing Protocol), supported by RabbitMQ. However, while AMQP can be used for several purposes, Kafka Protocol specializes on Event Streaming Processing and its specialized features make it more convenient than RabbitMQ (i.e. ordering). 
 
@@ -151,7 +151,7 @@ Now, we can compare this process to a simple email interaction:
 
 In these two scenarios, we can see that the information needed to be exchanged offline by the actors is completely different in size and content. 
 
-First, in the case of email, there is a shared naming space given by the Domain Name Service (DNS). The email format has been standardized by the IETF in RFC 5321, section 2.3.11. Thus, there is a common naming space that is used for referencing mailboxes in the format user@domain. Thus, the offline details communicated by the peers is only the recipient email address. There is no analogous standard nor an open alternative for Event Streaming.
+First, in the case of email, there is a shared naming space given by the Domain Name Service (DNS). The email format has been standardized by the IETF in {{!RFC5321}}, section 2.3.11. Thus, there is a common naming space that is used for referencing mailboxes in the format user@domain. Thus, the offline details communicated by the peers is only the recipient email address. There is no analogous standard nor an open alternative for Event Streaming.
 
 Therefore, in the case of Event Streaming, users need to perform plenty of offline communication to agree not only on the technology to use but also on the queue to use. For instance, two organizations may be currently using Apache Kafka and need to share an event stream among themselves. The organization having the source of the stream should provide the following details to the consumer organization:
 * Bootstrap servers: Fully Qualified Domain Name list of the Apache Kafka brokers to start the connection to the Apache Kafka Brokers. Example: tcp://kf1.cluster.emiliano.ar:9092, tcp://kf2.cluster.emiliano.ar:9092, tcp://kf3.cluster.emiliano.ar:9092
@@ -322,7 +322,7 @@ flow://notifications.calendar.people.syndeno.com
 
 First, the FNAA will perform a query to the DNS resolvers. These will perform a recursive DNS query to obtain the authoritative name servers for the Flow Namespace: people.syndeno.com. Thus, the authoritative name servers for syndeno.com will reply with one or more NS Resource Record containing the FQDN for the authoritative name servers of people.syndeno.com.
 
-Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763). 
+Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records {{!RFC2782}} and DNS Service Discovery {{!RFC6763}}. 
 
 In this case, the query for PTR records would be as follows:
 ~~~
@@ -926,28 +926,6 @@ Finally, there is also the need to leverage on the Cloud Native architecture, ba
 
 Notwithstanding the difficulties, we firmly believe that cross-organization real-time event integration can provide great benefits for society. It would enhance the efficiency of business processes throughout organizations. Also, it would provide broad visibility to the final users, enabling experimentation and entrepreneurship. New business models for existing productive activities could be developed, as well as enabling innovation, which in turn would conform the positive externalities of the Event Streaming Open Network.
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 # Security Considerations
 
 TODO Security
@@ -962,6 +940,8 @@ This document has no IANA actions.
 
 # Acknowledgments
 {:numbered="false"}
+
+SPINELLA E. (2022) [Online] Event Streaming Open Network Master's Thesis https://drive.google.com/file/d/1R9H-4knAztez_yUPlr7aZSkbUjs8jL3j
 
 URQUHART J. (2021) Flow Architectures 
 
