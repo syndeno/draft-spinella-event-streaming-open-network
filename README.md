@@ -905,6 +905,8 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
+SPINELLA E. (2022) [Online] Event Streaming Open Network Master's Thesis <https://drive.google.com/file/d/1R9H-4knAztez_yUPlr7aZSkbUjs8jL3j>
+
 URQUHART J. (2021) Flow Architectures 
 
 FRISCHMANN B. (2007) [Online] Infrastructure Commons in Economic Perspective < https://firstmonday.org/article/view/1901/1783>
@@ -916,3 +918,4 @@ NAVARRO L. (2018) [Online] Network Infrastructures: The commons model for local 
 BRINO A. (2019) Towards an Event Streaming Service for ATLAS data processing.
 
 GUTTRIDGE, Gartner (2021) “Modern Data Strategies for the Real-time Enterprise” Big Data Quarterly 2021
+
