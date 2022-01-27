@@ -554,27 +554,27 @@ The chosen language for the development of the FNAA is GoLang. The reason for ch
 
 When the FNAA server application is initialized, it provides debug log messages describing all client interactions. In order to start the server application, a Network Participant system administrator can download the binary and execute it in a terminal:
 
-ignatius ~ 0$./fnaad 
-server.go:146: Listen on [::]:61000
-server.go:148: Accept a connection request.
+	ignatius ~ 0$./fnaad 
+	server.go:146: Listen on [::]:61000
+	server.go:148: Accept a connection request.
 
 Now that the 61000 TCP port is open, we can test the behaviour by means of a raw TCP using telnet command in a different terminal:
 
-ignatius ~ 1$telnet localhost 61000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-220 fnaa.unix.ar FNAA
+	ignatius ~ 1$telnet localhost 61000
+	Trying 127.0.0.1...
+	Connected to localhost.
+	Escape character is '^]'.
+	220 fnaa.unix.ar FNAA
 
 We can now see that the server has provided the first message in the connection: a welcome message indicating its FQDN fnaa.unix.ar.
 
 On the other hand, the server application starts providing debug information for the new connection established:
 
-ignatius ~ 0$./fnaad 
-server.go:146: Listen on [::]:61000
-server.go:148: Accept a connection request.
-server.go:154: Handle incoming messages.
-server.go:148: Accept a connection request.
+	ignatius ~ 0$./fnaad 
+	server.go:146: Listen on [::]:61000
+	server.go:148: Accept a connection request.
+	server.go:154: Handle incoming messages.
+	server.go:148: Accept a connection request.
 
 ## FNUA - Client application
 In order to test the FNAA server application, a CLI-based FNUA application has been developed. The chosen language for this CLI tool is also GoLang. The reason for choosing GoLang for the FNUA is because of its functionalities for building CLI tools, leveraging on the Cobra library.
@@ -582,27 +582,28 @@ Thus, the FNUA for the PoC is an executable file that complies with the diagram 
 
 One of the requirements for the flow CLI tool is a configuration file that defines the different FNAA servers together with the credentials to use. An example of this configuration file follows:
 
-agents:
--
-name: fnaa-unix
-fqdn: fnaa.unix.ar
-username: test
-password: test
-prefix: unix.ar-
--
-name: fnaa-emiliano
-fqdn: fnaa.emiliano.ar
-username: test
-password: test
-prefix: emiliano.ar-
+	agents:
+	  -
+	    name: fnaa-unix
+	    fqdn: fnaa.unix.ar
+	    username: test
+	    password: test
+	    prefix: unix.ar-
+	  -
+	    name: fnaa-emiliano
+	    fqdn: fnaa.emiliano.ar
+	    username: test
+	    password: test
+	    prefix: emiliano.ar-
 
-namespaces:
--
-name: flows.unix.ar
-agent: fnaa-unix
--
-name: flows.emiliano.ar
-agent: fnaa-emiliano
+	namespaces:
+	  -
+	    name: flows.unix.ar
+	    agent: fnaa-unix
+	  -
+	    name: flows.emiliano.ar
+	    agent: fnaa-emiliano
+
 
 In this file, we can see that there are two FNAA instances described with FQDN fnaa.unix.ar and fnaa.emiliano.ar. Then, there are two namespaces: one called flow.unix.ar hosted on fnaa-unix and second namespace flows.emiliano.ar hosted on fnaa-emiliano. This configuration enables the FNUA to interact with two different FNAA, each of which is hosting different Flow Namespaces.
 
@@ -621,23 +622,23 @@ AHRlc3QAdGVzdA==
 
 Now, we can use this Base64 string to authenticate with the FNAA. First, we need to launch the FNAA server instance:
 
-ignatius~/ $./fnaad --config ./fnaad_flow.unix.ar.yaml
-main.go:41: Using config file: ./fnaad_flow.unix.ar.yaml
-main.go:57:     Using config file: ./fnaad_flow.unix.ar.yaml
-server.go:103: Listen on [::]:61000
-server.go:105: Accept a connection request.
+	ignatius~/ $./fnaad --config ./fnaad_flow.unix.ar.yaml
+	main.go:41: Using config file: ./fnaad_flow.unix.ar.yaml
+	main.go:57:     Using config file: ./fnaad_flow.unix.ar.yaml
+	server.go:103: Listen on [::]:61000
+	server.go:105: Accept a connection request.
 
 Then, we can connect to the TCP port in which the FNAA is listening:
 
-ignatius ~ 1$telnet localhost 61000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-220 fnaa.unix.ar FNAA
-AUTHENTICATE PLAIN
-220 OK
-AHRlc3QAdGVzdA==
-220 Authenticated
+	ignatius ~ 1$telnet localhost 61000
+	Trying 127.0.0.1...
+	Connected to localhost.
+	Escape character is '^]'.
+	220 fnaa.unix.ar FNAA
+	AUTHENTICATE PLAIN
+	220 OK
+	AHRlc3QAdGVzdA==
+	220 Authenticated
 
 Once the client is authenticated, it can start executing FNAP commands to manage the Flow Namespace of the authenticated user. For simplicity purposes, in this Proof of Concept, we will be using a single user.
 
@@ -646,97 +647,97 @@ In the case of the CLI tool, there is no need to perform an authentication step,
 ### Use case 2: Creating a flow
 Once the authentication is successful, the client can now create a new Flow.  The way to do this using the CLI tool would be:
 
-ignatius ~/ 0$./fnua create flow time.flow.unix.ar
-Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
-Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
-Executing successful: [fnaa.unix.ar.	604800	IN	SRV	0 0 61000 fnaa.unix.ar.]
-Resolving A for fnaa.unix.ar. using server 172.17.0.2:53
-Executing query fnaa.unix.ar. IN 1 using server 172.17.0.2:53
-Executing successful: [fnaa.unix.ar.	604800	IN	A	127.0.0.1]
-Resolved A to 127.0.0.1 for fnaa.unix.ar. using server 172.17.0.2:53
-C: Connecting to 127.0.0.1:61000
-C: Got a response: 220 fnaa.unix.ar FNAA
-C: Sending command AUTHENTICATE PLAIN
-C: Wrote (20 bytes written)
-C: Got a response: 220 OK
-C: Authentication string sent: AHRlc3QAdGVzdA==
-C: Wrote (18 bytes written)
-C: Got a response: 220 Authenticated
-C: Sending command CREATE FLOW time.flow.unix.ar
-C: Wrote (31 bytes written)
-C: Server sent OK for command CREATE FLOW time.flow.unix.ar
-C: Sending command QUIT
-C: Wrote (6 bytes written)
+	ignatius ~/ 0$./fnua create flow time.flow.unix.ar
+	Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
+	Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
+	Executing successful: [fnaa.unix.ar.	604800	IN	SRV	0 0 61000 fnaa.unix.ar.]
+	Resolving A for fnaa.unix.ar. using server 172.17.0.2:53
+	Executing query fnaa.unix.ar. IN 1 using server 172.17.0.2:53
+	Executing successful: [fnaa.unix.ar.	604800	IN	A	127.0.0.1]
+	Resolved A to 127.0.0.1 for fnaa.unix.ar. using server 172.17.0.2:53
+	C: Connecting to 127.0.0.1:61000
+	C: Got a response: 220 fnaa.unix.ar FNAA
+	C: Sending command AUTHENTICATE PLAIN
+	C: Wrote (20 bytes written)
+	C: Got a response: 220 OK
+	C: Authentication string sent: AHRlc3QAdGVzdA==
+	C: Wrote (18 bytes written)
+	C: Got a response: 220 Authenticated
+	C: Sending command CREATE FLOW time.flow.unix.ar
+	C: Wrote (31 bytes written)
+	C: Server sent OK for command CREATE FLOW time.flow.unix.ar
+	C: Sending command QUIT
+	C: Wrote (6 bytes written)
 
 The client has discovered the FNAA server for Flow Namespace flow.unix.ar by means of SRV DNS records. Thus, it obtained both the FQDN of the FNAA together with the TCP port where it is listening, in this case 61000. Once the resolution process ends, the FNUA connects to the FNAA. First, the FNUA authenticates with the FNAA and then it executes the create flow command.
 
 If we were to simulate the same behavior using a raw TCP connection, the following steps would be executed:
 
-ignatius ~ 1$telnet localhost 61000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-220 fnaa.unix.ar FNAA
-AUTHENTICATE PLAIN
-220 OK
-AHRlc3QAdGVzdA==
-220 Authenticated
-CREATE FLOW time.flows.unix.ar
-220 OK time.flows.unix.ar
+	ignatius ~ 1$telnet localhost 61000
+	Trying 127.0.0.1...
+	Connected to localhost.
+	Escape character is '^]'.
+	220 fnaa.unix.ar FNAA
+	AUTHENTICATE PLAIN
+	220 OK
+	AHRlc3QAdGVzdA==
+	220 Authenticated
+	CREATE FLOW time.flows.unix.ar
+	220 OK time.flows.unix.ar
 
 Now, the client has created a new flow called time.flows.unix.ar located in the flows.unix.ar namespace. The FNAA in background has created a Kafka Topic as well as the necessary DNS entries for name resolution.
 
 ### Use case 3: Describing a flow
 Once a flow has been created, we can obtain information of if by executing the following command using the CLI tool:
 
-ignatius ~/ 1$./fnua describe flow time.flow.unix.ar
-Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
-Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
-Executing successful: [fnaa.unix.ar.	604800	IN	SRV	0 0 61000 fnaa.unix.ar.]
-Nameserver to be used: 172.17.0.2
-Resolving A for fnaa.unix.ar. using server 172.17.0.2:53
-Executing query fnaa.unix.ar. IN 1 using server 172.17.0.2:53
-Executing successful: [fnaa.unix.ar.	604800	IN	A	127.0.0.1]
-Resolved A to 127.0.0.1 for fnaa.unix.ar. using server 172.17.0.2:53
-C: Connecting to 127.0.0.1:61000
-C: Got a response: 220 fnaa.unix.ar FNAA
-C: Sending command AUTHENTICATE PLAIN
-C: Wrote (20 bytes written)
-C: Got a response: 220 OK
-C: Authentication string sent: AHRlc3QAdGVzdA==
-C: Wrote (18 bytes written)
-C: Got a response: 220 Authenticated
-C: Sending command DESCRIBE FLOW time.flow.unix.ar
-C: Wrote (33 bytes written)
-C: Server sent OK for command DESCRIBE FLOW time.flow.unix.ar
-Flow time.flow.unix.ar description:
-flow=time.flow.unix.ar
-type=kafka
-topic=time.flow.unix.ar
-server=kf1.unix.ar:9092
-Flow time.flow.unix.ar described successfully
-Quitting
-C: Sending command QUIT
-C: Wrote (6 bytes written)
+	ignatius ~/ 1$./fnua describe flow time.flow.unix.ar
+	Resolving SRV for fnaa.unix.ar. using server 172.17.0.2:53
+	Executing query fnaa.unix.ar. IN 33 using server 172.17.0.2:53
+	Executing successful: [fnaa.unix.ar.	604800	IN	SRV	0 0 61000 fnaa.unix.ar.]
+	Nameserver to be used: 172.17.0.2
+	Resolving A for fnaa.unix.ar. using server 172.17.0.2:53
+	Executing query fnaa.unix.ar. IN 1 using server 172.17.0.2:53
+	Executing successful: [fnaa.unix.ar.	604800	IN	A	127.0.0.1]
+	Resolved A to 127.0.0.1 for fnaa.unix.ar. using server 172.17.0.2:53
+	C: Connecting to 127.0.0.1:61000
+	C: Got a response: 220 fnaa.unix.ar FNAA
+	C: Sending command AUTHENTICATE PLAIN
+	C: Wrote (20 bytes written)
+	C: Got a response: 220 OK
+	C: Authentication string sent: AHRlc3QAdGVzdA==
+	C: Wrote (18 bytes written)
+	C: Got a response: 220 Authenticated
+	C: Sending command DESCRIBE FLOW time.flow.unix.ar
+	C: Wrote (33 bytes written)
+	C: Server sent OK for command DESCRIBE FLOW time.flow.unix.ar
+	Flow time.flow.unix.ar description:
+	flow=time.flow.unix.ar
+	type=kafka
+	topic=time.flow.unix.ar
+	server=kf1.unix.ar:9092
+	Flow time.flow.unix.ar described successfully
+	Quitting
+	C: Sending command QUIT
+	C: Wrote (6 bytes written)
 
 In the output of the describe command we can see all the necessary information to connect to the Flow called time.flow.unix.ar: (i) the type of Event Broker is Kafka, (ii) the Kafka topic has the same name of the flow and (iii) the Kafka Bootstrap server with port is provided. If we were to obtain this information using a manual connection, the steps would be:
 
-ignatius ~ 1$telnet localhost 61000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-220 fnaa.unix.ar FNAA
-AUTHENTICATE PLAIN
-220 OK
-AHRlc3QAdGVzdA==
-220 Authenticated
-DESCRIBE FLOW time.flows.unix.ar
-220 DATA 
-flow=time.flows.unix.ar
-type=kafka
-topic=time.flows.unix.ar
-server=kf1.unix.ar:9092
-220 OK 
+	ignatius ~ 1$telnet localhost 61000
+	Trying 127.0.0.1...
+	Connected to localhost.
+	Escape character is '^]'.
+	220 fnaa.unix.ar FNAA
+	AUTHENTICATE PLAIN
+	220 OK
+	AHRlc3QAdGVzdA==
+	220 Authenticated
+	DESCRIBE FLOW time.flows.unix.ar
+	220 DATA 
+	flow=time.flows.unix.ar
+	type=kafka
+	topic=time.flows.unix.ar
+	server=kf1.unix.ar:9092
+	220 OK 
 
 Now, we can use this information to connect to the Kafka topic and start producing or consuming events.
 
@@ -745,19 +746,19 @@ In this section, we will show how a subscription can be set up. When a user comm
 
 Thus, the initial communication between the FNUA and the FNAA, in which the user indicates to subscribe to a remote flow, would be as follows:
 
-ignatius ~ 1$telnet localhost 61000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-220 fnaa.unix.ar FNAA
-AUTHENTICATE PLAIN
-220 OK
-AHRlc3QAdGVzdA==
-220 Authenticated
-SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
-220 DATA
-ksdj898.time.flows.unix.ar
-220 OK
+	ignatius ~ 1$telnet localhost 61000
+	Trying 127.0.0.1...
+	Connected to localhost.
+	Escape character is '^]'.
+	220 fnaa.unix.ar FNAA
+	AUTHENTICATE PLAIN
+	220 OK
+	AHRlc3QAdGVzdA==
+	220 Authenticated
+	SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
+	220 DATA
+	ksdj898.time.flows.unix.ar
+	220 OK
 
 Once the user is authenticated, a SUBSCRIBE command is executed. This command indicates first the remote flow to subscribe to. Then, it also specifies with LOCAL the flow where the remote events will be written. In this example, the remote flow to subscribe to is time.flows.unix.ar, and the local flow is emiliano.ar-time.flows.unix.ar. Basically, a new flow has been created, emiliano.ar-time.flows.unix.ar, where all the events of flow time.flows.unix.ar will be written. 
 
@@ -767,82 +768,82 @@ The remote FNAA has set up a Bridge Processor to transcribe messages in topic ti
 
 The user could use the FNUA CLI tool to execute this command in the following manner:
 
-ignatius ~ 0$./fnua --config=./flow.yml subscribe time.flows.unix.ar --nameserver 172.17.0.2 -d --agent fnaa-emiliano
-Initializing initConfig
-    Using config file: ./flow.yml
-Subscribe to flow
-Agent selected: fnaa-emiliano
-Resolving FNAA FQDN fnaa.emiliano.ar
-Starting FQDN resolution with 172.17.0.2
-Resolving SRV for fnaa.emiliano.ar. using server 172.17.0.2:53
-Executing query fnaa.emiliano.ar. IN 33 using server 172.17.0.2:53
-FNAA FQDN Resolved to fnaa.emiliano.ar. port 51000
-Resolving A for fnaa.emiliano.ar. using server 172.17.0.2:53
-Resolved A to 127.0.0.1 for fnaa.emiliano.ar. using server 172.17.0.2:53
-C: Connecting to 127.0.0.1:51000
-C: Got a response: 220 fnaa.unix.ar FNAA
-Connected to FNAA
-Authenticating with PLAIN mechanism
-C: Sending command AUTHENTICATE PLAIN
-C: Wrote (20 bytes written)
-C: Got a response: 220 OK
-C: Authentication string sent: AHRlc3QAdGVzdA==
-C: Wrote (18 bytes written)
-C: Got a response: 220 Authenticated
-Authenticated
-Executing command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
-C: Sending command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
-C: Wrote (67 bytes written)
-C: Server sent OK for command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
-Flow emiliano.ar-time.flows.unix.ar subscription created successfully
-Server responded: emiliano.ar-time.flows.unix.ar SUBSCRIBED TO ksdj898.time.flows.unix.ar
-Quitting
-C: Sending command QUIT
-C: Wrote (6 bytes written)
-Connection closed
+	ignatius ~ 0$./fnua --config=./flow.yml subscribe time.flows.unix.ar --nameserver 172.17.0.2 -d --agent fnaa-emiliano
+	Initializing initConfig
+	    Using config file: ./flow.yml
+	Subscribe to flow
+	Agent selected: fnaa-emiliano
+	Resolving FNAA FQDN fnaa.emiliano.ar
+	Starting FQDN resolution with 172.17.0.2
+	Resolving SRV for fnaa.emiliano.ar. using server 172.17.0.2:53
+	Executing query fnaa.emiliano.ar. IN 33 using server 172.17.0.2:53
+	FNAA FQDN Resolved to fnaa.emiliano.ar. port 51000
+	Resolving A for fnaa.emiliano.ar. using server 172.17.0.2:53
+	Resolved A to 127.0.0.1 for fnaa.emiliano.ar. using server 172.17.0.2:53
+	C: Connecting to 127.0.0.1:51000
+	C: Got a response: 220 fnaa.unix.ar FNAA
+	Connected to FNAA
+	Authenticating with PLAIN mechanism
+	C: Sending command AUTHENTICATE PLAIN
+	C: Wrote (20 bytes written)
+	C: Got a response: 220 OK
+	C: Authentication string sent: AHRlc3QAdGVzdA==
+	C: Wrote (18 bytes written)
+	C: Got a response: 220 Authenticated
+	Authenticated
+	Executing command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
+	C: Sending command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
+	C: Wrote (67 bytes written)
+	C: Server sent OK for command SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
+	Flow emiliano.ar-time.flows.unix.ar subscription created successfully
+	Server responded: emiliano.ar-time.flows.unix.ar SUBSCRIBED TO ksdj898.time.flows.unix.ar
+	Quitting
+	C: Sending command QUIT
+	C: Wrote (6 bytes written)
+	Connection closed
 
 This interaction of the FNUA with the FNAA of the Flow Namespace emiliano.ar (fnaa-emiliano) has trigger an interaction with the FNAA of unix.ar Flow Namespace (fnaa-unix). This means that before fnaa-emiliano was able to respond to the FNUA, a new connection was opened to the remote FNAA and the SUBSCRIBE command was executed.
 
 The log of fnaa-emiliano when the SUBCRIBE command was issued looks as follows:
 
-server.go:111: Handle incoming messages.
-server.go:105: Accept a connection request.
-server.go:253: User authenticated
-server.go:347: FULL COMMAND: SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
-server.go:401: Flow is REMOTE
-client.go:280: **#Resolving SRV for time.flows.unix.ar. using server 172.17.0.2:53
-server.go:417: FNAA FQDN Resolved to fnaa.unix.ar. port 61000
-client.go:42: C: Connecting to 127.0.0.1:61000
-client.go:69: C: Got a response: 220 fnaa.unix.ar FNAA
-server.go:435: Connected to FNAA
-server.go:436: Authenticating with PLAIN mechanism
-client.go:126: C: Sending command AUTHENTICATE PLAIN
-client.go:133: C: Wrote (20 bytes written)
-client.go:144: C: Got a response: 220 OK
-client.go:154: C: Authentication string sent: AHRlc3QAdGVzdA==
-client.go:159: C: Wrote (18 bytes written)
-client.go:170: C: Got a response: 220 Authenticated
-server.go:444: Authenticated
-client.go:82: C: Sending command SUBSCRIBE time.flows.unix.ar
-client.go:88: C: Wrote (30 bytes written)
-client.go:112: C: Server sent OK for command SUBSCRIBE time.flows.unix.ar
-server.go:456: Flow time.flows.unix.ar subscribed successfully
-server.go:457: Server responded: ksdj898.time.flows.unix.ar
-server.go:459: Quitting
+	server.go:111: Handle incoming messages.
+	server.go:105: Accept a connection request.
+	server.go:253: User authenticated
+	server.go:347: FULL COMMAND: SUBSCRIBE time.flows.unix.ar LOCAL emiliano.ar-time.flows.unix.ar
+	server.go:401: Flow is REMOTE
+	client.go:280: **#Resolving SRV for time.flows.unix.ar. using server 172.17.0.2:53
+	server.go:417: FNAA FQDN Resolved to fnaa.unix.ar. port 61000
+	client.go:42: C: Connecting to 127.0.0.1:61000
+	client.go:69: C: Got a response: 220 fnaa.unix.ar FNAA
+	server.go:435: Connected to FNAA
+	server.go:436: Authenticating with PLAIN mechanism
+	client.go:126: C: Sending command AUTHENTICATE PLAIN
+	client.go:133: C: Wrote (20 bytes written)
+	client.go:144: C: Got a response: 220 OK
+	client.go:154: C: Authentication string sent: AHRlc3QAdGVzdA==
+	client.go:159: C: Wrote (18 bytes written)
+	client.go:170: C: Got a response: 220 Authenticated
+	server.go:444: Authenticated
+	client.go:82: C: Sending command SUBSCRIBE time.flows.unix.ar
+	client.go:88: C: Wrote (30 bytes written)
+	client.go:112: C: Server sent OK for command SUBSCRIBE time.flows.unix.ar
+	server.go:456: Flow time.flows.unix.ar subscribed successfully
+	server.go:457: Server responded: ksdj898.time.flows.unix.ar
+	server.go:459: Quitting
 
 We can see how fnaa-emiliano had to trigger a client subroutine to contact the remote fnaa-unix. Once the server FQDN, IP and Port is discovered by means of DNS, a new connection is established and the SUBSCRIBE command is issued. Here we can see the log of fnaa-unix:
 
-server.go:111: Handle incoming messages.
-server.go:105: Accept a connection request.
-server.go:253: User authenticated
-server.go:139: Received command: subscribe
-server.go:348: [SUBSCRIBE time.flows.unix.ar]
-server.go:367: Creating flow endpoint time.flows.unix.ar
-server.go:368: Creating new topic ksdj898.time.flows.unix.ar in Apache Kafka instance kafka_local
-server.go:369: Creating Flow Processor src=time.flows.unix.ar dst=ksdj898.time.flows.unix.ar
-server.go:370: Adding DNS Records for ksdj898.time.flows.unix.ar
-server.go:372: Flow enabled ksdj898.time.flows.unix.ar
-server.go:139: Received command: quit
+	server.go:111: Handle incoming messages.
+	server.go:105: Accept a connection request.
+	server.go:253: User authenticated
+	server.go:139: Received command: subscribe
+	server.go:348: [SUBSCRIBE time.flows.unix.ar]
+	server.go:367: Creating flow endpoint time.flows.unix.ar
+	server.go:368: Creating new topic ksdj898.time.flows.unix.ar in Apache Kafka instance kafka_local
+	server.go:369: Creating Flow Processor src=time.flows.unix.ar dst=ksdj898.time.flows.unix.ar
+	server.go:370: Adding DNS Records for ksdj898.time.flows.unix.ar
+	server.go:372: Flow enabled ksdj898.time.flows.unix.ar
+	server.go:139: Received command: quit
 
 Thus, we were able to set up a new subscription in fnaa-emiliano that trigger a background interaction with fnaa-unix.
 
