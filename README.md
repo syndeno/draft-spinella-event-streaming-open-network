@@ -170,7 +170,8 @@ In this section, we will describe the overall architectural proposal for an Even
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
 
 ![Figure 1: High-level overview of the Event Streaming Open Network](./images/Figure1.svg)
-   
+Figure 1: High-level overview of the Event Streaming Open Network.
+
 We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
 
 In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
@@ -183,7 +184,8 @@ For example, nowadays the Network Time Protocol (NTP) is used to synchronize the
 
 Additionally, the NP must be able to expand the capacity to support any number of flows, as well as extending the network with new services. Not only NP must be able to include any given set of data within events but also, they must be able to build applications and services on top of the network by employing the architecture primitives.
 
-<figure><name>Figure 2</name><artwork alt="Event Streaming Open Network Architecture components" type="svg" src="https://raw.githubusercontent.com/syndeno/draft-spinella-event-streaming-open-network/main/images/Figure2.svg"/></figure>	
+![Figure 2: Event Streaming Open Network Architecture components](./images/Figure2.svg)
+Figure 2: Event Streaming Open Network Architecture components.
 
 Now, we provide a brief description of all the components that appear in the diagram of Figure 2. In the next sections further details of the components are provided.
 
@@ -205,8 +207,9 @@ This component must implement the same protocol selected for the Flow Namespace 
 The FEB implementation that we will mostly consider is Apache Kafka. This open-source project is quickly becoming a commodity platform, and major cloud providers are building utilities for it. However, as a design decision, it should be possible to use the same protocols to support other applications, such as RabbitMQ, Apache Pulsar or the cloud-based options like AWS SQS or Azure Events Hub.
 
 Apache Kafka is the ecosystem leader in the Event Streaming space, considering mainly adoption. There is a growing set of tools and vendors supporting its installation, operation, and consumption. This fact makes Apache Kafka much more appealing to enterprise developers. However, the broker should provide a common set of functionalities which can be seen in the diagram of Figure 3.
-	
-<figure><name>Figure 3</name><artwork type="svg" alt="Event Streaming Open Network Architecture components" type="svg" src="https://raw.githubusercontent.com/syndeno/draft-spinella-event-streaming-open-network/main/images/Figure3.svg"/></figure>
+
+![Figure 3: High-level overview of the Event Queue Broker component interactions.](./images/Figure2.svg)
+Figure 3: High-level overview of the Event Queue Broker component interactions..
 
 The selection of the Events Broker will impact on the implementation of the Flow Namespace Accessing Agent. This last component will be responsible for knowing how to set up and manage flows on top of different Events Brokers.
 
@@ -275,7 +278,8 @@ flow://created.invoice.finance.syndeno.com:
 
 In Figure 4, we can see how a Flow FQDN can be resolved by means of the Flow Name Service.
 
-<figure><name>Figure 4</name><artwork alt="High-level overview of the interactions with the Flow Name Service component." type="svg" src="https://raw.githubusercontent.com/syndeno/draft-spinella-event-streaming-open-network/main/images/Figure4.svg"/></figure>	
+![Figure 4: High-level overview of the interactions with the Flow Name Service component.](./images/Figure2.svg)
+Figure 4: High-level overview of the interactions with the Flow Name Service component.
   
 In order to illustrate the Flow Name resolution procedure by the FNAA (Flow Namespace Accessing Agent), we can consider the following flow URI:
 
