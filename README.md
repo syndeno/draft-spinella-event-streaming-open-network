@@ -12,8 +12,6 @@ Thus, there is no consistent and common consensus on a mechanism for the exchang
 
 In this context, we can now introduce how this landscape could change with the introductiopn of an Event Streaming Open Network over the Internet. When needing to connect real-time event flows across organizations, developers would have a common basis for finding, publishing, and subscribing to event streams. Also, given a set of standard formats to encode and transmit events, developers could use the programming language of their choice. Overall, this set of standards would drastically reduce the cost of real-time integration, which would also enable experimentation by users. 
 
-{::boilerplate bcp14-tagged}
-
 # An Open Network for Event Streaming over the Internet
 In this section, we will argue how Internet standards are developed and why this could be the case for an Event Streaming Open Network.
 
