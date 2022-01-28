@@ -172,7 +172,7 @@ In this section, we will describe the overall architectural proposal for an Even
 In Figure 1 we illustrate a high-level overview of an architecture proposal for the Open Network.
 
 <p align="center">
-  <img alt="Figure 1: High-level overview of the Event Streaming Open Network" src="./figures/Figure1.png" />
+  <img alt="Figure 1: High-level overview of the Event Streaming Open Network" src="./figures/Figure1.png" style="width: 60%; height: 60%" />
 </p>
 Figure 1: High-level overview of the Event Streaming Open Network.
 
