@@ -175,9 +175,9 @@ In Figure 1 we illustrate a high-level overview of an architecture proposal for 
 
 Figure 1: High-level overview of the Event Streaming Open Network.
 
-We can identify different Network Participant (NP) in Figure 1 represented by different colors. The different NPs act as equals when consuming or producing events as part of the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which Is described in the next chapter.
+In Figure 1, we can identify different Network Participant (NP) which act as equals when consuming or producing events considering the Flows they own. All of NPs implement the Event Streaming Open Network Protocol, which is described in the next section.
 
-In the diagram, an initial flow starts on the orange NP to which a user in the blue NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in NP blue, to which the orange NP is subscribed as well. Now, the green participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
+In the diagram, an initial flow starts on the Right NP to which a user in the Left NP is subscribed. After processing the events received in the first flow, the results are published to a new flow in Left NP, to which the Right NP is subscribed as well. Now, the lower level participant is subscribed to the same flow, enabling downstream activities across the rest of the network participants.
 
 It is possible to observe how the high-level architecture allows sharing the streaming of events across different network participants and their users. Also, there is also the need for security, in order to allow or deny the access to write to and read from flows.
 
