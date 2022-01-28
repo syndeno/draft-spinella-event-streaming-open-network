@@ -304,44 +304,43 @@ First, the FNAA will perform a query to the DNS resolvers. These will perform a 
 Secondly, once these name servers are obtained, the FNUA will perform a PTR query on the Flow FQDN adding a service discovery prefix. The response of the PTR query will return another FQDN compliant with SRV DNS Resource Records (RFC-2782) and DNS Service Discovery (RFC-6763). 
 
 In this case, the query for PTR records would be as follows:
-
-;; QUESTION SECTION:
-;notifications.calendar.people.syndeno.com.		IN	PTR
+	;; QUESTION SECTION:
+	;notifications.calendar.people.syndeno.com.		IN	PTR
 
 The response would be in the following form:
 
-;; ANSWER SECTION:
-notifications.calendar.people.syndeno.com. 21600 IN	PTR _flow._tcp.notifications.calendar.people.syndeno.com.
+	;; ANSWER SECTION:
+	notifications.calendar.people.syndeno.com. 21600 IN	PTR _flow._tcp.notifications.calendar.people.syndeno.com.
 
 Using the FQDN returned by this query, an additional query asking for SRV records is made:
 
-;; QUESTION SECTION:
-;_flow._tcp.notifications.calendar.people.syndeno.com.		IN	SRV
+	;; QUESTION SECTION:
+	;_flow._tcp.notifications.calendar.people.syndeno.com.		IN	SRV
 
-;; ANSWER SECTION:
-_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 65432 fnaa.syndeno.com.
-_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “tls”
+	;; ANSWER SECTION:
+	_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 65432 fnaa.syndeno.com.
+	_flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “tls”
 
-_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 9092 kafka.syndeno.com.
-_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “broker-type=kafka tls”
+	_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN 	SRV	30 30 9092 kafka.syndeno.com.
+	_queue._flow._tcp.notifications.calendar.people.syndeno.com. 875 IN TXT “broker-type=kafka tls”
 
 First, the response informs the network location of the FNAA server, in this case a connection should be opened to TCP port 65432 of the IP resulting of resolving fnaa.syndeno.com:
 
-;; QUESTION SECTION:
-;fnaa.syndeno.com.		IN	A
+	;; QUESTION SECTION:
+	;fnaa.syndeno.com.		IN	A
 
-;; ANSWER SECTION:
-fnaa.syndeno.com.	21600	IN	A	208.68.163.200
+	;; ANSWER SECTION:
+	fnaa.syndeno.com.	21600	IN	A	208.68.163.200
 
 Secondly, this response offers other relevant information, like the TCP port where the queue service is located (9092). It also includes a TXT Resource Record that establishes the protocol of the Event Queue Broker, defined in the variable “broker-type=kafka”. 
 
 Now, using the returned FQDN for the queue, kafka.syndeno.com, the resolver can perform an additional query:
 
-;; QUESTION SECTION:
-;kafka.syndeno.com.		IN	A
+	;; QUESTION SECTION:
+	;kafka.syndeno.com.		IN	A
 
-;; ANSWER SECTION:
-kafka.syndeno.com.	21600	IN	A	208.68.163.218
+	;; ANSWER SECTION:
+	kafka.syndeno.com.	21600	IN	A	208.68.163.218
 
 	
 ### Flow Namespace Accessing Agent (FNAA)
