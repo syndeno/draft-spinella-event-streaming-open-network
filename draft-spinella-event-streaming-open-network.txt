@@ -4,8 +4,8 @@
 
 TBD                                                          E. Spinella
 Internet-Draft                                                   Syndeno
-Intended status: Informational                           27 January 2022
-Expires: 31 July 2022
+Intended status: Informational                           28 January 2022
+Expires: 1 August 2022
 
 
                       Event Streaming Open Network
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 July 2022.
+   This Internet-Draft will expire on 1 August 2022.
 
 Copyright Notice
 
