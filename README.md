@@ -577,6 +577,9 @@ Users using a Client Application actiong as a FNUA must be able to:
 2. Create a new flow.
 3. Describe an existing flow.
 4. Subscribe to an external flow.
+ 
+## Codebase location
+https://github.com/syndeno/flow
 
 ## FNAA - Server application
 The FNAA server application must implement FNAP as described in Section 6. Basically, the FNAA will open a TCP port on all the IP addresses of the host to listen for new FNUA client connections.
