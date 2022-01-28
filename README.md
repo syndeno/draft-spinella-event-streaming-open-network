@@ -433,8 +433,6 @@ In Figure 10 we can see an example of all the components needed to set up a flow
 * FlowA of the Orange NP with FlowB of the Blue NP
 * FlowC of the Blue NP with FlowD of the Orange NP
 	
-![Figure 10: Example of a bidirectional subscription among two Network Participants.](./figures/Figure10.png)
-
 <p align="center">
   <img alt="Figure 10: Example of a bidirectional subscription among two Network Participants." src="./figures/Figure10.png" />
 </p>
@@ -462,8 +460,6 @@ It is now necessary to specify the protocol needed for the Flow Namespace Access
 Figure 11: FNAA client and server communicate using FNAP.
 
 In order to define a finite state machine for the protocol and the different stimuli that cause a change of state, the model presented by M.Wild (Wild, 2013) in her paper “Guided Merging of Sequence Diagrams” will be employed. This model is beneficial since it provides an integrated method both for client and server maintaining the stimuli relationship that trigger a change of state in each component.
-
-![Figure 12: Merged Sequence Diagram for SMTP proposed by Wild, 2013](./figures/Figure12.png)
 
 <p align="center">
   <img alt="Figure 12: Merged Sequence Diagram for SMTP proposed by Wild, 2013" src="./figures/Figure12.png" />
@@ -500,8 +496,6 @@ The objective of this implementation is to provide specifications for an initial
 	
 #### Implementation overview
 In Figure 14, we have a diagram of the overall implementation proposal. The components that have the Kubernetes Deployment icon are the ones to be managed by the FNAA server instance. Then, we have a Kafka Cluster that provides a Topic instance for each flow. Finally, the DNS Infrastructure is leveraged.
-
-![Figure 14: Implementation overview using Kubernetes, Apache Kafka, DNS Bind9 and the Flow CLI tool.](./figures/Figure14.png)
 
 <p align="center">
   <img alt="Figure 14: Implementation overview using Kubernetes, Apache Kafka, DNS Bind9 and the Flow CLI tool." src="./figures/Figure14.png" />
