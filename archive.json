@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-02-17T00:58:47.967411+00:00",
+  "timestamp": "2022-02-20T01:10:25.563622+00:00",
   "repo": "syndeno/draft-spinella-event-streaming-open-network",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOGvbJYc5EPYlV",
+      "title": "Event: What is the definition?",
+      "url": "https://github.com/syndeno/draft-spinella-event-streaming-open-network/issues/1",
+      "state": "OPEN",
+      "author": "Dicky-Moe",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Maybe I missed something, but I didn't find the definition of \"event\". I know there are different concepts; event in the sense of OLE Automation is different from event in the sense of SIP. There was a discussion somewhere, that only a change of state can be made into a SIP event.\r\nI get the chance to promote SAFU :)\r\nIn SAFU, I understand an event as a yet another different thing: as fire-and-forget style.",
+      "createdAt": "2022-02-20T00:39:58Z",
+      "updatedAt": "2022-02-20T00:39:58Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
