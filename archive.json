@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-20T01:15:56.291246+00:00",
+  "timestamp": "2022-03-22T01:21:29.451106+00:00",
   "repo": "syndeno/draft-spinella-event-streaming-open-network",
   "labels": [
     {
@@ -55,16 +55,24 @@
       "id": "I_kwDOGvbJYc5EPYlV",
       "title": "Event: What is the definition?",
       "url": "https://github.com/syndeno/draft-spinella-event-streaming-open-network/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Dicky-Moe",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Maybe I missed something, but I didn't find the definition of \"event\". I know there are different concepts; event in the sense of OLE Automation is different from event in the sense of SIP. There was a discussion somewhere, that only a change of state can be made into a SIP event.\r\nI get the chance to promote SAFU :)\r\nIn SAFU, I understand an event as a yet another different thing: as fire-and-forget style.",
       "createdAt": "2022-02-20T00:39:58Z",
-      "updatedAt": "2022-02-20T00:39:58Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2022-03-21T22:16:57Z",
+      "closedAt": "2022-03-21T22:16:57Z",
+      "comments": [
+        {
+          "author": "emilianofs",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi, sorry for the delay, I have just seen this issue.\r\n\r\nThe main difference between generic data and an event is that the latter has context information. So, if you consider an IoT device for instance, it could just send data and rely on the receiver to deduce context information. For instance, the receiver could deduce the location of the device based on the source IP of the message. On the other hand, an event is also a piece of data but it includes all the information that the receivers need to process the message, not needing to deduce any information.\r\n\r\nThus, in the case of this hypothetical device, it would send generic data if it just streams bytes with the temperature; it would stream events if each message includes context information (i.e. location, identification, etc.). \r\n\r\nI hope I have explained myself. In any case, I recommend that you look into the book Flow Architectures by James Urquhart.",
+          "createdAt": "2022-03-21T22:16:41Z",
+          "updatedAt": "2022-03-21T22:16:41Z"
+        }
+      ]
     }
   ],
   "pulls": []
