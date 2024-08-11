@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-08T00:20:18.757636+00:00",
+  "timestamp": "2024-08-11T00:22:43.639030+00:00",
   "repo": "syndeno/draft-spinella-event-streaming-open-network",
   "labels": [
     {
@@ -66,7 +66,7 @@
       "closedAt": "2022-03-21T22:16:57Z",
       "comments": [
         {
-          "author": "emilianofs",
+          "author": "eminwux",
           "authorAssociation": "CONTRIBUTOR",
           "body": "Hi, sorry for the delay, I have just seen this issue.\r\n\r\nThe main difference between generic data and an event is that the latter has context information. So, if you consider an IoT device for instance, it could just send data and rely on the receiver to deduce context information. For instance, the receiver could deduce the location of the device based on the source IP of the message. On the other hand, an event is also a piece of data but it includes all the information that the receivers need to process the message, not needing to deduce any information.\r\n\r\nThus, in the case of this hypothetical device, it would send generic data if it just streams bytes with the temperature; it would stream events if each message includes context information (i.e. location, identification, etc.). \r\n\r\nI hope I have explained myself. In any case, I recommend that you look into the book Flow Architectures by James Urquhart.",
           "createdAt": "2022-03-21T22:16:41Z",
